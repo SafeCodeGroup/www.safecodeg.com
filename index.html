@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="SafeCodex is a UI/UX design and web application agency based in Hyderabad, India. We design and build beautiful digital products.">
+<meta property="og:title" content="SafeCodex — Design &amp; Web Agency">
+<meta property="og:description" content="We craft digital products people love. UI/UX, Web Apps, Mobile Design — based in Hyderabad.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SafeCodex — Design & Web Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/914077770007?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" id="wa-btn" aria-label="Chat on WhatsApp" style="position:fixed;bottom:104px;right:28px;z-index:8999;width:56px;height:56px;border-radius:50%;background:linear-gradient(145deg,#2EE26A,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.7),0 0 0 3px rgba(37,211,102,.25),0 0 40px rgba(37,211,102,.3);text-decoration:none;transition:transform .25s,box-shadow .25s" onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 8px 32px rgba(37,211,102,.9),0 0 0 4px rgba(37,211,102,.35),0 0 60px rgba(37,211,102,.4)';document.getElementById('wa-tip').style.opacity='1';document.getElementById('wa-tip').style.transform='translateX(0)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,.7),0 0 0 3px rgba(37,211,102,.25),0 0 40px rgba(37,211,102,.3)';document.getElementById('wa-tip').style.opacity='0';document.getElementById('wa-tip').style.transform='translateX(8px)'">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 1C7.716 1 1 7.716 1 16c0 2.628.676 5.098 1.858 7.248L1 31l7.96-2.088A14.94 14.94 0 0 0 16 31c8.284 0 15-6.716 15-15S24.284 1 16 1z" fill="rgba(255,255,255,.18)"/>
+    <path d="M22.8 19.44c-.38-.19-2.25-1.11-2.6-1.24-.35-.13-.6-.19-.86.19-.25.38-.98 1.24-1.2 1.49-.22.25-.44.28-.82.1-.38-.19-1.61-.59-3.07-1.89-1.13-1.01-1.89-2.25-2.11-2.63-.22-.38-.02-.59.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.1-.19-.86-2.07-1.18-2.83-.31-.74-.62-.64-.86-.65-.22-.01-.47-.01-.72-.01s-.66.1-1.01.47C9.8 8.92 9 9.92 9 11.42s1.36 3.68 1.55 3.94c.19.25 2.69 4.1 6.51 5.75.91.39 1.62.63 2.17.8.91.29 1.74.25 2.39.15.73-.11 2.25-.92 2.57-1.81.32-.89.32-1.65.22-1.81-.09-.16-.35-.25-.73-.44z" fill="white"/>
+  </svg>
+  <!-- Tooltip -->
+  <div id="wa-tip" style="position:absolute;right:62px;top:50%;transform:translateY(-50%) translateX(8px);background:#0C0C0C;color:#fff;font-size:.78rem;font-weight:600;white-space:nowrap;padding:.45rem .875rem;border-radius:var(--r999);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.25)">
+    Chat on WhatsApp
+    <span style="position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #0C0C0C"></span>
+  </div>
+</a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo" aria-label="SafeCodex">
+    <svg width="148" height="32" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Icon mark: two overlapping brackets forming an 'S' shield -->
+      <rect x="0" y="4" width="10" height="24" rx="3" fill="#FF4D2E"/>
+      <rect x="4" y="0" width="10" height="12" rx="3" fill="#FF4D2E" opacity=".7"/>
+      <rect x="4" y="20" width="10" height="12" rx="3" fill="#FF4D2E" opacity=".7"/>
+      <rect x="8" y="4" width="4" height="24" rx="2" fill="#0C0C0C"/>
+      <!-- Wordmark: SafeCodex in Space Grotesk -->
+      <text x="22" y="23" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="15.5" font-weight="700" fill="#0C0C0C" letter-spacing="-.3">Safe</text>
+      <text x="57" y="23" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="15.5" font-weight="400" fill="#0C0C0C" letter-spacing="-.2">Codex</text>
+    </svg>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact" class="nav-cta">Start a project</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-cursor-orb" id="heroOrb"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <div class="hero-eyebrow-line"></div>
+      <span>Design &amp; Web Agency</span>
+    </div>
+    <h1 class="hero-title reveal">
+      We craft<br>digital products<br><em>that people</em><br>love.
+    </h1>
+  </div>
+  <div class="hero-bottom reveal">
+    <p class="hero-desc">Web applications, UI/UX design, and brand identities built for ambitious companies who care about the details.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-outline">See our work</a>
+      <a href="#contact" class="btn-fill">Start a project</a>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">UI/UX Design<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Web Applications<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Mobile Interfaces<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Brand Identity<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Design Systems<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Prototyping<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Frontend Dev<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">UX Research<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">UI/UX Design<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Web Applications<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Mobile Interfaces<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Brand Identity<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Design Systems<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Prototyping<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Frontend Dev<span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">UX Research<span class="ticker-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work" class="work">
+  <div class="work-header reveal">
+    <div>
+      <div class="section-eyebrow"><div class="ey-dash"></div><span>Selected work</span></div>
+      <h2 class="s-title">Projects we're<br>proud of</h2>
+    </div>
+    <a href="#contact" class="work-link">All projects</a>
+  </div>
+  <div class="work-grid reveal">
+
+    <!-- CARD 1: Sphere — iPhone 17 · Agentic AI OS -->
+    <div class="work-card" style="background:linear-gradient(160deg,#06060F 0%,#0D0A1A 100%)">
+      <div class="work-screen" style="display:flex;align-items:center;justify-content:center;padding:24px 20px 16px;position:relative;overflow:hidden">
+        <div style="position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(99,102,241,.35) 0%,transparent 65%);top:-60px;left:50%;transform:translateX(-50%);pointer-events:none"></div>
+        <div style="position:absolute;width:160px;height:160px;background:radial-gradient(circle,rgba(236,72,153,.2) 0%,transparent 70%);bottom:20px;right:-20px;pointer-events:none"></div>
+        <div style="position:relative;z-index:1;width:100%">
+          <!-- Top status bar -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:28px;height:28px;background:linear-gradient(135deg,#6366F1,#EC4899);border-radius:8px;display:flex;align-items:center;justify-content:center">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="white" stroke-width="1.5"/><path d="M7 4v3l2 1" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-.3px">Sphere</span>
+              <span style="font-size:8px;background:rgba(99,102,241,.2);color:#a5b4fc;padding:2px 8px;border-radius:100px;border:1px solid rgba(165,180,252,.15);font-weight:600">OS · 2026</span>
+            </div>
+            <div style="display:flex;gap:5px;align-items:center">
+              <div style="width:6px;height:6px;background:#22C55E;border-radius:50%;box-shadow:0 0 6px rgba(34,197,94,.7)"></div>
+              <span style="font-size:8px;color:rgba(255,255,255,.35)">3 agents active</span>
+            </div>
+          </div>
+          <!-- Ambient greeting -->
+          <div style="margin-bottom:16px">
+            <div style="font-size:9px;color:rgba(255,255,255,.3);margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase">Wednesday, Oct 14</div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1.05">Good morning,<br><span style="background:linear-gradient(90deg,#a5b4fc,#f9a8d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Jamie.</span></div>
+          </div>
+          <!-- Agent cards row -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
+            <div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:10px 10px 8px">
+              <div style="font-size:14px;margin-bottom:5px">📬</div>
+              <div style="font-size:7.5px;font-weight:700;color:#a5b4fc">Inbox</div>
+              <div style="font-size:10px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif">12</div>
+              <div style="font-size:6.5px;color:rgba(255,255,255,.3);margin-top:1px">3 need reply</div>
+            </div>
+            <div style="background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2);border-radius:12px;padding:10px 10px 8px">
+              <div style="font-size:14px;margin-bottom:5px">📋</div>
+              <div style="font-size:7.5px;font-weight:700;color:#f9a8d4">Tasks</div>
+              <div style="font-size:10px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif">5</div>
+              <div style="font-size:6.5px;color:rgba(255,255,255,.3);margin-top:1px">due today</div>
+            </div>
+            <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:12px;padding:10px 10px 8px">
+              <div style="font-size:14px;margin-bottom:5px">🤖</div>
+              <div style="font-size:7.5px;font-weight:700;color:#86efac">Agents</div>
+              <div style="font-size:10px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif">3</div>
+              <div style="font-size:6.5px;color:rgba(255,255,255,.3);margin-top:1px">running</div>
+            </div>
+          </div>
+          <!-- Live agent feed -->
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:10px 12px">
+            <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Agent activity</div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="width:6px;height:6px;background:#22C55E;border-radius:50%;flex-shrink:0;box-shadow:0 0 5px rgba(34,197,94,.6)"></div>
+                <div style="font-size:8px;color:rgba(255,255,255,.6);flex:1">Research Agent — <span style="color:#a5b4fc">scanning 14 sources</span></div>
+                <div style="font-size:7px;color:rgba(255,255,255,.2)">now</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="width:6px;height:6px;background:#F59E0B;border-radius:50%;flex-shrink:0;box-shadow:0 0 5px rgba(245,158,11,.5)"></div>
+                <div style="font-size:8px;color:rgba(255,255,255,.6);flex:1">Calendar Agent — <span style="color:#fde68a">rescheduled 2 meetings</span></div>
+                <div style="font-size:7px;color:rgba(255,255,255,.2)">2m</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="width:6px;height:6px;background:#6366F1;border-radius:50%;flex-shrink:0"></div>
+                <div style="font-size:8px;color:rgba(255,255,255,.6);flex:1">Draft Agent — <span style="color:#c7d2fe">proposal ready for review</span></div>
+                <div style="font-size:7px;color:rgba(255,255,255,.2)">5m</div>
+              </div>
+            </div>
+          </div>
+          <!-- Prompt bar -->
+          <div style="margin-top:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0"><path d="M6 1L7.5 4.5L11 6L7.5 7.5L6 11L4.5 7.5L1 6L4.5 4.5Z" fill="rgba(165,180,252,.5)"/></svg>
+            <span style="font-size:8.5px;color:rgba(255,255,255,.25);flex:1">Ask Sphere to do anything…</span>
+            <span style="font-size:7px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.2);padding:2px 6px;border-radius:4px">⌘K</span>
+          </div>
+        </div>
+      </div><!-- /work-screen -->
+      <div class="work-card-info" style="background:#06060F;border-top:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+          <div class="work-card-tag" style="color:#a5b4fc;margin:0">Web App · AI OS</div>
+          <span style="font-size:.62rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);padding:2px 6px;border-radius:100px;font-weight:600">iPhone 17</span>
+        </div>
+        <div class="work-card-title" style="color:#fff">Sphere — Spatial AI OS</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: Lumen — Galaxy S26 Finance -->
+    <div class="work-card" style="background:linear-gradient(135deg,#050A14 0%,#081420 100%)">
+      <div class="work-screen" style="display:flex;align-items:center;justify-content:center;padding:20px 16px 12px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 70% 30%,rgba(16,185,129,.2),transparent 70%)"></div>
+        <svg viewBox="0 0 160 320" style="width:125px;flex-shrink:0;position:relative;z-index:1;filter:drop-shadow(0 20px 36px rgba(0,0,0,.75))" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="s26f" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2A2A2E"/><stop offset="100%" stop-color="#18181C"/></linearGradient>
+          <clipPath id="sc2"><rect x="5" y="5" width="150" height="310" rx="26"/></clipPath>
+        </defs>
+        <rect x="0" y="0" width="160" height="320" rx="30" fill="url(#s26f)"/>
+        <rect x="5" y="5" width="150" height="310" rx="26" fill="#040D18"/>
+        <g clip-path="url(#sc2)">
+          <rect x="5" y="5" width="150" height="310" fill="#040D18"/>
+          <circle cx="100" cy="60" r="90" fill="rgba(16,185,129,.12)"/>
+          <text x="14" y="22" font-size="7.5" fill="rgba(255,255,255,.7)" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">9:41</text>
+          <text x="122" y="22" font-size="7" fill="rgba(255,255,255,.4)" font-family="sans-serif">5G 🔋</text>
+          <circle cx="80" cy="14" r="3.5" fill="#000"/>
+          <text x="14" y="46" font-size="7" fill="rgba(255,255,255,.3)" font-family="Plus Jakarta Sans,sans-serif" letter-spacing="1">NET WORTH</text>
+          <text x="14" y="68" font-size="22" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" letter-spacing="-1">$284,920</text>
+          <rect x="14" y="74" width="66" height="14" rx="7" fill="rgba(16,185,129,.15)" stroke="rgba(16,185,129,.3)" stroke-width=".6"/>
+          <text x="22" y="84" font-size="7" fill="#10B981" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">↑ +$8,340 this month</text>
+          <text x="120" y="68" font-size="18" fill="#10B981" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">92</text>
+          <text x="118" y="78" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">AI score</text>
+          <path d="M14,130 C30,126 50,122 70,116 C85,110 100,114 116,106 C128,100 138,104 148,98" stroke="#10B981" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M14,130 C30,126 50,122 70,116 C85,110 100,114 116,106 C128,100 138,104 148,98 L148,140 L14,140Z" fill="rgba(16,185,129,.1)"/>
+          <circle cx="138" cy="100" r="3" fill="#10B981"/>
+          <rect x="14" y="148" width="38" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(16,185,129,.2)" stroke-width=".6"/>
+          <text x="20" y="163" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">Savings</text>
+          <text x="18" y="178" font-size="10" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">$62k</text>
+          <rect x="60" y="148" width="38" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(99,102,241,.2)" stroke-width=".6"/>
+          <text x="67" y="163" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">Invest</text>
+          <text x="62" y="178" font-size="10" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">$198k</text>
+          <rect x="106" y="148" width="38" height="40" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(245,158,11,.2)" stroke-width=".6"/>
+          <text x="114" y="163" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">Spend</text>
+          <text x="110" y="178" font-size="10" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">$3.2k</text>
+          <text x="14" y="204" font-size="7" fill="rgba(255,255,255,.3)" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" letter-spacing="1">RECENT</text>
+          <rect x="14" y="210" width="130" height="26" rx="7" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width=".6"/>
+          <circle cx="27" cy="223" r="7" fill="rgba(16,185,129,.2)"/>
+          <text x="24" y="227" font-size="10" font-family="sans-serif" fill="#10B981">↑</text>
+          <text x="40" y="221" font-size="7.5" fill="rgba(255,255,255,.7)" font-family="Plus Jakarta Sans,sans-serif">Salary deposit</text>
+          <text x="40" y="231" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="sans-serif">Oct 14 · Chase</text>
+          <text x="128" y="226" font-size="8" fill="#10B981" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">+$7k</text>
+          <rect x="5" y="295" width="150" height="20" fill="#040D18"/>
+          <rect x="60" y="304" width="40" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+        </g>
+        <rect x="5" y="5" width="150" height="310" rx="26" fill="url(#gl2)" opacity=".04"/>
+        <defs><linearGradient id="gl2" x1="0" y1="0" x2=".4" y2="1"><stop offset="0%" stop-color="white"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="work-card-info" style="background:#050A14;border-top:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+        <div class="work-card-tag" style="color:#10B981;margin:0">Mobile · Fintech · AI</div>
+        <span style="font-size:.62rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);padding:2px 6px;border-radius:100px;font-weight:600">Galaxy S26</span>
+        </div>
+        <div class="work-card-title" style="color:#fff">Lumen — Ambient finance dashboard</div>
+      </div>
+    </div>
+
+    <!-- CARD 3: Mira — iPhone 17 Voice Shopping -->
+    <div class="work-card" style="background:linear-gradient(135deg,#140808 0%,#1E0A0A 100%)">
+      <div class="work-screen" style="display:flex;align-items:center;justify-content:center;padding:20px 16px 12px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 20%,rgba(255,77,46,.18),transparent 70%)"></div>
+        <svg viewBox="0 0 160 320" style="width:125px;flex-shrink:0;position:relative;z-index:1;filter:drop-shadow(0 20px 36px rgba(0,0,0,.75))" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ip17b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8C8CF"/><stop offset="100%" stop-color="#888890"/></linearGradient>
+          <clipPath id="sc3"><rect x="5" y="5" width="150" height="310" rx="34"/></clipPath>
+        </defs>
+        <rect x="0" y="0" width="160" height="320" rx="38" fill="url(#ip17b)"/>
+        <rect x="1" y="48" width="4" height="50" rx="2" fill="#9A9AA2"/>
+        <rect x="1" y="108" width="4" height="36" rx="2" fill="#9A9AA2"/>
+        <rect x="1" y="152" width="4" height="36" rx="2" fill="#9A9AA2"/>
+        <rect x="155" y="120" width="4" height="60" rx="2" fill="#9A9AA2"/>
+        <rect x="5" y="5" width="150" height="310" rx="34" fill="#100808"/>
+        <g clip-path="url(#sc3)">
+          <rect x="5" y="5" width="150" height="310" fill="#100808"/>
+          <circle cx="110" cy="50" r="80" fill="rgba(255,77,46,.12)"/>
+          <rect x="55" y="14" width="50" height="14" rx="7" fill="#000"/>
+          <circle cx="97" cy="21" r="3" fill="#1a0808"/>
+          <text x="14" y="22" font-size="7.5" fill="rgba(255,255,255,.7)" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">9:41</text>
+          <text x="125" y="22" font-size="7" fill="rgba(255,255,255,.4)" font-family="sans-serif">5G</text>
+          <text x="14" y="48" font-size="13" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">Mira Shop</text>
+          <rect x="96" y="37" width="54" height="14" rx="7" fill="rgba(255,77,46,.18)" stroke="rgba(255,77,46,.3)" stroke-width=".7"/>
+          <circle cx="106" cy="44" r="2.5" fill="#FF4D2E"/>
+          <text x="112" y="47" font-size="6.5" fill="#FF4D2E" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">Voice active</text>
+          <rect x="14" y="58" width="130" height="56" rx="10" fill="rgba(255,77,46,.06)" stroke="rgba(255,77,46,.14)" stroke-width=".8"/>
+          <text x="79" y="76" font-size="7" fill="rgba(255,255,255,.4)" font-family="Plus Jakarta Sans,sans-serif" text-anchor="middle">"Find leather wallet under $80"</text>
+          <rect x="42" y="86" width="4" height="8" rx="2" fill="rgba(255,77,46,.4)"/>
+          <rect x="50" y="82" width="4" height="16" rx="2" fill="rgba(255,77,46,.6)"/>
+          <rect x="58" y="79" width="4" height="22" rx="2" fill="#FF4D2E"/>
+          <rect x="66" y="84" width="4" height="12" rx="2" fill="rgba(255,77,46,.6)"/>
+          <rect x="74" y="78" width="4" height="24" rx="2" fill="#FF4D2E"/>
+          <rect x="82" y="85" width="4" height="10" rx="2" fill="rgba(255,77,46,.5)"/>
+          <rect x="90" y="81" width="4" height="18" rx="2" fill="rgba(255,77,46,.7)"/>
+          <rect x="98" y="87" width="4" height="6" rx="2" fill="rgba(255,77,46,.3)"/>
+          <rect x="106" y="83" width="4" height="14" rx="2" fill="rgba(255,77,46,.5)"/>
+          <rect x="114" y="86" width="4" height="8" rx="2" fill="rgba(255,77,46,.4)"/>
+          <rect x="14" y="122" width="130" height="38" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,77,46,.25)" stroke-width=".8"/>
+          <rect x="22" y="129" width="28" height="24" rx="7" fill="rgba(255,77,46,.15)"/>
+          <text x="30" y="144" font-size="13" font-family="sans-serif">👜</text>
+          <text x="56" y="138" font-size="8" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">Ridge Slim Wallet</text>
+          <text x="56" y="148" font-size="6.5" fill="rgba(255,255,255,.35)" font-family="sans-serif">Full-grain · RFID</text>
+          <text x="118" y="138" font-size="9" fill="#FF4D2E" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">$74</text>
+          <text x="120" y="149" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">⭐4.9</text>
+          <rect x="14" y="166" width="130" height="38" rx="10" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.07)" stroke-width=".6"/>
+          <rect x="22" y="173" width="28" height="24" rx="7" fill="rgba(255,255,255,.07)"/>
+          <text x="30" y="188" font-size="13" font-family="sans-serif">🗂️</text>
+          <text x="56" y="182" font-size="8" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="700">Nomad Card Holder</text>
+          <text x="56" y="192" font-size="6.5" fill="rgba(255,255,255,.35)" font-family="sans-serif">Horween · 6 cards</text>
+          <text x="122" y="182" font-size="9" fill="white" font-family="Plus Jakarta Sans,sans-serif" font-weight="800">$59</text>
+          <text x="120" y="193" font-size="6" fill="rgba(255,255,255,.3)" font-family="sans-serif">⭐4.7</text>
+          <rect x="56" y="305" width="48" height="4" rx="2" fill="rgba(255,255,255,.2)"/>
+        </g>
+        <rect x="5" y="5" width="150" height="310" rx="34" fill="url(#gl3)" opacity=".05"/>
+        <defs><linearGradient id="gl3" x1="0" y1="0" x2=".4" y2="1"><stop offset="0%" stop-color="white"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="work-card-info" style="background:#140808;border-top:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+        <div class="work-card-tag" style="color:#FF4D2E;margin:0">Mobile · Voice Commerce</div>
+        <span style="font-size:.62rem;background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);padding:2px 6px;border-radius:100px;font-weight:600">iPhone 17</span>
+        </div>
+        <div class="work-card-title" style="color:#fff">Mira — Voice-first AI shopping</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+
+  <!-- Aurora background blobs -->
+  <div class="services-aurora">
+    <div class="services-aurora-1"></div>
+    <div class="services-aurora-2"></div>
+    <div class="services-aurora-3"></div>
+  </div>
+
+  <div class="services-top reveal">
+    <div>
+      <div class="section-eyebrow"><div class="ey-dash"></div><span>What we do</span></div>
+      <h2 class="s-title">Everything your<br>product needs</h2>
+    </div>
+    <div class="services-top-right">
+      <p>From first sketch to shipped product — strategy, design, and code under one roof.</p>
+      <a href="#contact" class="btn-fill" style="font-size:.875rem;padding:.75rem 1.5rem;background:#FF4D2E;box-shadow:0 4px 20px rgba(255,77,46,.4)">Start a project</a>
+    </div>
+  </div>
+
+  <div class="svc-glass-grid reveal">
+
+    <!-- 01 UI/UX -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">01</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">UI / UX Design</div>
+      <div class="svc-glass-desc">User-centred design grounded in real research. We map journeys, test assumptions early, and ship interfaces that feel completely effortless.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">Research</span>
+        <span class="svc-glass-pill">Wireframes</span>
+        <span class="svc-glass-pill">Prototypes</span>
+      </div>
+    </div>
+
+    <!-- 02 Web Dev -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">02</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">Web Application Dev</div>
+      <div class="svc-glass-desc">Performant, accessible web apps built with modern stacks. Clean code your team can maintain — no spaghetti, no mystery, no lock-in.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">React</span>
+        <span class="svc-glass-pill">Next.js</span>
+        <span class="svc-glass-pill">Node</span>
+      </div>
+    </div>
+
+    <!-- 03 Mobile -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">03</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">Mobile Design</div>
+      <div class="svc-glass-desc">Native-feeling mobile experiences designed for the thumb, not the mouse. Pixel-perfect across every screen size, OS, and device density.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">iOS</span>
+        <span class="svc-glass-pill">Android</span>
+        <span class="svc-glass-pill">Flutter</span>
+      </div>
+    </div>
+
+    <!-- 04 Design Systems -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">04</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">Design Systems</div>
+      <div class="svc-glass-desc">Scalable component libraries and token systems that keep your product consistent and your team fast — from the first component to the hundredth screen.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">Figma</span>
+        <span class="svc-glass-pill">Storybook</span>
+        <span class="svc-glass-pill">Tokens</span>
+      </div>
+    </div>
+
+    <!-- 05 Brand -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">05</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">Brand &amp; Visual Identity</div>
+      <div class="svc-glass-desc">Brand identities with real personality — not template logos. We build systems that hold up across digital, print, and motion for years.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">Logo</span>
+        <span class="svc-glass-pill">Typography</span>
+        <span class="svc-glass-pill">Motion</span>
+      </div>
+    </div>
+
+    <!-- 06 UX Audit -->
+    <div class="svc-glass">
+      <div class="svc-glass-num">06</div>
+      <div class="svc-glass-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v3l2 2"/>
+        </svg>
+      </div>
+      <div class="svc-glass-name">UX Audit &amp; Consulting</div>
+      <div class="svc-glass-desc">An outside eye on your existing product. We find the conversion killers, rank what matters, and hand you a prioritised fix list — not a 60-slide deck.</div>
+      <div class="svc-glass-pills">
+        <span class="svc-glass-pill">Heuristics</span>
+        <span class="svc-glass-pill">Analytics</span>
+        <span class="svc-glass-pill">Roadmap</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+
+  <div class="process-header reveal">
+    <div>
+      <div class="section-eyebrow"><div class="ey-dash"></div><span>How we work</span></div>
+      <h2 class="s-title">A process built<br>for clarity</h2>
+    </div>
+    <p>Five focused steps from first conversation to shipped product — no surprises, no scope creep.</p>
+  </div>
+
+  <!-- Horizontal step cards -->
+  <div class="process-steps-grid reveal">
+    <div class="ps-card">
+      <div class="ps-circle">01</div>
+      <h4>Discovery call</h4>
+      <p>We learn your goals, users, and constraints in a focused 60-minute conversation.</p>
+    </div>
+    <div class="ps-card">
+      <div class="ps-circle">02</div>
+      <h4>Strategy &amp; scoping</h4>
+      <p>We map the work, set timelines, and agree on success before a pixel is placed.</p>
+    </div>
+    <div class="ps-card">
+      <div class="ps-circle">03</div>
+      <h4>Design &amp; iteration</h4>
+      <p>Weekly reviews keep you in the loop. We adjust on your feedback, not assumptions.</p>
+    </div>
+    <div class="ps-card">
+      <div class="ps-circle">04</div>
+      <h4>Build &amp; handoff</h4>
+      <p>Clean, documented code built to hand off. You own it — no lock-in, ever.</p>
+    </div>
+    <div class="ps-card">
+      <div class="ps-circle">05</div>
+      <h4>Launch &amp; support</h4>
+      <p>We stay on through launch and offer retainer support for long-term partners.</p>
+    </div>
+  </div>
+
+  <div class="process-layout">
+    <div class="process-visual reveal">
+      <div style="background:#0A0A0A;border-radius:28px;padding:2.5rem;position:relative;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.18)">
+        <!-- Subtle glow blobs -->
+        <div style="position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(255,77,46,.18),transparent 70%);top:-80px;right:-80px;pointer-events:none"></div>
+        <div style="position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(108,99,255,.14),transparent 70%);bottom:-60px;left:-40px;pointer-events:none"></div>
+
+        <div style="position:relative;z-index:1">
+          <!-- Label -->
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:2rem">
+            <div style="width:16px;height:1px;background:#FF4D2E"></div>
+            <span style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF4D2E">Studio at a glance</span>
+          </div>
+
+          <!-- Stat tiles -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.25rem">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:2.25rem;font-weight:800;color:#ffffff;letter-spacing:-.05em;line-height:1">140<span style="font-size:1rem;color:#FF4D2E">+</span></div>
+              <div style="font-size:.75rem;color:#9CA3AF;margin-top:.5rem;font-weight:500">Projects shipped</div>
+            </div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.25rem">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:2.25rem;font-weight:800;color:#ffffff;letter-spacing:-.05em;line-height:1">96<span style="font-size:1rem;color:#10B981">%</span></div>
+              <div style="font-size:.75rem;color:#9CA3AF;margin-top:.5rem;font-weight:500">Clients return</div>
+            </div>
+          </div>
+
+          <!-- Rating row -->
+          <div style="background:rgba(255,77,46,.12);border:1px solid rgba(255,77,46,.25);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.75rem;font-weight:800;color:#ffffff;letter-spacing:-.04em;line-height:1">4.9<span style="font-size:.9rem;color:#FF4D2E;margin-left:2px">/5</span></div>
+              <div style="font-size:.72rem;color:#D1D5DB;margin-top:.3rem;font-weight:500">Average client rating</div>
+            </div>
+            <div style="text-align:right">
+              <div style="color:#FBBF24;font-size:1.1rem;letter-spacing:.08em;margin-bottom:.3rem">★★★★★</div>
+              <div style="font-size:.7rem;color:#9CA3AF;font-weight:500">140+ reviews</div>
+            </div>
+          </div>
+
+          <!-- Progress bars -->
+          <div style="display:flex;flex-direction:column;gap:.875rem">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+                <span style="font-size:.78rem;color:#D1D5DB;font-weight:500">On-time delivery</span>
+                <span style="font-size:.78rem;color:#FF4D2E;font-weight:700">98%</span>
+              </div>
+              <div style="height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden">
+                <div class="pc-bar-fill" id="bar1" data-w="98" style="width:0%;height:100%;border-radius:100px;background:linear-gradient(90deg,#FF4D2E,#FF8C69)"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+                <span style="font-size:.78rem;color:#D1D5DB;font-weight:500">Client satisfaction</span>
+                <span style="font-size:.78rem;color:#a5b4fc;font-weight:700">99%</span>
+              </div>
+              <div style="height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden">
+                <div class="pc-bar-fill" id="bar2" data-w="99" style="width:0%;height:100%;border-radius:100px;background:linear-gradient(90deg,#6C63FF,#a5b4fc)"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+                <span style="font-size:.78rem;color:#D1D5DB;font-weight:500">Within-budget rate</span>
+                <span style="font-size:.78rem;color:#34D399;font-weight:700">94%</span>
+              </div>
+              <div style="height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden">
+                <div class="pc-bar-fill" id="bar3" data-w="94" style="width:0%;height:100%;border-radius:100px;background:linear-gradient(90deg,#10B981,#34D399)"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+
+  <!-- HERO BLOCK -->
+  <div class="about-hero">
+    <div class="about-mesh">
+      <div class="about-mesh-1"></div>
+      <div class="about-mesh-2"></div>
+      <div class="about-mesh-3"></div>
+    </div>
+
+    <!-- Eyebrow -->
+    <div class="about-eyebrow-row reveal">
+      <div class="section-eyebrow" style="color:rgba(255,255,255,.4)">
+        <div class="ey-dash" style="background:rgba(255,255,255,.3)"></div>
+        <span style="color:rgba(255,255,255,.4)">About us</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:.5rem 1.1rem">
+        <div style="width:7px;height:7px;background:#22C55E;border-radius:50%;box-shadow:0 0 6px rgba(34,197,94,.7)"></div>
+        <span style="font-size:.78rem;color:rgba(255,255,255,.5);font-weight:600">Est. 2018 · Hyderabad, India</span>
+      </div>
+    </div>
+
+    <!-- Big kinetic title -->
+    <div class="about-hero-title reveal">
+      We craft<br>
+      <span class="outline">digital</span> things<br>
+      people <span class="coral">love.</span>
+    </div>
+
+    <!-- Stat cards row -->
+    <div class="about-hero-bottom reveal">
+      <div class="about-stat-card">
+        <div class="asc-num">140<sup>+</sup></div>
+        <div class="asc-label">Products shipped across web, mobile & brand</div>
+      </div>
+      <div class="about-stat-card">
+        <div class="asc-num">96<sup>%</sup></div>
+        <div class="asc-label">Clients return for a second project with us</div>
+      </div>
+      <div class="about-stat-card">
+        <div class="asc-num">28</div>
+        <div class="asc-label">Countries we've designed and built for</div>
+      </div>
+      <div class="about-desc-card">
+        <p>A tight-knit studio of 12 designers, engineers and strategists. We don't do bloated retainers or vague roadmaps — just sharp execution, start to ship.</p>
+        <a href="#contact" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;font-size:.85rem;font-weight:700;color:#FF4D2E;text-decoration:none;transition:gap .2s" onmouseover="this.style.gap='.85rem'" onmouseout="this.style.gap='.5rem'">Work with us <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES MARQUEE -->
+  <div class="about-values">
+    <div class="about-values-track">
+      <span class="about-val-item"><span class="dot"></span>User-first thinking</span>
+      <span class="about-val-item"><span class="dot"></span>Pixel precision</span>
+      <span class="about-val-item"><span class="dot"></span>Ship fast, ship right</span>
+      <span class="about-val-item"><span class="dot"></span>Radical transparency</span>
+      <span class="about-val-item"><span class="dot"></span>Design with purpose</span>
+      <span class="about-val-item"><span class="dot"></span>Systems thinking</span>
+      <span class="about-val-item"><span class="dot"></span>Obsessive craft</span>
+      <span class="about-val-item"><span class="dot"></span>No ego, just results</span>
+      <span class="about-val-item"><span class="dot"></span>User-first thinking</span>
+      <span class="about-val-item"><span class="dot"></span>Pixel precision</span>
+      <span class="about-val-item"><span class="dot"></span>Ship fast, ship right</span>
+      <span class="about-val-item"><span class="dot"></span>Radical transparency</span>
+      <span class="about-val-item"><span class="dot"></span>Design with purpose</span>
+      <span class="about-val-item"><span class="dot"></span>Systems thinking</span>
+      <span class="about-val-item"><span class="dot"></span>Obsessive craft</span>
+      <span class="about-val-item"><span class="dot"></span>No ego, just results</span>
+    </div>
+  </div>
+
+  <!-- TEAM SECTION -->
+  <div class="about-team">
+    <div class="about-team-header reveal">
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:.75rem"><div class="ey-dash" style="background:rgba(255,255,255,.2)"></div><span style="color:rgba(255,255,255,.35)">The team</span></div>
+        <h2 class="s-title" style="color:#fff;font-size:clamp(2rem,4vw,3rem)">12 people.<br>One obsession.</h2>
+      </div>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.4);max-width:360px;line-height:1.7">Designers who code. Engineers who care about type. Everyone who gives a damn about the final pixel.</p>
+    </div>
+    <div class="about-team-grid reveal">
+
+      <!-- Member 1 -->
+      <div class="team-card">
+        <div class="team-card-bg" style="background:linear-gradient(135deg,#1a0a2e,#3d1a6e,#6C63FF)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="30" rx="18" ry="20" fill="rgba(255,255,255,.15)"/><ellipse cx="40" cy="72" rx="28" ry="20" fill="rgba(255,255,255,.1)"/><circle cx="40" cy="28" r="12" fill="rgba(255,255,255,.2)"/></svg>
+          </div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-card-info">
+          <div class="team-card-name">Riya Sharma</div>
+          <div class="team-card-role">Lead UI/UX Designer</div>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-card">
+        <div class="team-card-bg" style="background:linear-gradient(135deg,#0a1a0e,#0d3a1a,#10B981)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="30" rx="18" ry="20" fill="rgba(255,255,255,.15)"/><ellipse cx="40" cy="72" rx="28" ry="20" fill="rgba(255,255,255,.1)"/><circle cx="40" cy="28" r="12" fill="rgba(255,255,255,.2)"/></svg>
+          </div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-card-info">
+          <div class="team-card-name">Arjun Kumar</div>
+          <div class="team-card-role">Full-stack Engineer</div>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-card">
+        <div class="team-card-bg" style="background:linear-gradient(135deg,#1a0808,#4a1a0a,#FF4D2E)">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="30" rx="18" ry="20" fill="rgba(255,255,255,.15)"/><ellipse cx="40" cy="72" rx="28" ry="20" fill="rgba(255,255,255,.1)"/><circle cx="40" cy="28" r="12" fill="rgba(255,255,255,.2)"/></svg>
+          </div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-card-info">
+          <div class="team-card-name">Meera Joshi</div>
+          <div class="team-card-role">Product Strategist</div>
+        </div>
+      </div>
+
+      <!-- Member 4 — +8 more -->
+      <div class="team-card" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;aspect-ratio:.85">
+        <div style="text-align:center;padding:2rem">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:2.5rem;font-weight:800;color:rgba(255,255,255,.15);letter-spacing:-.04em;margin-bottom:.5rem">+9</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.5">More brilliant<br>minds on the team</div>
+          <a href="#contact" style="display:inline-block;margin-top:1.25rem;font-size:.78rem;font-weight:700;color:#FF4D2E;text-decoration:none;border:1px solid rgba(255,77,46,.3);padding:.45rem 1rem;border-radius:100px;transition:all .2s" onmouseover="this.style.background='rgba(255,77,46,.1)'" onmouseout="this.style.background='transparent'">Say hello →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS + QUOTE -->
+  <div class="about-skills">
+    <div class="skills-layout">
+
+      <!-- Orbit visual -->
+      <div class="reveal" style="display:flex;justify-content:center">
+        <div class="skills-orbit">
+          <div class="orbit-center">Safe<br>Codex</div>
+          <div class="orbit-ring orbit-ring-1">
+            <!-- Skill nodes on ring 1 -->
+            <div class="orbit-skill" style="background:rgba(108,99,255,.2);border:1px solid rgba(108,99,255,.3);transform:translate(-50%,-50%) rotate(0deg) translateX(80px) rotate(0deg);color:#a5b4fc;font-size:.75rem">UI/UX</div>
+            <div class="orbit-skill" style="background:rgba(108,99,255,.2);border:1px solid rgba(108,99,255,.3);transform:translate(-50%,-50%) rotate(180deg) translateX(80px) rotate(-180deg);color:#a5b4fc;font-size:.75rem">DEV</div>
+          </div>
+          <div class="orbit-ring orbit-ring-2">
+            <div class="orbit-skill" style="background:rgba(255,77,46,.15);border:1px solid rgba(255,77,46,.25);transform:translate(-50%,-50%) rotate(0deg) translateX(130px) rotate(0deg);color:#FF8C69;font-size:.7rem">Brand</div>
+            <div class="orbit-skill" style="background:rgba(255,77,46,.15);border:1px solid rgba(255,77,46,.25);transform:translate(-50%,-50%) rotate(90deg) translateX(130px) rotate(-90deg);color:#FF8C69;font-size:.7rem">Mobile</div>
+            <div class="orbit-skill" style="background:rgba(255,77,46,.15);border:1px solid rgba(255,77,46,.25);transform:translate(-50%,-50%) rotate(180deg) translateX(130px) rotate(-180deg);color:#FF8C69;font-size:.7rem">Systems</div>
+            <div class="orbit-skill" style="background:rgba(255,77,46,.15);border:1px solid rgba(255,77,46,.25);transform:translate(-50%,-50%) rotate(270deg) translateX(130px) rotate(-270deg);color:#FF8C69;font-size:.7rem">Research</div>
+          </div>
+          <div class="orbit-ring orbit-ring-3"></div>
+        </div>
+      </div>
+
+      <!-- Skills bars + quote -->
+      <div class="reveal">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1.15;margin-bottom:2rem">"We don't just make things look good. We make them work so well that the beauty becomes <span style="color:#FF4D2E">inevitable.</span>"</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.3);margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem">
+          <div style="width:32px;height:32px;background:linear-gradient(135deg,#FF4D2E,#FF8C69);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff">JC</div>
+          Jamie Chen · Creative Director, SafeCodex
+        </div>
+        <div class="skills-list" id="skillBars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-top"><span>UI/UX Design</span><span class="skill-bar-pct">98%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:0%;background:linear-gradient(90deg,#6C63FF,#a5b4fc)" data-w="98"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-top"><span>Web Development</span><span class="skill-bar-pct">94%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:0%;background:linear-gradient(90deg,#FF4D2E,#FF8C69)" data-w="94"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-top"><span>Mobile Design</span><span class="skill-bar-pct">91%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:0%;background:linear-gradient(90deg,#10B981,#34D399)" data-w="91"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-top"><span>Brand Identity</span><span class="skill-bar-pct">89%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:0%;background:linear-gradient(90deg,#FBBF24,#FDE68A)" data-w="89"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-top"><span>Design Systems</span><span class="skill-bar-pct">96%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:0%;background:linear-gradient(90deg,#F472B6,#FBCFE8)" data-w="96"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="testi-top reveal">
+    <div>
+      <div class="section-eyebrow"><div class="ey-dash"></div><span>Client love</span></div>
+      <h2 class="s-title">Don't take our<br>word for it</h2>
+    </div>
+    <div class="testi-meta">
+      <div class="testi-score">
+        <span class="testi-score-val">4.9</span>
+        <div>
+          <div class="testi-stars-row">★★★★★</div>
+          <div class="testi-score-label">Average rating across 140+ projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured big testimonial -->
+  <div class="testi-feature reveal">
+    <div class="testi-feature-quote">"SafeCodex didn't just redesign our product — they fundamentally changed how we think about our users. The research they brought in week one reframed everything. Three months later, our activation rate is up 41% and churn is down. Best design investment we've made."</div>
+    <div class="testi-feature-author">
+      <div class="tav tav-lg">AR</div>
+      <div>
+        <div class="tav-name">Aiko Reyes</div>
+        <div class="tav-role">CEO & Co-founder, Meridian Analytics</div>
+      </div>
+      <div class="testi-feature-badge">★★★★★</div>
+    </div>
+  </div>
+
+  <!-- 3-col grid -->
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"Working with SafeCodex felt like having an in-house design team — responsive, deeply opinionated in the right ways, and genuinely invested in the outcome."</p>
+      <div class="testi-author">
+        <div class="tav">MK</div>
+        <div>
+          <div class="tav-name">Marcus Kohler</div>
+          <div class="tav-role">CPO, Folio Finance</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"They delivered a full design system in six weeks that our engineering team could actually adopt. Clean tokens, clear documentation, zero drama."</p>
+      <div class="testi-author">
+        <div class="tav">SL</div>
+        <div>
+          <div class="tav-name">Sofia Lund</div>
+          <div class="tav-role">Head of Product, Petal Health</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"We hired SafeCodex for a two-week UX audit and ended up signing a six-month retainer. That says everything. They find problems you didn't know you had."</p>
+      <div class="testi-author">
+        <div class="tav">JP</div>
+        <div>
+          <div class="tav-name">James Park</div>
+          <div class="tav-role">VP Product, Kora Commerce</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"Our previous agency handed us a pretty Figma file we couldn't build. SafeCodex handed us a Figma file our team shipped in two weeks. The difference is thoughtfulness."</p>
+      <div class="testi-author">
+        <div class="tav">NB</div>
+        <div>
+          <div class="tav-name">Nina Bauer</div>
+          <div class="tav-role">CTO, Lumio Smart Home</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"The team pushed back on some of our assumptions in week one. That's rare. That's also why the end product is so much better than what we originally scoped."</p>
+      <div class="testi-author">
+        <div class="tav">RT</div>
+        <div>
+          <div class="tav-name">Ravi Tanna</div>
+          <div class="tav-role">Founder, Orbit Design Tools</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-rating">★★★★★</div>
+      <p class="testi-quote">"Fastest turnaround we've ever seen without any drop in quality. The brand identity they built has become the thing people compliment us on most at conferences."</p>
+      <div class="testi-author">
+        <div class="tav">CW</div>
+        <div>
+          <div class="tav-name">Clara Whitfield</div>
+          <div class="tav-role">Head of Marketing, Datastream</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="faq-layout">
+    <div class="faq-sticky reveal">
+      <div class="section-eyebrow"><div class="ey-dash"></div><span>FAQ</span></div>
+      <h2 class="s-title">Common questions</h2>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:1rem;line-height:1.7">Have something else on your mind? We reply to all emails within one business day.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do you work with early-stage startups?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. Some of our best long-term relationships started with a founder and a Figma file. We offer a flexible Starter package and can scope projects to match pre-seed and seed-stage budgets.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How long does a typical project take?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Starter projects usually wrap in 3–4 weeks. Full Growth engagements run 8–14 weeks depending on complexity. We'll give you a detailed timeline in our project scope document before work begins.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What tools do you design in?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">All design work is done in Figma. We deliver organized, named, and documented files with auto-layout components and design tokens. Prototypes are also built in Figma unless you need something more elaborate.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">Do you do development as well as design?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Our Growth package includes full frontend development in React/Next.js. We can also work with your existing engineering team by providing pixel-perfect specs and component documentation.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">What does your onboarding look like?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><div class="faq-a-inner">We start every engagement with a 60-minute discovery call. From there we produce a project brief, timeline, and payment schedule within 48 hours. Most projects kick off within one week of signing.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2 class="reveal">Ready to build<br>something <em>great</em>?</h2>
+  <div class="cta-banner-actions reveal">
+    <a href="#contact" class="btn-fill">Start a project</a>
+    <a href="#work" class="btn-outline">See our work</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="reveal">
+    <div class="section-eyebrow"><div class="ey-dash"></div><span>Contact</span></div>
+    <h2 class="s-title">Let's talk about<br>your project</h2>
+  </div>
+  <div class="contact-layout">
+    <!-- Left info panel -->
+    <div class="reveal">
+      <p>Tell us what you're building. We'll respond with a personalised plan, a timeline, and a price — no vague runaround.</p>
+      <div class="contact-info">
+        <div class="ci-row">
+          <div class="ci-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div><h5>Email</h5><p>hello@safecodex.io</p></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8a15.4 15.4 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.5 11.5 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.6 3.6a1 1 0 0 1-.25 1L6.6 10.8z"/></svg>
+          </div>
+          <div><h5>Phone</h5><p>040 7777 0007</p></div>
+        </div>
+
+        <!-- WhatsApp row -->
+        <a href="https://wa.me/914077770007?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="ci-row" style="text-decoration:none;display:flex;background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.18);border-radius:var(--r12);padding:.875rem;gap:.875rem;align-items:center;transition:background .2s,border-color .2s" onmouseover="this.style.background='rgba(37,211,102,.12)';this.style.borderColor='rgba(37,211,102,.35)'" onmouseout="this.style.background='rgba(37,211,102,.06)';this.style.borderColor='rgba(37,211,102,.18)'">
+          <div class="ci-icon" style="background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.3);flex-shrink:0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.472 3.528A11.955 11.955 0 0 0 12 0C5.373 0 0 5.373 0 12a11.955 11.955 0 0 0 1.65 6.09L0 24l6.09-1.596A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12a11.955 11.955 0 0 0-3.528-8.472z" fill="rgba(37,211,102,.25)"/>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="rgba(37,211,102,.9)"/>
+            </svg>
+          </div>
+          <div style="flex:1">
+            <h5 style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(37,211,102,.6);margin-bottom:.2rem;font-family:'Space Grotesk',sans-serif">WhatsApp</h5>
+            <p style="font-size:.875rem;color:rgba(255,255,255,.7);margin:0">+91 40 7777 0007</p>
+          </div>
+          <div style="font-size:.75rem;color:rgba(37,211,102,.6);font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:.35rem">
+            Chat now
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(37,211,102,.6)" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <div class="ci-row">
+          <div class="ci-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div><h5>Location</h5><p>LGF 23, Sahara Complex, LB Nagar<br>Hyderabad, Telangana, India</p></div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- Right: form / success state -->
+    <div class="reveal" id="formWrapper">
+      <!-- THE FORM -->
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label>First name <span style="color:#FF4D2E">*</span></label>
+            <input type="text" id="f-first" placeholder="Alex" required>
+            <div class="field-err" id="err-first">Please enter your first name</div>
+          </div>
+          <div class="fg">
+            <label>Last name <span style="color:#FF4D2E">*</span></label>
+            <input type="text" id="f-last" placeholder="Rivera" required>
+            <div class="field-err" id="err-last">Please enter your last name</div>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Work email <span style="color:#FF4D2E">*</span></label>
+          <input type="email" id="f-email" placeholder="alex@company.com" required>
+          <div class="field-err" id="err-email">Please enter a valid email</div>
+        </div>
+        <div class="fg">
+          <label>Company</label>
+          <input type="text" id="f-company" placeholder="Acme Inc.">
+        </div>
+        <div class="fg">
+          <label>What do you need? <span style="color:#FF4D2E">*</span></label>
+          <select id="f-service" required>
+            <option value="">Select a service</option>
+            <option>UI/UX Design</option>
+            <option>Web Application</option>
+            <option>Mobile Design</option>
+            <option>Design System</option>
+            <option>Brand Identity</option>
+            <option>UX Audit</option>
+            <option>Monthly Retainer</option>
+          </select>
+          <div class="field-err" id="err-service">Please select a service</div>
+        </div>
+        <div class="fg">
+          <label>Tell us about the project <span style="color:#FF4D2E">*</span></label>
+          <textarea id="f-msg" placeholder="Brief description, timeline, budget — anything helps us come prepared." required></textarea>
+          <div class="field-err" id="err-msg">Please tell us about your project</div>
+        </div>
+
+        <!-- Status bar -->
+        <div id="formStatus" style="display:none;background:rgba(255,77,46,.08);border:1px solid rgba(255,77,46,.2);border-radius:10px;padding:.75rem 1rem;font-size:.85rem;color:#FF4D2E;margin-bottom:.25rem"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnLabel">Send message →</span>
+          <svg id="btnSpinner" style="display:none;width:18px;height:18px;animation:spin 1s linear infinite;vertical-align:middle;margin-left:6px" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,.3)" stroke-width="3"/>
+            <path d="M12 2a10 10 0 0 1 10 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+
+      <!-- SUCCESS STATE (hidden by default) -->
+      <div id="successState" style="display:none;text-align:left">
+        <div style="width:52px;height:52px;background:linear-gradient(135deg,rgba(34,197,94,.2),rgba(34,197,94,.1));border:1px solid rgba(34,197,94,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-.03em;margin-bottom:.5rem">Message received!</h3>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.75rem">We'll be in touch within one business day. Here's a quick note from our team:</p>
+
+        <!-- AI reply card -->
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.5rem;margin-bottom:1.75rem;position:relative">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1rem">
+            <div style="width:28px;height:28px;background:linear-gradient(135deg,#FF4D2E,#FF8C69);border-radius:8px;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:.7rem;font-weight:800;color:#fff">SC</span>
+            </div>
+            <div>
+              <div style="font-size:.8rem;font-weight:700;color:#fff">SafeCodex Team</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.35)">Just now · Automated reply</div>
+            </div>
+            <div style="margin-left:auto;display:flex;gap:3px">
+              <div style="width:5px;height:5px;background:#22C55E;border-radius:50%"></div>
+              <span style="font-size:.7rem;color:rgba(255,255,255,.3)">Sent</span>
+            </div>
+          </div>
+          <div id="aiReply" style="font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.75;min-height:60px">
+            <div class="reply-loading" style="display:flex;gap:4px;align-items:center;padding:.5rem 0">
+              <div style="width:6px;height:6px;background:rgba(255,77,46,.6);border-radius:50%;animation:tp .9s ease-in-out infinite"></div>
+              <div style="width:6px;height:6px;background:rgba(255,77,46,.6);border-radius:50%;animation:tp .9s ease-in-out .2s infinite"></div>
+              <div style="width:6px;height:6px;background:rgba(255,77,46,.6);border-radius:50%;animation:tp .9s ease-in-out .4s infinite"></div>
+              <span style="font-size:.8rem;color:rgba(255,255,255,.3);margin-left:4px">Writing your reply…</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary of what was sent -->
+        <div id="submissionSummary" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.8"></div>
+
+        <button onclick="resetForm()" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:.75rem 1.5rem;border-radius:999px;font-size:.875rem;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">Send another message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <svg width="148" height="32" viewBox="0 0 148 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="4" width="10" height="24" rx="3" fill="#FF4D2E"/>
+          <rect x="4" y="0" width="10" height="12" rx="3" fill="#FF4D2E" opacity=".7"/>
+          <rect x="4" y="20" width="10" height="12" rx="3" fill="#FF4D2E" opacity=".7"/>
+          <rect x="8" y="4" width="4" height="24" rx="2" fill="rgba(255,255,255,.15)"/>
+          <text x="22" y="23" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="15.5" font-weight="700" fill="white" letter-spacing="-.3">Safe</text>
+          <text x="57" y="23" font-family="'Space Grotesk', 'Plus Jakarta Sans', sans-serif" font-size="15.5" font-weight="400" fill="rgba(255,255,255,.75)" letter-spacing="-.2">Codex</text>
+        </svg>
+      </div>
+      <p class="footer-tagline">A design &amp; web agency building digital products for ambitious companies since 2018.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#services">UI/UX Design</a>
+      <a href="#services">Web Applications</a>
+      <a href="#services">Mobile Design</a>
+      <a href="#services">Design Systems</a>
+      <a href="#services">Brand Identity</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <a href="#">Twitter / X</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Dribbble</a>
+      <a href="#">Behance</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 SafeCodex Studio, Inc. · Privacy · Terms</div>
+    <div class="footer-social">
+      <a href="#" class="social-btn">tw</a>
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">dr</a>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
