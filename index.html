@@ -61,6 +61,8 @@ h2.sec-title.white{color:#fff}
 .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:#fff;padding:.8rem 1.875rem;border-radius:var(--r8);font-size:.875rem;font-weight:600;border:none;transition:all .25s;font-family:'Space Grotesk',sans-serif;letter-spacing:.01em;box-shadow:0 4px 20px rgba(0,102,255,.35)}
 .btn-primary:hover{background:#0052CC;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,102,255,.45)}
 .btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--ink);padding:.8rem 1.75rem;border-radius:var(--r8);font-size:.875rem;font-weight:600;border:1.5px solid var(--mid);transition:all .25s;font-family:'Space Grotesk',sans-serif}
+.hero .btn-secondary{color:#fff!important;border-color:rgba(255,255,255,.45)!important;background:rgba(255,255,255,.05)!important;}
+.hero .btn-secondary:hover{border-color:#fff!important;background:rgba(255,255,255,.15)!important;color:#fff!important;transform:translateY(-2px)}
 .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-size:.875rem;font-weight:600;opacity:.7;transition:opacity .2s;font-family:'Space Grotesk',sans-serif}
 .btn-ghost:hover{opacity:1}
@@ -89,12 +91,12 @@ nav.scrolled{background:rgba(5,13,31,.95);backdrop-filter:blur(20px);-webkit-bac
 /* ── HERO ────────────────────────────────────────────── */
 .hero{min-height:100svh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;padding:8rem 5vw 5rem}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,102,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,.06) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow-1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,102,255,.2) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;animation:glow1 8s ease-in-out infinite}
-.hero-glow-2{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,194,255,.12) 0%,transparent 65%);bottom:-100px;left:-100px;pointer-events:none;animation:glow2 10s ease-in-out infinite}
+.hero-glow-1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,102,255,.2) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;animation:glow1 8s ease-in-out infinite;z-index:0}
+.hero-glow-2{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,194,255,.12) 0%,transparent 65%);bottom:-100px;left:-100px;pointer-events:none;animation:glow2 10s ease-in-out infinite;z-index:0}
 @keyframes glow1{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.08) translate(20px,-20px)}}
 @keyframes glow2{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.06) translate(-15px,15px)}}
-.hero-content{position:relative;z-index:1;max-width:780px}
-.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,102,255,.15);border:1px solid rgba(0,102,255,.3);border-radius:var(--r999);padding:.4rem 1rem;margin-bottom:2rem}
+.hero-content{position:relative;z-index:2;max-width:780px;isolation:isolate}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,102,255,.15);border:1px solid rgba(0,102,255,.3);border-radius:var(--r999);padding:.4rem 1rem;margin-bottom:2rem;isolation:isolate;position:relative;z-index:2;will-change:auto}
 .hero-badge-dot{width:7px;height:7px;background:#00E676;border-radius:50%;box-shadow:0 0 8px rgba(0,230,118,.6);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .hero-badge span{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.08em;font-family:'Space Grotesk',sans-serif}
@@ -109,7 +111,7 @@ h1.hero-title .dim{color:rgba(255,255,255,.35);font-weight:400}
 .hstat-label{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.2rem;font-weight:500}
 
 /* Floating code card */
-.hero-code-card{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:380px;background:rgba(10,22,40,.85);border:1px solid rgba(0,102,255,.25);border-radius:16px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 24px 80px rgba(0,0,0,.5);animation:floatCard 6s ease-in-out infinite}
+.hero-code-card{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:380px;background:rgba(10,22,40,.85);border:1px solid rgba(0,102,255,.25);border-radius:16px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 24px 80px rgba(0,0,0,.5);animation:floatCard 6s ease-in-out infinite;z-index:1}
 @keyframes floatCard{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-12px)}}
 .code-top{display:flex;align-items:center;gap:.5rem;padding:.875rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03)}
 .code-dot{width:10px;height:10px;border-radius:50%}
@@ -314,14 +316,14 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 .fbadge{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.3rem .7rem;border-radius:var(--r999);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
 
 /* ── SONI CHAT ───────────────────────────────────────── */
-#sony-btn{position:fixed;bottom:28px;right:28px;z-index:9000;width:58px;height:58px;border-radius:50%;background:linear-gradient(145deg,#0078FF,#0066FF,#0052CC);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,102,255,.6),0 0 0 3px rgba(0,102,255,.2);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s;overflow:hidden}
+#sony-btn{position:fixed;bottom:28px;right:28px;z-index:9100;width:62px;height:62px;border-radius:50%;background:#1a2744;border:3px solid #0066FF;cursor:pointer;box-shadow:0 4px 20px rgba(0,102,255,.6),0 0 0 3px rgba(0,102,255,.2);transition:transform .25s,box-shadow .25s;overflow:hidden;padding:0}
 #sony-btn:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(0,102,255,.8),0 0 0 4px rgba(0,102,255,.3)}
 .sony-pulse{position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(0,102,255,.3);animation:sPulse 2.5s ease-out infinite}
 @keyframes sPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
-#sony-panel{position:fixed;bottom:100px;right:28px;z-index:9000;width:360px;max-height:560px;background:#0A1628;border:1px solid rgba(0,102,255,.25);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.7);transform:scale(.92) translateY(16px);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.23,1,.32,1),opacity .3s}
+#sony-panel{position:fixed;bottom:100px;right:28px;z-index:9100;width:360px;max-height:560px;background:#0A1628;border:1px solid rgba(0,102,255,.25);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.7);transform:scale(.92) translateY(16px);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.23,1,.32,1),opacity .3s}
 #sony-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
 #sony-header{background:linear-gradient(135deg,#050D1F,#0A1628);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
-#sony-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0066FF,#00C2FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem;font-weight:800;color:#fff;font-family:'Space Grotesk',sans-serif}
+#sony-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(0,194,255,.5);background:transparent;display:block;padding:0}
 #sony-name{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:800;color:#fff}
 #sony-status{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:1px;display:flex;align-items:center;gap:4px}
 #sony-status::before{content:'';width:6px;height:6px;background:#00E676;border-radius:50%;display:inline-block;box-shadow:0 0 5px rgba(0,230,118,.6)}
@@ -573,12 +575,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 }
 .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
 
-/* ── Hero badge pulse ring ───────────────────────────────── */
-.hero-badge {
-  animation:badgeEntrance .8s cubic-bezier(.34,1.56,.64,1) .4s both;
-}
-@keyframes badgeEntrance {
-  from{opacity:0;transform:translateY(12px) scale(.9)}
+
   to{opacity:1;transform:none}
 }
 
@@ -612,7 +609,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   50%{box-shadow:0 6px 28px rgba(37,211,102,.9),0 0 0 6px rgba(37,211,102,.15)}
 }
 
-/* ── Soni button: glow pulse ─────────────────────────────── */
+/* ── Rsoni button: glow pulse ────────────────────────────── */
 #sony-btn {
   animation:soniPulseBtn 3s ease-in-out 1.5s infinite;
 }
@@ -640,62 +637,6 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   }
 }
 
-/* ── Hero entrance: CSS-driven, no JS dependency ─────────────────────────── */
-.hero-badge        { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .1s both; }
-.hero-title        { animation: heroFadeUp .7s  cubic-bezier(.23,1,.32,1) .0s both; }
-.hero-desc         { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .35s both; }
-.hero-actions      { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .5s both; }
-.hero-stats        { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .65s both; }
-.hero-code-card    { animation: floatCard 6s ease-in-out infinite, heroSlideIn .8s cubic-bezier(.23,1,.32,1) .4s both; }
-@keyframes heroFadeUp  { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
-@keyframes heroSlideIn { from{opacity:0;transform:translateY(-50%) translateX(32px)} to{opacity:1;transform:translateY(-50%) translateX(0)} }
-
-/* Hero title inner spans (.blue, .dim) must always be visible */
-.hero-title .blue, .hero-title .dim { opacity:1 !important; transform:none !important; display:inline; }
-
-/* ── Products Glassmorphism ──────────────────────────── */
-.products{padding:8rem 5vw;background:#030712;position:relative;overflow:hidden}
-
-/* Aurora background blobs */
-.prod-aurora{position:absolute;inset:0;pointer-events:none;z-index:0}
-.prod-blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 10s ease-in-out infinite}
-.prod-blob-1{width:600px;height:600px;background:rgba(0,102,255,.18);top:-150px;left:-100px;animation-delay:0s}
-.prod-blob-2{width:500px;height:500px;background:rgba(108,99,255,.14);bottom:-100px;right:-80px;animation-delay:3s}
-.prod-blob-3{width:400px;height:400px;background:rgba(0,194,255,.1);top:40%;left:45%;transform:translate(-50%,-50%);animation-delay:6s}
-@keyframes blobFloat{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(1.08) translate(20px,-20px)}66%{transform:scale(.95) translate(-15px,15px)}}
-.prod-blob-3{animation-name:blobFloat3}
-@keyframes blobFloat3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
-
-/* Glass cards */
-.glass-card{background:rgba(255,255,255,.04)!important;backdrop-filter:blur(32px)!important;-webkit-backdrop-filter:blur(32px)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px!important;padding:2rem!important;position:relative!important;overflow:hidden!important;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,background .3s!important;box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08)!important}
-.glass-card:hover{transform:translateY(-8px) scale(1.01)!important;background:rgba(255,255,255,.07)!important;box-shadow:0 24px 64px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)!important}
-
-/* Shimmer sweep on hover */
-.glass-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.05),transparent);transition:left .7s ease;pointer-events:none;z-index:1}
-.glass-card:hover .glass-shine{left:160%}
-
-/* Coloured top accent bar */
-.glass-top-bar{position:absolute;top:0;left:0;right:0;height:2px;z-index:2}
-
-/* Icon */
-.glass-icon{width:48px;height:48px;border-radius:14px;border:1px solid;display:flex;align-items:center;justify-content:center;margin-bottom:0;backdrop-filter:blur(8px);transition:transform .3s}
-.glass-card:hover .glass-icon{transform:scale(1.08)}
-
-/* Text */
-.glass-title{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:.625rem}
-.glass-desc{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem}
-
-/* Metrics strip */
-.glass-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;padding:1.125rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px}
-.glass-metric{text-align:center}
-.glass-metric-val{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:-.04em;line-height:1}
-.glass-metric-label{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;font-weight:500}
-
-/* Tags */
-.glass-tags{display:flex;gap:.4rem;flex-wrap:wrap}
-.glass-tag{font-size:.7rem;font-weight:600;padding:.28rem .75rem;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);letter-spacing:.04em;font-family:'Space Grotesk',sans-serif;transition:all .25s}
-.glass-card:hover .glass-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
-
 
 
 /* ── Products Glassmorphism ──────────────────────────── */
@@ -742,32 +683,239 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 .glass-card:hover .glass-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
 
 
-/* ── Tech Stack — Category Groups ─────────────────────── */
+
+/* ── Products Glassmorphism ──────────────────────────── */
+.products{padding:8rem 5vw;background:#030712;position:relative;overflow:hidden}
+
+/* Aurora background blobs */
+.prod-aurora{position:absolute;inset:0;pointer-events:none;z-index:0}
+.prod-blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 10s ease-in-out infinite}
+.prod-blob-1{width:600px;height:600px;background:rgba(0,102,255,.18);top:-150px;left:-100px;animation-delay:0s}
+.prod-blob-2{width:500px;height:500px;background:rgba(108,99,255,.14);bottom:-100px;right:-80px;animation-delay:3s}
+.prod-blob-3{width:400px;height:400px;background:rgba(0,194,255,.1);top:40%;left:45%;transform:translate(-50%,-50%);animation-delay:6s}
+@keyframes blobFloat{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(1.08) translate(20px,-20px)}66%{transform:scale(.95) translate(-15px,15px)}}
+.prod-blob-3{animation-name:blobFloat3}
+@keyframes blobFloat3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+
+/* Glass cards */
+.glass-card{background:rgba(255,255,255,.04)!important;backdrop-filter:blur(32px)!important;-webkit-backdrop-filter:blur(32px)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px!important;padding:2rem!important;position:relative!important;overflow:hidden!important;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,background .3s!important;box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08)!important}
+.glass-card:hover{transform:translateY(-8px) scale(1.01)!important;background:rgba(255,255,255,.07)!important;box-shadow:0 24px 64px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)!important}
+
+/* Shimmer sweep on hover */
+.glass-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.05),transparent);transition:left .7s ease;pointer-events:none;z-index:1}
+.glass-card:hover .glass-shine{left:160%}
+
+/* Coloured top accent bar */
+.glass-top-bar{position:absolute;top:0;left:0;right:0;height:2px;z-index:2}
+
+/* Icon */
+.glass-icon{width:48px;height:48px;border-radius:14px;border:1px solid;display:flex;align-items:center;justify-content:center;margin-bottom:0;backdrop-filter:blur(8px);transition:transform .3s}
+.glass-card:hover .glass-icon{transform:scale(1.08)}
+
+/* Text */
+.glass-title{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:.625rem}
+.glass-desc{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem}
+
+/* Metrics strip */
+.glass-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;padding:1.125rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px}
+.glass-metric{text-align:center}
+.glass-metric-val{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.glass-metric-label{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;font-weight:500}
+
+/* Tags */
+.glass-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.glass-tag{font-size:.7rem;font-weight:600;padding:.28rem .75rem;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);letter-spacing:.04em;font-family:'Space Grotesk',sans-serif;transition:all .25s}
+.glass-card:hover .glass-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+
+
+
+
+/* ── Tech Stack ──────────────────────────────────────── */
 .tech{padding:7rem 5vw;background:#fff;border-top:1px solid var(--mid)}
 .tech-header{text-align:center;margin-bottom:4rem}
-.tech-header .sec-sub{color:var(--muted);max-width:480px}
-.tech-category{margin-bottom:3rem}
+.tech-cat-divider{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem}
+.tech-cat-divider::before,.tech-cat-divider::after{content:'';flex:1;height:1px;background:var(--mid)}
+.tech-cat-divider span{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.tech-category{margin-bottom:2.75rem}
 .tech-category:last-child{margin-bottom:0}
-.tech-category-label{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem}
-.tech-cat-line{flex:1;height:1px;background:var(--mid)}
-.tech-cat-name{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0}
-.tech-logo-row{display:flex;flex-wrap:wrap;gap:.75rem}
-.tech-logo-pill{display:inline-flex;align-items:center;gap:.625rem;padding:.6rem 1.125rem;background:#fff;border:1.5px solid var(--mid);border-radius:100px;transition:all .25s cubic-bezier(.23,1,.32,1);cursor:default}
-.tech-logo-pill:hover{border-color:var(--blue);background:var(--blue-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,102,255,.1)}
-.tech-logo-pill svg{flex-shrink:0;display:block}
-.tech-logo-pill span{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
-.tech-logo-pill:hover span{color:var(--blue)}
-@media(max-width:640px){.tech-logo-row{gap:.5rem}.tech-logo-pill{padding:.5rem .875rem}.tech-logo-pill span{font-size:.75rem}}
+.tech-logo-strip{display:flex;flex-wrap:wrap;gap:.625rem}
+.tls-item{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.125rem;background:#fff;border:1.5px solid var(--mid);border-radius:100px;transition:all .25s cubic-bezier(.23,1,.32,1);cursor:default;height:44px}
+.tls-item:hover{border-color:var(--blue);background:var(--blue-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,102,255,.1)}
+.tls-item svg{flex-shrink:0;display:block}
+.tls-item span{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.tls-item:hover span{color:var(--blue)}
+.tls-item span:empty{display:none}
+@media(max-width:640px){.tls-item{padding:.45rem .875rem;height:38px}.tls-item span{font-size:.75rem}}
+
+
+/* ═══════════════════════════════════════════════
+   ADVANCED INTERACTIONS CSS — SafeCodex
+═══════════════════════════════════════════════ */
+
+/* ── Custom cursor ─────────────────────────── */
+@media(pointer:fine){body,a,button{cursor:none}}
+#sc-cursor{position:fixed;width:10px;height:10px;background:#0066FF;border-radius:50%;pointer-events:none;z-index:9050;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:normal}
+#sc-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(0,102,255,.5);border-radius:50%;pointer-events:none;z-index:9049;transform:translate(-50%,-50%);transition:width .25s,height .25s,opacity .25s;opacity:0.7}
+body.cursor-hover #sc-cursor{width:48px;height:48px;background:rgba(0,102,255,.15);border:1.5px solid #0066FF}
+body.cursor-hover #sc-ring{opacity:0}
+
+/* ── Scroll progress bar ───────────────────── */
+#sc-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#0066FF,#00C2FF);z-index:9999;width:0%;pointer-events:none;transition:width .08s linear;box-shadow:0 0 8px rgba(0,102,255,.6)}
+
+/* ── Page loader ────────────────────────────── */
+#sc-loader{position:fixed;inset:0;background:#050D1F;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s}
+#sc-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.sc-loader-logo{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.04em}
+.sc-loader-logo span{color:#00C2FF}
+.sc-loader-bar{width:180px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.sc-loader-fill{height:100%;background:linear-gradient(90deg,#0066FF,#00C2FF);border-radius:2px;animation:loaderFill .9s cubic-bezier(.23,1,.32,1) forwards}
+@keyframes loaderFill{from{width:0}to{width:100%}}
+
+/* ── Hero section animations ───────────────── */
+
+
+
+
+
+
+to{opacity:1;transform:none}}
+@keyframes cardSlideIn{from{opacity:0;transform:translateY(-50%) translateX(40px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+
+/* ── Reveal system ──────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal-right.visible{opacity:1;transform:none}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)}
+.reveal-scale.visible{opacity:1;transform:none}
+
+/* ── Service cards ──────────────────────────── */
+.svc-card{position:relative;overflow:hidden;will-change:transform}
+.svc-card .svc-spotlight{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(0,102,255,.07),transparent 70%)}
+.svc-card:hover .svc-spotlight{opacity:1}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#0066FF,#00C2FF);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.svc-card:hover::after{transform:scaleX(1)}
+
+/* ── Product cards hover glow ───────────────── */
+.product-card{transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,background .3s!important}
+.product-card:hover{box-shadow:0 0 0 1px rgba(0,102,255,.4),0 24px 60px rgba(0,102,255,.2)!important}
+
+/* ── Stats band counter glow ───────────────── */
+.stat-item-val{text-shadow:0 0 30px rgba(255,255,255,.2)}
+.stat-item:hover .stat-item-val{text-shadow:0 0 40px rgba(255,255,255,.5);transition:text-shadow .3s}
+
+/* ── Process steps ──────────────────────────── */
+.proc-step{transition:padding .3s cubic-bezier(.23,1,.32,1)}
+.proc-step:hover{padding-left:1rem}
+.proc-duration{position:relative;overflow:hidden}
+.proc-duration::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:#0066FF;transition:width .4s cubic-bezier(.23,1,.32,1)}
+.proc-step:hover .proc-duration::after{width:100%}
+
+/* ── Testimonial cards ──────────────────────── */
+.testi-card{position:relative;overflow:hidden}
+.testi-card::before{content:'"';position:absolute;top:-10px;right:12px;font-size:5rem;color:rgba(0,102,255,.06);font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;pointer-events:none;transition:color .3s,transform .3s}
+.testi-card:hover::before{color:rgba(0,102,255,.12);transform:scale(1.1)}
+
+/* ── CTA band animated bg ───────────────────── */
+.cta-band{background:var(--navy);position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(0,102,255,.25),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:ctaPulse 4s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}
+
+/* ── Contact form fields ────────────────────── */
+.fg input:focus,.fg textarea:focus,.fg select:focus{transform:translateY(-2px)}
+.fg label{transition:color .2s}
+.fg:focus-within label{color:var(--blue)}
+
+/* ── Magnetic button effect ─────────────────── */
+.btn-primary,.btn-secondary,.nav-cta{will-change:transform}
+
+/* ── Footer links ───────────────────────────── */
+.footer-col a{position:relative;display:inline-block}
+.footer-col a::after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:1px;background:rgba(255,255,255,.5);transition:width .25s cubic-bezier(.23,1,.32,1)}
+.footer-col a:hover::after{width:100%}
+
+/* ── Smooth anchor transitions ──────────────── */
+html{scroll-behavior:smooth}
+
+/* ── Section label animated line ────────────── */
+.section-label::before{animation:lineGrow .6s cubic-bezier(.23,1,.32,1) both}
+@keyframes lineGrow{from{width:0}to{width:20px}}
+
+/* ── Trusted band hover pause ───────────────── */
+.trusted:hover .trusted-track{animation-play-state:paused}
+
+/* ── Glass card shimmer ─────────────────────── */
+.glass-card{position:relative;overflow:hidden}
+.glass-card::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.06),transparent);transition:left .7s ease;pointer-events:none;z-index:1}
+.glass-card:hover::before{left:160%}
+
+/* ── Tech pills bounce ──────────────────────── */
+.tls-item:nth-child(odd):hover{animation:pillBounce .4s cubic-bezier(.34,1.56,.64,1)}
+.tls-item:nth-child(even):hover{animation:pillBounce .4s cubic-bezier(.34,1.56,.64,1) .05s}
+@keyframes pillBounce{0%{transform:translateY(0)}40%{transform:translateY(-6px)}70%{transform:translateY(-2px)}100%{transform:translateY(-2px) scale(1.01)}}
+
+/* ── Nav scrolled indicator ─────────────────── */
+nav.scrolled .nav-links a.active{color:#fff;font-weight:600}
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;background:#0066FF;border-radius:2px;transition:width .25s cubic-bezier(.23,1,.32,1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+
+/* ── Floating WhatsApp pulse ────────────────── */
+#wa-btn{animation:waPulse 3s ease-in-out infinite}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 4px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,0)}}
+
+/* ── Number counter spin-up ─────────────────── */
+.counting{display:inline-block;animation:countSpin .1s ease-out}
+@keyframes countSpin{from{transform:translateY(4px);opacity:0}to{transform:none;opacity:1}}
+
+/* ── Prefers reduced motion ─────────────────── */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+to{opacity:1;transform:none}}
+to{opacity:1;transform:translateY(-50%)}}
+
+
+
+
+
+
+h1.hero-title span{opacity:1!important;transform:none!important;display:inline!important;animation:none!important}
+
+
+/* ── Hero — always visible, no animation interference ── */
+.hero-content,
+.hero-badge,
+.hero-title,
+.hero-desc,
+.hero-actions,
+.hero-stats,
+.hero-stats > div,
+.hstat-val,
+.hstat-label{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important}
+.hero-badge-dot{animation:pulse 2s ease-in-out infinite!important}
+h1.hero-title .blue{color:#00C2FF!important;opacity:1!important}
+h1.hero-title .dim{color:rgba(255,255,255,.35)!important;font-weight:400!important;opacity:1!important}
+h1.hero-title span{opacity:1!important;display:inline!important}
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-<div id="scroll-progress"></div>
+<!-- Page loader -->
+<div id="sc-loader">
+  <div class="sc-loader-logo">Safe<span>Codex</span></div>
+  <div class="sc-loader-bar"><div class="sc-loader-fill"></div></div>
+</div>
+<!-- Custom cursor -->
+<div id="sc-cursor"></div>
+<div id="sc-ring"></div>
+<!-- Scroll progress -->
+<div id="sc-progress"></div>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/914077770007?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20software%20project." target="_blank" rel="noopener" id="wa-btn" aria-label="Chat on WhatsApp" onmouseover="this.style.transform='scale(1.12)';document.getElementById('wa-tip').style.opacity='1';document.getElementById('wa-tip').style.transform='translateY(-50%) translateX(0)'" onmouseout="this.style.transform='';document.getElementById('wa-tip').style.opacity='0';document.getElementById('wa-tip').style.transform='translateY(-50%) translateX(8px)'">
+<a href="https://wa.me/917702721477?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20software%20project." target="_blank" rel="noopener" id="wa-btn" aria-label="Chat on WhatsApp" onmouseover="this.style.transform='scale(1.12)';document.getElementById('wa-tip').style.opacity='1';document.getElementById('wa-tip').style.transform='translateY(-50%) translateX(0)'" onmouseout="this.style.transform='';document.getElementById('wa-tip').style.opacity='0';document.getElementById('wa-tip').style.transform='translateY(-50%) translateX(8px)'">
   <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 1C7.716 1 1 7.716 1 16c0 2.628.676 5.098 1.858 7.248L1 31l7.96-2.088A14.94 14.94 0 0 0 16 31c8.284 0 15-6.716 15-15S24.284 1 16 1z" fill="rgba(255,255,255,.18)"/><path d="M22.8 19.44c-.38-.19-2.25-1.11-2.6-1.24-.35-.13-.6-.19-.86.19-.25.38-.98 1.24-1.2 1.49-.22.25-.44.28-.82.1-.38-.19-1.61-.59-3.07-1.89-1.13-1.01-1.89-2.25-2.11-2.63-.22-.38-.02-.59.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.1-.19-.86-2.07-1.18-2.83-.31-.74-.62-.64-.86-.65-.22-.01-.47-.01-.72-.01s-.66.1-1.01.47C9.8 8.92 9 9.92 9 11.42s1.36 3.68 1.55 3.94c.19.25 2.69 4.1 6.51 5.75.91.39 1.62.63 2.17.8.91.29 1.74.25 2.39.15.73-.11 2.25-.92 2.57-1.81.32-.89.32-1.65.22-1.81-.09-.16-.35-.25-.73-.44z" fill="white"/></svg>
   <div id="wa-tip">Chat on WhatsApp</div>
 </a>
@@ -918,7 +1066,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   </div>
   <div class="services-grid">
 
-    <div class="svc-card reveal" data-svc="0">
+    <div class="svc-card reveal" data-svc="0"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
       <div class="svc-num">01</div>
       <h3>Custom Software Development</h3>
@@ -926,7 +1074,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
       <div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Node.js</span><span class="svc-tag">Java</span><span class="svc-tag">.NET</span></div>
     </div>
 
-    <div class="svc-card reveal" data-svc="1">
+    <div class="svc-card reveal" data-svc="1"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
       <div class="svc-num">02</div>
       <h3>Cloud Infrastructure & DevOps</h3>
@@ -934,7 +1082,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
       <div class="svc-tags"><span class="svc-tag">AWS</span><span class="svc-tag">Azure</span><span class="svc-tag">Kubernetes</span><span class="svc-tag">Docker</span></div>
     </div>
 
-    <div class="svc-card reveal" data-svc="2">
+    <div class="svc-card reveal" data-svc="2"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="svc-num">03</div>
       <h3>AI / ML & Data Engineering</h3>
@@ -942,7 +1090,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
       <div class="svc-tags"><span class="svc-tag">Python</span><span class="svc-tag">TensorFlow</span><span class="svc-tag">Spark</span><span class="svc-tag">LLMs</span></div>
     </div>
 
-    <div class="svc-card reveal" data-svc="3">
+    <div class="svc-card reveal" data-svc="3"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <div class="svc-num">04</div>
       <h3>Cybersecurity & Compliance</h3>
@@ -950,7 +1098,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
       <div class="svc-tags"><span class="svc-tag">VAPT</span><span class="svc-tag">SOC 2</span><span class="svc-tag">ISO 27001</span><span class="svc-tag">GDPR</span></div>
     </div>
 
-    <div class="svc-card reveal" data-svc="4">
+    <div class="svc-card reveal" data-svc="4"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
       <div class="svc-num">05</div>
       <h3>ERP & System Integration</h3>
@@ -958,7 +1106,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
       <div class="svc-tags"><span class="svc-tag">SAP</span><span class="svc-tag">Salesforce</span><span class="svc-tag">REST</span><span class="svc-tag">GraphQL</span></div>
     </div>
 
-    <div class="svc-card reveal" data-svc="5">
+    <div class="svc-card reveal" data-svc="5"><div class="svc-spotlight"></div>
       <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></div>
       <div class="svc-num">06</div>
       <h3>Mobile & Cross-platform Apps</h3>
@@ -1111,7 +1259,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 
 <!-- CASE STUDIES -->
 <section id="cases" class="cases">
-  <div class="cases-header reveal">
+  <div class="cases-header reveal-left">
     <div>
       <div class="section-label">Case studies</div>
       <h2 class="sec-title">Results that speak<br>for themselves</h2>
@@ -1263,127 +1411,238 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 
 <!-- TECH STACK -->
 <section class="tech">
+
   <div class="tech-header reveal">
     <div class="section-label" style="justify-content:center">Technology</div>
     <h2 class="sec-title">Built with industry-standard<br>enterprise technology</h2>
-    <p class="sec-sub" style="text-align:center;margin:1rem auto 0">The same tools trusted by the world's largest engineering teams.</p>
+    <p class="sec-sub" style="text-align:center;margin:1rem auto 0;max-width:500px">The same tools trusted by the world's largest engineering teams.</p>
   </div>
 
-  <!-- Category: Cloud & Infrastructure -->
+  <!-- Row 1: Cloud & Infra -->
   <div class="tech-category reveal">
-    <div class="tech-category-label">
-      <span class="tech-cat-line"></span>
-      <span class="tech-cat-name">Cloud & Infrastructure</span>
-      <span class="tech-cat-line"></span>
-    </div>
-    <div class="tech-logo-row">
-      <!-- AWS -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 80 30" width="48" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M22.9 12.3c0 .5.1.9.2 1.1.2.3.4.5.8.8.1.1.2.3.2.4 0 .2-.1.3-.4.4l-1.3.6c-.2.1-.4.1-.5.1-.2 0-.4-.1-.6-.2-.3-.2-.5-.4-.7-.6-.2-.3-.4-.5-.7-.9-1.7 1.3-3.9 1.9-6.4 1.9-1.8 0-3.3-.4-4.3-1-.9-.6-1.5-1.5-1.5-2.5 0-1.1.6-2 1.9-2.7 1.2-.7 2.9-1 5-1 .7 0 1.4 0 2.1.1.8.1 1.5.2 2.3.3v-.9c0-1-.3-1.7-1-2-.7-.4-1.8-.6-3.3-.6-.7 0-1.4.1-2.2.2-.7.1-1.5.3-2.2.5-.3.1-.6.1-.8.1-.4 0-.5-.2-.5-.5v-.7c0-.3.1-.4.2-.6.1-.1.4-.3.7-.4.7-.3 1.5-.5 2.5-.6 1-.2 2.1-.3 3.2-.3 2.5 0 4.3.4 5.4 1.1 1.1.7 1.7 1.8 1.7 3.2v4.2zm-8.9 2.1c.7 0 1.4-.1 2.1-.3.7-.2 1.4-.5 1.9-.9.3-.3.5-.5.6-.8.1-.3.2-.7.2-1.1v-.5c-.6-.1-1.2-.2-1.9-.2-.7-.1-1.3-.1-2-.1-1.4 0-2.4.2-3.1.5-.7.4-1 .9-1 1.5 0 .6.3 1.1.8 1.4.5.3 1.3.5 2.4.5zm11.2 1.5c-.5 0-.8-.1-1-.1-.2-.1-.4-.3-.6-.6L20 7.3c-.2-.3-.3-.6-.3-.7 0-.3.2-.4.7-.4h1.7c.5 0 .8 0 1 .1.2.1.4.3.5.6l2.5 9.6 2.3-9.6c.1-.3.3-.6.5-.6.2-.1.6-.1 1.1-.1h1.4c.5 0 .9 0 1.1.1.2.1.4.3.5.6l2.4 9.7 2.5-9.7c.1-.3.3-.5.5-.6.2-.1.6-.1 1-.1H40c.5 0 .8.1.8.4 0 .1 0 .2-.1.3l-.2.4-4.7 14.9c-.1.3-.3.5-.6.6-.2.1-.6.1-1 .1h-1.5c-.5 0-.9-.1-1.1-.1-.2-.1-.4-.3-.5-.6l-2.3-9.3-2.3 9.3c-.1.3-.3.5-.5.6-.2.1-.6.1-1.1.1h-1.5zm25.5.4c-1.5 0-3-.1-4.4-.3-1.4-.2-2.5-.5-3.3-.8-.5-.2-.8-.4-.9-.6-.1-.2-.2-.4-.2-.6v-.8c0-.4.2-.5.6-.5.2 0 .3 0 .5.1l.6.2c.8.2 1.7.4 2.7.5 1 .1 2 .2 3 .2 1.6 0 2.8-.2 3.7-.5.8-.3 1.3-.8 1.3-1.4 0-.4-.2-.8-.7-1.1-.5-.3-1.4-.5-2.7-.8l-2.4-.8c-1.9-.4-3.3-.9-4.2-1.7-.8-.7-1.3-1.5-1.3-2.4 0-.7.2-1.3.7-1.8.5-.6 1.1-1 1.9-1.4.8-.4 1.7-.7 2.8-.9 1-.2 2.1-.3 3.3-.3.6 0 1.2 0 1.7.1.6.1 1.1.1 1.6.2.5.1.9.2 1.4.3.5.1.8.2 1 .3.3.1.5.3.6.4.1.1.2.3.2.5v.8c0 .4-.2.5-.6.5-.2 0-.5-.1-1-.2-.9-.4-1.9-.6-3-.6-.9 0-1.7 0-2.1.1-.5 0-.9.1-1.2.2-.3.1-.5.2-.7.4-.2.1-.2.3-.2.5 0 .4.2.8.8 1.1.6.3 1.5.6 3 .9l2.3.8c1.9.4 3.2.9 4 1.6.8.7 1.2 1.5 1.2 2.3 0 .7-.2 1.4-.7 1.9-.5.6-1.1 1.1-1.9 1.5-.8.4-1.8.7-2.9.9-1.2.2-2.5.3-3.8.3z" fill="#FF9900"/></svg>
+    <div class="tech-cat-divider"><span>Cloud &amp; Infrastructure</span></div>
+    <div class="tech-logo-strip">
+
+      <!-- AWS: official orange wordmark -->
+      <div class="tls-item">
+        <svg height="28" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FF9900" d="M16.9 13.6c0 .7.1 1.2.2 1.5.2.3.4.7.8 1 .1.2.2.3.2.5 0 .2-.1.4-.4.5l-1.4.9c-.2.1-.4.2-.5.2s-.3-.1-.5-.2c-.2-.2-.4-.5-.6-.8a13 13 0 0 1-.6-1.1c-1.5 1.7-3.4 2.6-5.6 2.6-1.6 0-2.9-.5-3.8-1.4-.9-.9-1.4-2.1-1.4-3.6 0-1.6.6-2.9 1.7-3.8 1.2-.9 2.7-1.4 4.6-1.4.6 0 1.3 0 2 .1l2 .4v-1.3c0-1.4-.3-2.3-.9-2.9-.6-.5-1.7-.8-3.1-.8-.7 0-1.3.1-2 .3-.6.1-1.3.4-1.9.7l-.7.2c-.3 0-.5-.2-.5-.7V3.6c0-.4.1-.6.2-.8.1-.2.4-.4.7-.5.6-.3 1.4-.6 2.3-.8 1-.2 2-.3 3-.3 2.3 0 4 .5 5 1.6 1 1 1.5 2.6 1.5 4.7v6.1zm-7.7 2.9c.6 0 1.3-.1 2-.4.7-.3 1.3-.7 1.8-1.3.3-.3.5-.7.6-1.1.1-.5.2-.9.2-1.5v-.7c-.5-.1-1.1-.2-1.7-.3-.6 0-1.2-.1-1.8-.1-1.3 0-2.2.3-2.8.8-.6.5-.9 1.2-.9 2.2 0 .9.2 1.5.7 1.9.5.4 1.1.5 1.9.5zm15.2 2h-2.6c-.4 0-.7-.1-.9-.2-.2-.1-.4-.4-.5-.9L16.2 1.7c-.1-.4-.2-.7-.2-.8 0-.4.2-.5.6-.5h2.5c.5 0 .8.1.9.2.2.1.4.4.5.9l3.5 13.9 3.3-13.9c.1-.5.3-.8.5-.9.2-.1.5-.2 1-.2h2c.5 0 .8.1 1 .2.2.1.4.4.5.9l3.3 14L39 1.5c.1-.5.3-.8.5-.9.2-.1.5-.2 1-.2h2.4c.4 0 .6.2.6.5 0 .1 0 .2-.1.4l-.1.5L37 17.6c-.1.5-.3.8-.5.9-.2.1-.5.2-.9.2h-2.2c-.5 0-.8-.1-1-.2-.2-.1-.4-.4-.5-.9L28.7 4.2l-3.2 13.3c-.1.5-.3.8-.5.9-.2.1-.5.2-1 .2zm28.6.3c-1.4 0-2.7-.1-4-.4-1.2-.3-2.2-.6-2.9-1-.5-.3-.8-.6-.9-.9V16c0-.5.2-.8.5-.8.2 0 .3 0 .5.1.1 0 .4.1.6.2.8.3 1.6.5 2.5.7.9.1 1.8.2 2.7.2 1.4 0 2.5-.2 3.3-.7.8-.5 1.2-1.2 1.2-2.1 0-.6-.2-1.1-.6-1.5-.4-.4-1.2-.8-2.4-1.1l-3.5-1.1c-1.7-.5-3-1.3-3.8-2.4-.8-1-.1-2.2-.1-3.4 0-1 .3-1.8.8-2.6.5-.7 1-1.4 1.7-1.9.7-.5 1.6-1 2.5-1.2.9-.3 1.9-.4 3-.4.5 0 1 0 1.6.1.5 0 1 .1 1.5.3.4.1.9.2 1.2.4.4.1.7.3.9.4.3.1.5.3.6.5.1.1.1.4.1.7v1.1c0 .5-.2.8-.5.8-.2 0-.5-.1-.9-.3-1.3-.5-2.7-.8-4.3-.8-1.3 0-2.3.2-3 .7-.7.4-1 1.1-1 1.9 0 .6.2 1.2.7 1.6.5.4 1.4.8 2.7 1.2l3.4 1.1c1.7.5 2.9 1.3 3.7 2.3.7 1 .1 2.1.1 3.4 0 1-.3 2-.7 2.8-.5.8-1 1.5-1.8 2.1-.7.6-1.6 1-2.7 1.3-1.1.3-2.2.4-3.4.4z"/>
+          <!-- smile arrow -->
+          <path fill="#FF9900" d="M52.5 25.8c-5.5 3.6-13.5 5.5-20.4 5.5a37 37 0 0 1-25-9.5c-.5-.5-.1-1.1.6-.7 7.1 4.1 15.9 6.6 25 6.6 6.1 0 12.9-1.3 19.1-3.9 1-.4 1.7.6.7 1zm2-2.3c-.7-.9-4.7-.4-6.5-.2-.5.1-.6-.4-.1-.7 3.2-2.2 8.4-.5 9 .3.6.8-.2 6-3.1 8.5-.5.4-1 .2-.7-.3.6-1.5 2.1-5.7 1.4-7.6z"/>
+        </svg>
         <span>AWS</span>
       </div>
-      <!-- Azure -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 18 14" width="22" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M6.17 1.22h4.87L6.37 13.27a.79.79 0 0 1-.74.53H1.52a.79.79 0 0 1-.74-1.04L5.43 1.75a.79.79 0 0 1 .74-.53z" fill="#0078D4"/><path d="M12.44 9.04H5.72l-.24.75L4.61 12.5a.79.79 0 0 0 .74 1.04h3.88a.79.79 0 0 0 .76-.58l.02-.09z" fill="#0078D4"/><path d="M6.17 1.22a.78.78 0 0 0-.74.53L.78 12.76a.79.79 0 0 0 .74 1.05h4.12a.84.84 0 0 0 .65-.54l.99-2.91 3.53 3.27a.8.8 0 0 0 .5.18h4.38L13.07 8.08H7.06l3.04-8.86z" fill="#0078D4" opacity=".7"/><path d="M13.08 1.22a.79.79 0 0 0-.74-.53H6.4a.79.79 0 0 1 .74.53l4.09 14.09a.79.79 0 0 1-.74 1.04h6.06a.79.79 0 0 0 .74-1.04z" fill="#28A8E0"/></svg>
+
+      <!-- Microsoft Azure: real logomark -->
+      <div class="tls-item">
+        <svg height="28" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.5 1h7.4L11.6 27H4.2L13.5 1z" fill="#0072C6"/>
+          <path d="M20.9 1L12.2 14l5.2 9.2 6.4-9.2L20.9 1z" fill="#0072C6" opacity=".7"/>
+          <path d="M4.2 27l7.4-13.1 5.2 4.6L11.6 27H4.2z" fill="#0072C6" opacity=".85"/>
+          <path d="M16.5 18.5l4.9-6.7 6.4 15.2h-7L16.5 18.5z" fill="#0072C6"/>
+        </svg>
         <span>Azure</span>
       </div>
+
+      <!-- Google Cloud -->
+      <div class="tls-item">
+        <svg height="24" viewBox="0 0 80 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M47.4 9.1v1.6h3.9c-.2.9-.5 1.6-1 2.1-.7.7-1.7 1.4-2.9 1.4-2.3 0-4.1-1.9-4.1-4.2s1.8-4.2 4.1-4.2c1.2 0 2.2.5 2.9 1.2l1.1-1.1c-1-1-2.4-1.6-4-1.6-3.2 0-5.8 2.6-5.8 5.8s2.6 5.8 5.8 5.8c1.7 0 3-.6 4-1.6 1-1 1.4-2.5 1.4-3.7 0-.4 0-.7-.1-.9h-5.3zm9.8 0c-2 0-3.5 1.5-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.5 3.5-3.5-1.5-3.5-3.5-3.5zm0 5.6c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 .9 2 2.1-.9 2.1-2 2.1zm15.4-5.6c-2 0-3.5 1.5-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.5 3.5-3.5-1.5-3.5-3.5-3.5zm0 5.6c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 .9 2 2.1-.9 2.1-2 2.1zm-8.2-5.6c-2 0-3.5 1.6-3.5 3.5 0 1.8 1.4 3.5 3.5 3.5.9 0 1.6-.3 2.2-.9l.3.3h1.2v-8.7h-1.5v3.3c-.5-.6-1.3-1-2.2-1zm.1 5.6c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 .9 2 2.1-.9 2.1-2 2.1zm-44.7-5.4v1.5h3.9c-.1.8-.5 1.5-1 1.9-.7.7-1.7 1.2-2.9 1.2-2.3 0-4.1-1.9-4.1-4.2s1.8-4.2 4.1-4.2c1.2 0 2.2.5 2.9 1.2l1.1-1.1c-1-1-2.4-1.6-4-1.6-3.2 0-5.8 2.6-5.8 5.8s2.6 5.8 5.8 5.8c1.7 0 3-.6 4-1.6 1-1 1.4-2.5 1.4-3.7 0-.4 0-.7-.1-.9h-5.3z" fill="#4285F4"/>
+          <!-- GCP icon balls -->
+          <circle cx="8" cy="10" r="6" fill="none"/>
+          <path d="M11.7 7.2A5 5 0 0 0 6 6L4.5 7.5A3 3 0 0 1 7 7h5c.6 0 1.1.2 1.5.5l-1.8 1.8h4V5.2L14 6.8l-2.3.4z" fill="#4285F4"/>
+          <path d="M3 8.6L1.5 10a5 5 0 0 0 1.3 5.2l1.5-1.5A3 3 0 0 1 3 11V8.6z" fill="#34A853"/>
+          <path d="M6 14h5l.7.7 1.3 1.3A5 5 0 0 1 6 14z" fill="#FBBC04"/>
+          <path d="M14.7 13.7L13 12l-.5.5A3 3 0 0 1 12 14H6a3 3 0 0 1-1.7-4.8l-1.5-1.5A5 5 0 0 0 6 16h6a5 5 0 0 0 4-2l-1.3-1.3z" fill="#EA4335"/>
+        </svg>
+        <span>Google Cloud</span>
+      </div>
+
       <!-- Kubernetes -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L2 6.5v11L12 23l10-5.5v-11z" fill="#326CE5"/><path d="M12 5v3.2M12 15.8V19M7.5 7.8l2.7 1.6M13.8 14.6l2.7 1.6M7.5 16.2l2.7-1.6M13.8 9.4l2.7-1.6" stroke="white" stroke-width="1" stroke-linecap="round"/><circle cx="12" cy="12" r="2.5" fill="white"/><circle cx="12" cy="12" r="1.5" fill="#326CE5"/></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 .5L.5 7.25v13L13 26.5l12.5-6.25v-13z" fill="#326CE5"/>
+          <path d="M13 5v4M13 17v4M7.5 8.5l3.5 2M15 15.5l3.5 2M7.5 17.5l3.5-2M15 10.5l3.5-2" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="13" cy="13" r="3" fill="white"/>
+          <circle cx="13" cy="13" r="1.8" fill="#326CE5"/>
+          <circle cx="13" cy="5" r="2" fill="white"/><circle cx="13" cy="21" r="2" fill="white"/>
+          <circle cx="7.5" cy="8.5" r="2" fill="white"/><circle cx="18.5" cy="8.5" r="2" fill="white"/>
+          <circle cx="7.5" cy="17.5" r="2" fill="white"/><circle cx="18.5" cy="17.5" r="2" fill="white"/>
+        </svg>
         <span>Kubernetes</span>
       </div>
+
       <!-- Docker -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 40 29" width="30" height="22" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="10" width="7" height="6" rx="1" fill="#2396ED"/><rect x="10" y="10" width="7" height="6" rx="1" fill="#2396ED"/><rect x="10" y="3" width="7" height="6" rx="1" fill="#2396ED"/><rect x="19" y="10" width="7" height="6" rx="1" fill="#2396ED"/><rect x="19" y="3" width="7" height="6" rx="1" fill="#2396ED"/><rect x="28" y="10" width="7" height="6" rx="1" fill="#2396ED"/><path d="M37 13c-1-1-3-1.5-4.5-1-.3-2-1.5-3.5-3-4l-.5-.3-.3.5c-.5 1-.7 2.5-.3 3.8H5c0 4 2.5 7.5 6.5 9.5 2 1 4.3 1.5 6.5 1.5 6 0 11-3 13.5-8C33 14 35 13 37 13z" fill="#2396ED"/></svg>
+      <div class="tls-item">
+        <svg height="22" viewBox="0 0 50 38" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#2396ED" d="M5 15h6v5H5zM12 15h6v5h-6zM12 8h6v6h-6zM19 15h6v5h-6zM19 8h6v6h-6zM26 15h6v5h-6zM26 8h6v6h-6zM33 15h6v5h-6z"/>
+          <path fill="#2396ED" d="M47 16.5c-1-.7-3.3-1-5-0.6-.3-1.8-1.5-3.4-3.5-4.4l-.6-.3-.3.6c-.6 1.1-.9 3-.3 4.3H4.5c0 4.2 2.7 7.8 6.8 9.7 2 .9 4.2 1.4 6.4 1.4 6.1 0 11.3-3 14-8.2 1.6.1 5 .1 6.8-3.3l.3-.5-.8-.4z"/>
+        </svg>
         <span>Docker</span>
       </div>
+
       <!-- Terraform -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 28 32" width="18" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 3.9L1 9v10.2l9 5.1V14.1z" fill="#7B42BC"/><path d="M18 3.9l9 5.1v10.2l-9-5.1z" fill="#7B42BC" opacity=".7"/><path d="M10.5 15.4l9-5.1v10.2l-9 5.1z" fill="#7B42BC"/></svg>
+      <div class="tls-item">
+        <svg height="24" viewBox="0 0 28 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 5.5l9.4 5.4v10.8L1 16.3V5.5z" fill="#7B42BC"/>
+          <path d="M11.6 5.5l9.4 5.4v10.8l-9.4-5.4V5.5z" fill="#7B42BC" opacity=".75"/>
+          <path d="M22.2 0l5.4 3.1v6.2l-5.4-3.1V0z" fill="#7B42BC" opacity=".6"/>
+          <path d="M11.6 16.4l9.4 5.4v10.8l-9.4-5.4V16.4z" fill="#7B42BC" opacity=".9"/>
+        </svg>
         <span>Terraform</span>
       </div>
+
     </div>
   </div>
 
-  <!-- Category: Languages & Frameworks -->
+  <!-- Row 2: Languages & Frameworks -->
   <div class="tech-category reveal">
-    <div class="tech-category-label">
-      <span class="tech-cat-line"></span>
-      <span class="tech-cat-name">Languages & Frameworks</span>
-      <span class="tech-cat-line"></span>
-    </div>
-    <div class="tech-logo-row">
+    <div class="tech-cat-divider"><span>Languages &amp; Frameworks</span></div>
+    <div class="tech-logo-strip">
+
       <!-- React -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="2" fill="#61DAFB"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#61DAFB" stroke-width="1"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(120 12 12)"/></svg>
+      <div class="tls-item">
+        <svg height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="2.2" fill="#61DAFB"/>
+          <ellipse cx="12" cy="12" rx="11" ry="4" fill="none" stroke="#61DAFB" stroke-width="1"/>
+          <ellipse cx="12" cy="12" rx="11" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(60 12 12)"/>
+          <ellipse cx="12" cy="12" rx="11" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(120 12 12)"/>
+        </svg>
         <span>React</span>
       </div>
-      <!-- Node.js -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 28" width="17" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 .2L1 6.5v12.4L12 25.2l11-6.3V6.5z" fill="#8CC84B"/><path d="M8.5 16.4V9.9l3.5-2 3.5 2v2.5l-2.1 1.2v-2.3l-1.4-.8-1.4.8v5.4l1.4.8 1.4-.8v-1.2l2.1 1.2v1.4l-3.5 2-3.5-2z" fill="white"/></svg>
-        <span>Node.js</span>
+
+      <!-- Node.js: green hexagon wordmark -->
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 64 26" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 .5L1 7v13l11 6 11-6V7z" fill="#8CC84B"/>
+          <text x="26" y="19" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#8CC84B">Node.js</text>
+        </svg>
+        <span></span>
       </div>
+
       <!-- Python -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M11.9 1.2C8 1.2 5.5 3.2 5.5 5.7v1.9H12v.6H3.8C2 8.2.8 10.4.8 13.1c0 2.7 1.5 4.9 3.7 4.9H6v-2.4c0-2.5 2-4.3 4.7-4.3h6.6c2 0 3.5-1.5 3.5-3.6V5.7C20.8 3 18.2 1.2 14.1 1.2h-2.2zm-1.2 2.3c.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3z" fill="#387EB8"/><path d="M12 22.7c3.9 0 6.4-2 6.4-4.5v-1.9H12v-.6h8.2c1.8 0 3-.2 3-2.9 0-2.7-1.5-4.9-3.7-4.9H18v2.4c0 2.5-2 4.3-4.7 4.3H6.7c-2 0-3.5 1.5-3.5 3.6v3.1c0 2.7 2.6 4.5 6.7 4.5H12zm1.2-2.3c-.7 0-1.3-.6-1.3-1.3 0-.7.6-1.3 1.3-1.3.7 0 1.3.6 1.3 1.3 0 .7-.6 1.3-1.3 1.3z" fill="#FFE052"/></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="py1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#387EB8"/><stop offset="100%" stop-color="#366994"/></linearGradient>
+            <linearGradient id="py2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFE052"/><stop offset="100%" stop-color="#FFC331"/></linearGradient>
+          </defs>
+          <path fill="url(#py1)" d="M11.9 2C8.2 2 6 3.8 6 6v2h6v1H4.2C2 9 .5 10.8.5 13.5c0 2.7 1.5 4.5 3.7 4.5H6v-2.2c0-2.5 2-4.3 5.9-4.3h4.2c2 0 3.4-1.4 3.4-3.5V6c0-2.4-2.2-4-7.6-4zm-1.8 2.3c.8 0 1.4.6 1.4 1.2 0 .7-.6 1.2-1.4 1.2-.8 0-1.4-.5-1.4-1.2 0-.6.6-1.2 1.4-1.2z"/>
+          <path fill="url(#py2)" d="M12 22c3.7 0 5.9-1.8 5.9-4v-2h-6v-1h7.8c2.2 0 3.7-1.8 3.7-4.5S22 6 19.8 6H18v2.2c0 2.5-2 4.3-5.9 4.3H7.9c-2 0-3.4 1.4-3.4 3.5V18c0 2.4 2.2 4 7.5 4zm1.8-2.3c-.8 0-1.4-.6-1.4-1.2 0-.7.6-1.2 1.4-1.2.8 0 1.4.5 1.4 1.2 0 .6-.6 1.2-1.4 1.2z"/>
+        </svg>
         <span>Python</span>
       </div>
+
+      <!-- Next.js -->
+      <div class="tls-item">
+        <svg height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="11" fill="black"/>
+          <path d="M7.5 7.5h2v7.5l7-7.5h2.5L12 16.5l-4.5-9z" fill="white"/>
+          <path d="M14 7.5h2v9h-2z" fill="white"/>
+        </svg>
+        <span>Next.js</span>
+      </div>
+
       <!-- Java -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="18" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M8.7 15.1s-1 .6.7.8c2 .2 3 .2 5.2-.2 0 0 .6.3 1.4.6-4.9 2.1-11-.1-7.3-1.2zm-.6-2.6s-1.1.8.6.9c2.2.2 3.9.2 6.9-.3 0 0 .4.4 1.1.6-6.1 1.8-12.9.2-8.6-1.2z" fill="#E76F00"/><path d="M13.7 8.8c1.2 1.4-.3 2.7-.3 2.7s3.1-1.6 1.7-3.6c-1.3-1.9-2.3-2.8 3.2-6 0 0-8.7 2.2-4.6 6.9z" fill="#E76F00"/><path d="M19.2 17.1s.7.6-.8.9c-2.9.9-12 1.1-14.5.1-1-.4 0-.9.3-1l.8-.2c-.8-.5-5.3 1.1-2.3 1.6 8.3 1.3 15.1-.6 16.5-1.4zM9.1 11.2s-3.7.9-1.3 1.2c1 .1 3 .1 4.8-.1 1.5-.2 3-.5 3-.5s-.5.2-1 .5c-3.8 1-11.2.5-9.1-.5 1.8-.9 3.6-.6 3.6-.6zm6.5 3.6c3.9-2 2.1-4 .8-3.7-.3.1-.5.2-.5.2s.1-.2.4-.3c2.9-1 5.1 3-.8 4.6 0 0 .1-.1.1-.8z" fill="#E76F00"/><path d="M14.5 1s2.1 2.1-2 5.3c-3.3 2.6-.7 4.1 0 5.8-1.9-1.7-3.3-3.2-2.4-4.6 1.4-2.1 5.3-3.1 4.4-6.5z" fill="#E76F00"/><path d="M9.9 22.7c3.7.2 9.4-.2 9.5-2.4 0 0-.3.6-3.1 1.1-3.1.6-7 .5-9.3.1 0 0 .5.4 2.9.8-.1 0 0 .4 0 .4z" fill="#E76F00"/></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 24 28" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#E76F00" d="M8.7 21.8s-1.1.6.8.8c2.3.3 3.5.2 6-.3 0 0 .7.4 1.6.7-5.6 2.4-12.8-.1-8.4-1.2zm-.7-3s-1.2.9.6 1c2.5.2 4.5.2 7.9-.3 0 0 .5.5 1.3.7-7 2-14.8.2-9.8-1.4z"/>
+          <path fill="#E76F00" d="M15.8 12.6c1.4 1.6-.4 3-.4 3s3.5-1.8 1.9-4.1c-1.5-2.1-2.7-3.2 3.7-6.8 0 0-10 2.5-5.2 7.9z"/>
+          <path fill="#E76F00" d="M22.2 24.1s.8.7-.9 1.2c-3.3 1-13.7 1.3-16.6.1-1.1-.5 0-1.1.3-1.2l.9-.2c-1-.5-6.2 1.3-2.7 1.9 9.7 1.6 17.6-.7 19-1.8zM9 16s-4.2 1 -1.5 1.4c1.2.1 3.5.1 5.6-.2 1.7-.2 3.4-.6 3.4-.6s-.6.2-1.1.5c-4.4 1.2-12.9.6-10.4-.5 2.1-1 4-1 4-1zm7.5 4.1c4.5-2.3 2.4-4.6.9-4.3-.4.1-.6.2-.6.2s.2-.3.5-.4c3.3-1.2 5.9 3.4-1 5.2 0 0 .1-.1.2-1.7z"/>
+          <path fill="#E76F00" d="M16.5 0s2.4 2.4-2.3 6c-3.8 3-1 4.8 0 6.7-2.2-2-3.8-3.8-2.7-5.4 1.6-2.4 6-3.6 5-7.3z"/>
+          <path fill="#E76F00" d="M9.9 28c3.5.5 8.8 0 9-2.1 0 0-.6.5-2.9.9-2.6.5-5.9.4-7.8.1 0 0 .4.3.8.6 0 .5-.5 1.1-3.1.5 0 0 0 0 0 0z"/>
+        </svg>
         <span>Java</span>
       </div>
-      <!-- .NET -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M3.3 10.3L7 4h2l-4.5 8H3L1 4h1.8l.5 6.3zM13 12H8.5L8 4h4.8v1.5H9.8v2H13v1.5H9.8v1.5H13V12zm6.5 0L18 9l-1.5 3H15l2.3-4L15 4h1.5L18 7l1.5-3H21l-2.3 4L21 12h-1.5z" fill="#512BD4"/></svg>
-        <span>.NET</span>
-      </div>
+
       <!-- Flutter -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="16" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M14.3 0L2 12.3l3.3 3.4L21 0z" fill="#54C5F8"/><path d="M14.3 0L7.7 6.6l3.3 3.3L21 0z" fill="#01579B"/><path d="M5.8 19.5L9.1 23l3.3-3.3-3.3-3.3z" fill="#01579B"/><path d="M5.8 12.8l3.3 3.3L12.4 13l-3.3-3.4z" fill="#29B6F6"/><path d="M9.1 16.1l3.3 3.3 5.4-5.3-3.3-3.4z" fill="#29B6F6"/><path d="M12.4 19.5L9.1 23h5.5l5.2-5.2-3.3-3.3z" fill="#01579B" opacity=".7"/></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 20 26" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0L0 12l3.5 3.5L19 0z" fill="#54C5F8"/>
+          <path d="M12 0L5.5 6.5 9 10l10-10z" fill="#01579B"/>
+          <path d="M3.5 18.5L7 22l3.5-3.5-3.5-3.5z" fill="#01579B"/>
+          <path d="M3.5 11.5l3.5 3.5 3.5-3.5-3.5-3.5z" fill="#29B6F6"/>
+          <path d="M7 15l3.5 3.5 6.5-6.5-3.5-3.5z" fill="#29B6F6"/>
+          <path d="M10.5 18.5L7 22h6.5L20 15.5l-3.5-3.5z" fill="#01579B" opacity=".6"/>
+        </svg>
         <span>Flutter</span>
       </div>
+
     </div>
   </div>
 
-  <!-- Category: Data & AI -->
+  <!-- Row 3: Data & AI -->
   <div class="tech-category reveal">
-    <div class="tech-category-label">
-      <span class="tech-cat-line"></span>
-      <span class="tech-cat-name">Data & AI</span>
-      <span class="tech-cat-line"></span>
-    </div>
-    <div class="tech-logo-row">
+    <div class="tech-cat-divider"><span>Data &amp; AI</span></div>
+    <div class="tech-logo-strip">
+
       <!-- TensorFlow -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 0L1 6v12l11 6 11-6V6z" fill="#FF6F00"/><path d="M12 3L4 7.5v9L12 21l8-4.5v-9z" fill="#FF8F00"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="white" font-family="sans-serif">TF</text></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 28 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 0L0 8v16l14 8 14-8V8z" fill="#FF6F00"/>
+          <path d="M14 4L4 10v12l10 5.8L24 22V10z" fill="#FF8F00"/>
+          <path d="M9 10h10v2.5H16v7.5h-3v-7.5H9z" fill="white"/>
+        </svg>
         <span>TensorFlow</span>
       </div>
-      <!-- Kafka -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="5" r="3" fill="none" stroke="#231F20" stroke-width="1.5"/><circle cx="5" cy="17" r="3" fill="none" stroke="#231F20" stroke-width="1.5"/><circle cx="19" cy="17" r="3" fill="none" stroke="#231F20" stroke-width="1.5"/><line x1="12" y1="8" x2="12" y2="12" stroke="#231F20" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="12" x2="5" y2="14" stroke="#231F20" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="12" x2="19" y2="14" stroke="#231F20" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.5" fill="#231F20"/></svg>
-        <span>Kafka</span>
+
+      <!-- Apache Kafka: real black/white K wordmark -->
+      <div class="tls-item">
+        <svg height="22" viewBox="0 0 68 22" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="5" r="3.5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <circle cx="4" cy="17" r="3.5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <circle cx="18" cy="17" r="3.5" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="11" y1="8.5" x2="11" y2="12" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="11" y1="12" x2="4" y2="13.5" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="11" y1="12" x2="18" y2="13.5" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11" cy="12" r="2" fill="var(--ink)"/>
+          <text x="26" y="16" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="var(--ink)">Kafka</text>
+        </svg>
+        <span></span>
       </div>
-      <!-- PostgreSQL -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#336791"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6" fill="none" stroke="#336791" stroke-width="2"/><path d="M4 10c0 1.7 3.6 3 8 3s8-1.3 8-3M4 14c0 1.7 3.6 3 8 3s8-1.3 8-3" stroke="#336791" stroke-width="1.5" fill="none"/><ellipse cx="12" cy="6" rx="8" ry="3" fill="none" stroke="#336791" stroke-width="1.5"/><ellipse cx="12" cy="6" rx="8" ry="3" fill="#4a7fa5"/></svg>
+
+      <!-- PostgreSQL: blue elephant -->
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#336791" d="M17.1 3.2c-.5-.1-1-.1-1.5 0-.4-1-1-1.9-2-2.4C11.8 0 9.8 0 8.5.7c-.4.2-.7.5-1 .8C6.2 1 4.8.9 3.7 1.5 2.2 2.4 1.6 4.1 1.8 5.8c-.4.5-.7 1-.8 1.6-.3 1.3 0 2.7.8 3.8.7.9 1.7 1.5 2.8 1.8.2.9.6 1.7 1.1 2.3.7.9 1.7 1.4 2.7 1.4.7 0 1.4-.2 2-.6v1.9c0 1 .8 1.7 1.7 1.7s1.7-.8 1.7-1.7v-1c.5.2 1 .3 1.6.2.8 1.1 2 1.7 3.3 1.7 1 0 2-.4 2.7-1.1.8-.8 1.2-1.9 1.1-3-.1-1-.6-2-1.3-2.6.5-.8.7-1.7.6-2.6C22 4.9 19.8 3.6 17.1 3.2z"/>
+          <path fill="#white" d="M12 6.5c0 2-1.1 3.5-2.5 3.5S7 8.5 7 6.5 8.1 3 9.5 3 12 4.5 12 6.5z" fill="white" opacity=".3"/>
+          <circle cx="9" cy="6" r="1" fill="white"/>
+        </svg>
         <span>PostgreSQL</span>
       </div>
+
       <!-- Redis -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 16" width="26" height="17" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="13" rx="11" ry="3" fill="#A41E11"/><rect x="1" y="6" width="22" height="7" fill="#D82C20"/><ellipse cx="12" cy="6" rx="11" ry="3" fill="#F05A22"/><text x="12" y="9" text-anchor="middle" font-size="4.5" font-weight="900" fill="white" font-family="sans-serif">Redis</text></svg>
-        <span>Redis</span>
+      <div class="tls-item">
+        <svg height="22" viewBox="0 0 32 22" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="16" cy="18" rx="15" ry="4" fill="#912626"/>
+          <rect x="1" y="9" width="30" height="9" fill="#C0392B"/>
+          <ellipse cx="16" cy="9" rx="15" ry="4" fill="#E74C3C"/>
+          <!-- Redis text on top ellipse -->
+          <text x="16" y="11.5" text-anchor="middle" font-size="5" font-weight="900" fill="white" font-family="Arial,sans-serif">Redis</text>
+        </svg>
+        <span></span>
       </div>
+
       <!-- Elasticsearch -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="#FED10A"/><path d="M4 10h11.5a3 3 0 0 0 0-6H7a7 7 0 0 0-3 6zm0 4h11.5a3 3 0 0 1 0 6H7a7 7 0 0 1-3-6z" fill="white"/></svg>
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="15" fill="#FED10A"/>
+          <ellipse cx="16" cy="10" rx="8" ry="3.5" fill="white"/>
+          <ellipse cx="16" cy="16" rx="11" ry="3.5" fill="white" opacity=".85"/>
+          <ellipse cx="16" cy="22" rx="8" ry="3.5" fill="white"/>
+        </svg>
         <span>Elasticsearch</span>
       </div>
-      <!-- MLflow -->
-      <div class="tech-logo-pill">
-        <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#0194E2"/><text x="12" y="16" text-anchor="middle" font-size="8" font-weight="900" fill="white" font-family="sans-serif">ML</text></svg>
-        <span>MLflow</span>
+
+      <!-- PyTorch -->
+      <div class="tls-item">
+        <svg height="26" viewBox="0 0 24 26" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0L4 8a11.3 11.3 0 1 0 16 0L14 2l-2 4-2-4z" fill="#EE4C2C"/>
+          <circle cx="15.5" cy="8.5" r="1.8" fill="white"/>
+        </svg>
+        <span>PyTorch</span>
       </div>
+
     </div>
   </div>
 
@@ -1391,19 +1650,19 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 <!-- STATS BAND -->
 <section class="stats-band">
   <div class="stats-band-inner">
-    <div class="stat-item reveal">
+    <div class="stat-item reveal-scale">
       <div class="stat-item-val" data-count="500" data-suffix="+">0+</div>
       <div class="stat-item-label">Projects Delivered</div>
     </div>
-    <div class="stat-item reveal">
+    <div class="stat-item reveal-scale">
       <div class="stat-item-val" data-count="120" data-suffix="+">0+</div>
       <div class="stat-item-label">Enterprise Clients</div>
     </div>
-    <div class="stat-item reveal">
+    <div class="stat-item reveal-scale">
       <div class="stat-item-val" data-count="99" data-suffix=".9%">0</div>
       <div class="stat-item-label">Uptime SLA</div>
     </div>
-    <div class="stat-item reveal">
+    <div class="stat-item reveal-scale">
       <div class="stat-item-val" data-count="8" data-suffix="+ yrs">0</div>
       <div class="stat-item-label">Industry Experience</div>
     </div>
@@ -1412,7 +1671,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 
 <!-- PROCESS -->
 <section id="process" class="process">
-  <div class="process-header reveal">
+  <div class="process-header reveal-left">
     <div class="section-label light">How we deliver</div>
     <h2 class="sec-title white">A proven delivery<br>framework</h2>
   </div>
@@ -1470,7 +1729,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 
 <!-- TESTIMONIALS -->
 <section class="testi">
-  <div class="testi-header reveal">
+  <div class="testi-header reveal-left">
     <div class="section-label">Client testimonials</div>
     <h2 class="sec-title">What our clients say</h2>
   </div>
@@ -1553,15 +1812,15 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
         </div>
         <div class="ci-row">
           <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.6 10.8a15.4 15.4 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.5 11.5 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.6 3.6a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></div>
-          <div><div class="ci-label">Phone</div><div class="ci-val">040 7777 0007</div></div>
+          <div><div class="ci-label">Phone</div><div class="ci-val">+91 7702721477</div></div>
         </div>
         <div class="ci-row">
           <div class="ci-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
           <div><div class="ci-label">Location</div><div class="ci-val">LGF 23, Sahara Complex, LB Nagar<br>Hyderabad, Telangana — 500074</div></div>
         </div>
-        <a href="https://wa.me/914077770007?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20software%20project." target="_blank" rel="noopener" class="wa-row">
+        <a href="https://wa.me/917702721477?text=Hi%20SafeCodex%2C%20I%27d%20like%20to%20discuss%20a%20software%20project." target="_blank" rel="noopener" class="wa-row">
           <div class="wa-icon"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 1C7.716 1 1 7.716 1 16c0 2.628.676 5.098 1.858 7.248L1 31l7.96-2.088A14.94 14.94 0 0 0 16 31c8.284 0 15-6.716 15-15S24.284 1 16 1z" fill="rgba(255,255,255,.2)"/><path d="M22.8 19.44c-.38-.19-2.25-1.11-2.6-1.24-.35-.13-.6-.19-.86.19-.25.38-.98 1.24-1.2 1.49-.22.25-.44.28-.82.1-.38-.19-1.61-.59-3.07-1.89-1.13-1.01-1.89-2.25-2.11-2.63-.22-.38-.02-.59.17-.77.17-.17.38-.44.57-.66.19-.22.25-.38.38-.63.13-.25.06-.47-.03-.66-.1-.19-.86-2.07-1.18-2.83-.31-.74-.62-.64-.86-.65-.22-.01-.47-.01-.72-.01s-.66.1-1.01.47C9.8 8.92 9 9.92 9 11.42s1.36 3.68 1.55 3.94c.19.25 2.69 4.1 6.51 5.75.91.39 1.62.63 2.17.8.91.29 1.74.25 2.39.15.73-.11 2.25-.92 2.57-1.81.32-.89.32-1.65.22-1.81-.09-.16-.35-.25-.73-.44z" fill="white"/></svg></div>
-          <div><div class="wa-label">WhatsApp</div><div class="wa-val">+91 40 7777 0007</div></div>
+          <div><div class="wa-label">WhatsApp</div><div class="wa-val">+91 7702721477</div></div>
           <div class="wa-cta">Chat now →</div>
         </a>
       </div>
@@ -1688,15 +1947,157 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 </footer>
 
 <!-- SONI AI ASSISTANT -->
-<button id="sony-btn" aria-label="Chat with Soni — SafeCodex AI">
+<button id="sony-btn" aria-label="Chat with Rsoni — SafeCodex AI">
   <div class="sony-pulse"></div>
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <svg viewBox="0 0 62 62" width="62" height="62" xmlns="http://www.w3.org/2000/svg" style="display:block;position:absolute;top:0;left:0">
+    <defs>
+      <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#1e3a6e"/>
+        <stop offset="100%" stop-color="#0a1628"/>
+      </radialGradient>
+      <radialGradient id="skinGrad" cx="50%" cy="35%" r="55%">
+        <stop offset="0%" stop-color="#FFD4A8"/>
+        <stop offset="100%" stop-color="#F5A97A"/>
+      </radialGradient>
+      <radialGradient id="hairGrad" cx="50%" cy="0%" r="80%">
+        <stop offset="0%" stop-color="#3D1F6B"/>
+        <stop offset="100%" stop-color="#1A0A30"/>
+      </radialGradient>
+      <linearGradient id="dressGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0066FF"/>
+        <stop offset="100%" stop-color="#00C2FF"/>
+      </linearGradient>
+      <filter id="glow2">
+        <feGaussianBlur stdDeviation="1" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Background circle -->
+    <circle cx="31" cy="31" r="31" fill="url(#bgGrad)"/>
+
+    <!-- Dress / shoulders at bottom -->
+    <path d="M10 62 C10 50 18 46 31 46 C44 46 52 50 52 62Z" fill="url(#dressGrad)"/>
+    <!-- Dress neckline detail -->
+    <path d="M24 46 C26 50 36 50 38 46" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+
+    <!-- Neck -->
+    <rect x="27" y="42" width="8" height="7" rx="4" fill="url(#skinGrad)"/>
+
+    <!-- Hair back layer -->
+    <ellipse cx="31" cy="26" rx="17" ry="19" fill="url(#hairGrad)"/>
+
+    <!-- Face -->
+    <ellipse cx="31" cy="29" rx="13" ry="14" fill="url(#skinGrad)"/>
+
+    <!-- Hair front - flowing waves -->
+    <path d="M14 22 C14 8 20 4 31 4 C42 4 48 8 48 22 C46 13 42 10 31 10 C20 10 16 13 14 22Z" fill="url(#hairGrad)"/>
+    <!-- Left hair strand -->
+    <path d="M15 23 C13 28 13 35 15 41 C16 38 17 34 18 29Z" fill="url(#hairGrad)"/>
+    <!-- Right hair strand -->
+    <path d="M47 23 C49 28 49 35 47 41 C46 38 45 34 44 29Z" fill="url(#hairGrad)"/>
+    <!-- Hair highlight -->
+    <path d="M22 8 C26 6 34 6 40 9" stroke="rgba(255,255,255,.15)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyebrows — arched, defined -->
+    <path d="M21 23.5 C23 22 26.5 22 28.5 23.5" stroke="#2a0f4a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M33.5 23.5 C35.5 22 39 22 41 23.5" stroke="#2a0f4a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+    <!-- Eyes — almond shaped -->
+    <ellipse cx="24.5" cy="28" rx="3.8" ry="3" fill="#1a0830"/>
+    <ellipse cx="37.5" cy="28" rx="3.8" ry="3" fill="#1a0830"/>
+    <!-- Iris -->
+    <circle cx="24.5" cy="28.2" r="2.2" fill="#4a2080"/>
+    <circle cx="37.5" cy="28.2" r="2.2" fill="#4a2080"/>
+    <!-- Pupil -->
+    <circle cx="24.5" cy="28.2" r="1.2" fill="#0d0618"/>
+    <circle cx="37.5" cy="28.2" r="1.2" fill="#0d0618"/>
+    <!-- Eye shine main -->
+    <circle cx="25.6" cy="27" r="1" fill="white"/>
+    <circle cx="38.6" cy="27" r="1" fill="white"/>
+    <!-- Eye shine small -->
+    <circle cx="23.8" cy="29" r=".45" fill="rgba(255,255,255,.6)"/>
+    <circle cx="36.8" cy="29" r=".45" fill="rgba(255,255,255,.6)"/>
+    <!-- Eyelashes top -->
+    <path d="M21 25.5 C22 24 23 24 24 25" stroke="#1a0830" stroke-width=".9" stroke-linecap="round" fill="none"/>
+    <path d="M34 25.5 C35 24 36 24 37 25" stroke="#1a0830" stroke-width=".9" stroke-linecap="round" fill="none"/>
+
+    <!-- Nose — subtle -->
+    <path d="M30 33 C30.5 34.5 31.5 34.5 32 33" stroke="#d4845a" stroke-width=".9" stroke-linecap="round" fill="none"/>
+    <circle cx="29.5" cy="33.5" r=".6" fill="rgba(200,110,80,.3)"/>
+    <circle cx="32.5" cy="33.5" r=".6" fill="rgba(200,110,80,.3)"/>
+
+    <!-- Lips -->
+    <!-- Upper lip -->
+    <path d="M25.5 37 C27 35.5 29 35 31 35 C33 35 35 35.5 36.5 37" fill="#E8725A"/>
+    <path d="M25.5 37 C27.5 36 29.5 35.8 31 36 C32.5 35.8 34.5 36 36.5 37" fill="#D4553A"/>
+    <!-- Lower lip -->
+    <path d="M25.5 37 C27 39 35 39 36.5 37" fill="#E8725A"/>
+    <!-- Lip highlight -->
+    <path d="M28 36.5 C29.5 36 32.5 36 34 36.5" stroke="rgba(255,200,180,.5)" stroke-width=".8" fill="none"/>
+    <!-- Lip line -->
+    <path d="M25.5 37 C28 37.5 34 37.5 36.5 37" stroke="#C4402A" stroke-width=".7" fill="none"/>
+
+    <!-- Cheek blush -->
+    <ellipse cx="19.5" cy="34" rx="4" ry="2.2" fill="rgba(255,130,110,.18)" filter="url(#glow2)"/>
+    <ellipse cx="42.5" cy="34" rx="4" ry="2.2" fill="rgba(255,130,110,.18)" filter="url(#glow2)"/>
+
+    <!-- Earrings — gold drop -->
+    <circle cx="17" cy="31" r="2" fill="#FFD700"/>
+    <ellipse cx="17" cy="35" rx="1.2" ry="2" fill="#FFD700"/>
+    <circle cx="45" cy="31" r="2" fill="#FFD700"/>
+    <ellipse cx="45" cy="35" rx="1.2" ry="2" fill="#FFD700"/>
+  </svg>
 </button>
-<div id="sony-panel" role="dialog" aria-label="Soni — SafeCodex AI Assistant">
+<div id="sony-panel" role="dialog" aria-label="Rsoni — SafeCodex AI Assistant">
   <div id="sony-header">
-    <div id="sony-avatar">S</div>
+    <div id="sony-avatar">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+            <defs>
+              <radialGradient id="hbg" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#1e3a6e"/><stop offset="100%" stop-color="#0a1628"/></radialGradient>
+              <radialGradient id="hsk" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#FFD4A8"/><stop offset="100%" stop-color="#F5A97A"/></radialGradient>
+              <radialGradient id="hhr" cx="50%" cy="0%" r="80%"><stop offset="0%" stop-color="#3D1F6B"/><stop offset="100%" stop-color="#1A0A30"/></radialGradient>
+              <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#00C2FF"/></linearGradient>
+            </defs>
+            <circle cx="20" cy="20" r="20" fill="url(#hbg)"/>
+            <path d="M6 40 C6 32 12 29 20 29 C28 29 34 32 34 40Z" fill="url(#hdr)"/>
+            <rect x="17" y="26" width="6" height="5" rx="3" fill="url(#hsk)"/>
+            <ellipse cx="20" cy="17" rx="11" ry="12" fill="url(#hhr)"/>
+            <ellipse cx="20" cy="19" rx="8.5" ry="9" fill="url(#hsk)"/>
+            <path d="M9 16 C9 6 13 3 20 3 C27 3 31 6 31 16 C30 10 27 8 20 8 C13 8 10 10 9 16Z" fill="url(#hhr)"/>
+            <path d="M9.5 16 C8 20 8 25 9.5 28 C10 26 11 22 11.5 19Z" fill="url(#hhr)"/>
+            <path d="M30.5 16 C32 20 32 25 30.5 28 C30 26 29 22 28.5 19Z" fill="url(#hhr)"/>
+            <!-- brows -->
+            <path d="M13.5 15.5 C15 14.5 17.5 14.5 19 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <path d="M21 15.5 C22.5 14.5 25 14.5 26.5 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <!-- eyes -->
+            <ellipse cx="15.8" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/>
+            <circle cx="15.8" cy="18.6" r="1.5" fill="#4a2080"/>
+            <circle cx="15.8" cy="18.6" r=".8" fill="#0d0618"/>
+            <circle cx="16.6" cy="17.7" r=".7" fill="white"/>
+            <ellipse cx="24.2" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/>
+            <circle cx="24.2" cy="18.6" r="1.5" fill="#4a2080"/>
+            <circle cx="24.2" cy="18.6" r=".8" fill="#0d0618"/>
+            <circle cx="25" cy="17.7" r=".7" fill="white"/>
+            <!-- nose -->
+            <path d="M19.3 21.5 C19.7 22.4 20.3 22.4 20.7 21.5" stroke="#d4845a" stroke-width=".7" stroke-linecap="round" fill="none"/>
+            <!-- lips -->
+            <path d="M16.5 24 C18 22.8 22 22.8 23.5 24" fill="#E8725A"/>
+            <path d="M16.5 24 C18 25.5 22 25.5 23.5 24" fill="#E8725A"/>
+            <path d="M16.5 24 C18.5 24.5 21.5 24.5 23.5 24" stroke="#C4402A" stroke-width=".5" fill="none"/>
+            <path d="M18 23.5 C19.5 23 20.5 23 22 23.5" stroke="rgba(255,200,180,.5)" stroke-width=".6" fill="none"/>
+            <!-- blush -->
+            <ellipse cx="12" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.18)"/>
+            <ellipse cx="28" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.18)"/>
+            <!-- earrings -->
+            <circle cx="10.5" cy="20" r="1.4" fill="#FFD700"/>
+            <ellipse cx="10.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/>
+            <circle cx="29.5" cy="20" r="1.4" fill="#FFD700"/>
+            <ellipse cx="29.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/>
+          </svg>
+        </div>
     <div>
-      <div id="sony-name">Soni</div>
+      <div id="sony-name">Rsoni</div>
       <div id="sony-status">SafeCodex AI · Online</div>
     </div>
     <button id="sony-close" aria-label="Close">✕</button>
@@ -1709,7 +2110,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
     <button class="sony-chip">Where are you located?</button>
   </div>
   <div id="sony-input-row">
-    <input id="sony-input" type="text" placeholder="Ask Soni anything…" autocomplete="off" maxlength="400"/>
+    <input id="sony-input" type="text" placeholder="Ask Rsoni anything…" autocomplete="off" maxlength="400"/>
     <button id="sony-send" aria-label="Send"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
   </div>
 </div>
@@ -1810,22 +2211,7 @@ const countObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 
-// ── HERO TITLE STAGGER ───────────────────────────────────────────────────────
-(()=>{
-  const title = document.querySelector('h1.hero-title');
-  if(!title) return;
-  // Split on <br> keeping inner HTML (blue/dim spans) intact
-  const lines = title.innerHTML.split(/<br\s*\/?>/i);
-  title.innerHTML = lines.map((line, i) =>
-    `<span style="display:block;opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.23,1,.32,1) ${200 + i*130}ms,transform .65s cubic-bezier(.23,1,.32,1) ${200 + i*130}ms">${line}</span>`
-  ).join('');
-  // Trigger after a short paint delay
-  setTimeout(()=>{
-    document.querySelectorAll('h1.hero-title > span').forEach(s=>{
-      s.style.opacity='1'; s.style.transform='none';
-    });
-  }, 80);
-})();
+
 
 // ── TYPEWRITER on hero badge ──────────────────────────────────────────────────
 (()=>{
@@ -2117,8 +2503,9 @@ function resetForm(){
   let open=false, history=[], isTyping=false, sampleCap=null;
   try{ if(typeof claude!=='undefined') sampleCap=await claude.use('sample'); }catch(_){}
 
-  const SONI_AV=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-  const SYSTEM=`You are Soni, the professional AI assistant for SafeCodex Technologies — an enterprise software company based in Hyderabad, India. You are helpful, concise, and professional.
+  const SONI_AV=`<svg viewBox="0 0 40 40" width="26" height="26" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="av1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#1e3a6e"/><stop offset="100%" stop-color="#0a1628"/></radialGradient><radialGradient id="av2" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#FFD4A8"/><stop offset="100%" stop-color="#F5A97A"/></radialGradient><radialGradient id="av3" cx="50%" cy="0%" r="80%"><stop offset="0%" stop-color="#3D1F6B"/><stop offset="100%" stop-color="#1A0A30"/></radialGradient><linearGradient id="av4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#00C2FF"/></linearGradient></defs><circle cx="20" cy="20" r="20" fill="url(#av1)"/><path d="M6 40 C6 32 12 29 20 29 C28 29 34 32 34 40Z" fill="url(#av4)"/><rect x="17" y="26" width="6" height="5" rx="3" fill="url(#av2)"/><ellipse cx="20" cy="17" rx="11" ry="12" fill="url(#av3)"/><ellipse cx="20" cy="19" rx="8.5" ry="9" fill="url(#av2)"/><path d="M9 16 C9 6 13 3 20 3 C27 3 31 6 31 16 C30 10 27 8 20 8 C13 8 10 10 9 16Z" fill="url(#av3)"/><path d="M9.5 16 C8 20 8 25 9.5 28 C10 26 11 22 11.5 19Z" fill="url(#av3)"/><path d="M30.5 16 C32 20 32 25 30.5 28 C30 26 29 22 28.5 19Z" fill="url(#av3)"/><path d="M13.5 15.5 C15 14.5 17.5 14.5 19 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M21 15.5 C22.5 14.5 25 14.5 26.5 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="15.8" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="15.8" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="15.8" cy="18.6" r=".8" fill="#0d0618"/><circle cx="16.6" cy="17.7" r=".7" fill="white"/><ellipse cx="24.2" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="24.2" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="24.2" cy="18.6" r=".8" fill="#0d0618"/><circle cx="25" cy="17.7" r=".7" fill="white"/><path d="M16.5 24 C18 22.8 22 22.8 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18 25.5 22 25.5 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18.5 24.5 21.5 24.5 23.5 24" stroke="#C4402A" stroke-width=".5" fill="none"/><ellipse cx="12" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><ellipse cx="28" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><circle cx="10.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="10.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/><circle cx="29.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="29.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/></svg>`;
+
+  const SYSTEM=`You are Rsoni, the professional AI assistant for SafeCodex Technologies — an enterprise software company based in Hyderabad, India. You are helpful, concise, and professional.
 
 Company facts:
 - Services: Custom Software Development, Cloud & DevOps (AWS/Azure/K8s), AI/ML & Data Engineering, Cybersecurity (VAPT/SOC2/ISO27001), ERP & System Integration, Mobile Apps (React Native/Flutter)
@@ -2128,16 +2515,16 @@ Company facts:
 - Uptime SLA: 99.9%
 - Team: 200+ engineers and consultants
 - Founded: 2018 | HQ: LB Nagar, Hyderabad, Telangana, India
-- Phone: 040 7777 0007 | WhatsApp: +91 40 7777 0007 | Email: hello@safecodex.io
+- Phone: +91 7702721477 | WhatsApp: +91 7702721477 | Email: hello@safecodex.io
 - Delivery: Agile sprints, typical project 8–24 weeks
 - Keep replies under 100 words unless the question genuinely needs more.
-- Sign as "Soni" only on first reply.`;
+- Sign as "Rsoni" only on first reply.`;
 
   function togglePanel(){
     open=!open;
     panel.classList.toggle('open',open);
     if(open && msgs.children.length===0){
-      appendBot("Hi! I'm **Soni**, SafeCodex's AI assistant. I can tell you about our software services, products, delivery process, or help you get in touch with our team. What would you like to know?");
+      appendBot("Hi! I'm **Rsoni**, SafeCodex's AI assistant. I can tell you about our software services, products, delivery process, or help you get in touch with our team. What would you like to know?");
     }
     if(open) setTimeout(()=>input?.focus(),320);
   }
@@ -2191,19 +2578,23 @@ Company facts:
     history.push({role:'user',content:text});
     document.getElementById('sony-suggestions')?.style.setProperty('display','none');
     showTyping();
-    await new Promise(r=>setTimeout(r,500));
+    await new Promise(r=>setTimeout(r,400));
     removeTyping();
     const bubble=streamRow();
     let fullText='';
+
+    // Build messages array — system prompt prepended to first user message
+    const apiMessages = history.map((m,i)=>{
+      if(m.role==='user' && i===0){
+        return {role:'user', content: SYSTEM + '\n\n---\nUser question: ' + m.content};
+      }
+      return {role: m.role, content: m.content};
+    });
+
     try{
+      // Try Claude artifact capability first
       if(sampleCap){
-        const apiMsgs=[];
-        let sysAdded=false;
-        history.forEach(m=>{
-          if(m.role==='user'&&!sysAdded){ apiMsgs.push({role:'user',content:SYSTEM+'\n\n---\n'+m.content}); sysAdded=true; }
-          else apiMsgs.push(m);
-        });
-        await sampleCap(apiMsgs,{
+        await sampleCap(apiMessages,{
           onText:({text:t})=>{
             fullText=t;
             bubble.innerHTML=mdToHtml(t)+'<span style="display:inline-block;width:2px;height:12px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>';
@@ -2211,20 +2602,405 @@ Company facts:
           }
         });
         bubble.innerHTML=mdToHtml(fullText);
-        history.push({role:'assistant',content:fullText});
       } else {
-        const fallback=`Hi! I'm Soni. SafeCodex builds enterprise software — custom apps, cloud infrastructure, AI/ML systems, cybersecurity, and ERP integrations. For detailed enquiries please email **hello@safecodex.io** or call **040 7777 0007**.`;
-        bubble.innerHTML=mdToHtml(fallback);
-        history.push({role:'assistant',content:fallback});
+        // Direct Anthropic API call
+        const resp = await fetch('https://api.anthropic.com/v1/messages',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({
+            model:'claude-sonnet-4-6',
+            max_tokens:600,
+            system: SYSTEM,
+            messages: history.map(m=>({role:m.role, content:m.content}))
+          })
+        });
+        const data = await resp.json();
+        fullText = data?.content?.[0]?.text || '';
+
+        // Stream the text character by character for a nice effect
+        if(fullText){
+          bubble.innerHTML='';
+          for(let i=0;i<fullText.length;i++){
+            await new Promise(r=>setTimeout(r,12));
+            bubble.innerHTML=mdToHtml(fullText.slice(0,i+1))+'<span style="display:inline-block;width:2px;height:12px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>';
+            if(msgs) msgs.scrollTop=msgs.scrollHeight;
+          }
+          bubble.innerHTML=mdToHtml(fullText);
+        } else {
+          throw new Error('No response');
+        }
       }
+      history.push({role:'assistant', content:fullText});
+
     }catch(err){
-      bubble.innerHTML=mdToHtml('Sorry, I hit a snag. Please email **hello@safecodex.io** or call **040 7777 0007** and our team will help directly.');
+      // Smart fallback — answer common questions locally
+      const q = text.toLowerCase();
+      let reply='';
+      if(q.includes('service')||q.includes('what do you do')||q.includes('offer'))
+        reply='We offer **Custom Software Development**, **Cloud & DevOps** (AWS/Azure/K8s), **AI/ML & Data Engineering**, **Cybersecurity** (VAPT/SOC2/ISO27001), **ERP & System Integration**, and **Mobile App Development** (React Native/Flutter).';
+      else if(q.includes('product'))
+        reply='SafeCodex has three products: **CodeVault ERP** (manufacturing & logistics, 320+ companies), **NexusAI Platform** (AI/MLOps, 18M+ predictions/day), and **ShieldOps SIEM** (real-time security monitoring, 2.4B events/day).';
+      else if(q.includes('price')||q.includes('cost')||q.includes('how much'))
+        reply='Project costs depend on scope and complexity. Custom software projects typically start from ₹8–15 lakhs. Please reach out at **hello@safecodex.io** or call **+91 7702721477** for a free estimate.';
+      else if(q.includes('contact')||q.includes('reach')||q.includes('email')||q.includes('phone'))
+        reply='📧 **hello@safecodex.io**\n📞 **+91 7702721477**\n📍 LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana\n💬 WhatsApp: +91 7702721477';
+      else if(q.includes('how long')||q.includes('timeline')||q.includes('time'))
+        reply='Typical timelines: Discovery & Architecture (2–3 weeks), Development sprints (8–20 weeks), QA & Testing (2–3 weeks), Deployment (1 week). Total: **12–26 weeks** depending on complexity.';
+      else if(q.includes('case study')||q.includes('client')||q.includes('example'))
+        reply='Key projects include:\n- **CodeVault ERP** for Bharat Heavy Industrials — 60% efficiency gain\n- **ShieldOps SIEM** for IndusInd Bank — 84% fewer security incidents\n- **NexusAI** for Apollo Hospitals — 91% diagnostic accuracy';
+      else if(q.includes('location')||q.includes('where')||q.includes('hyderabad'))
+        reply='SafeCodex is headquartered at **LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana, India**. We serve clients across 28+ countries.';
+      else if(q.includes('erp')||q.includes('codevault'))
+        reply='**CodeVault ERP** is our full-stack enterprise resource planning platform covering procurement, production, inventory, payroll, and reporting. Currently live in 320+ companies across manufacturing, logistics, and services with 99.9% uptime SLA.';
+      else if(q.includes('ai')||q.includes('machine learning')||q.includes('nexus'))
+        reply='**NexusAI Platform** is our unified AI operations platform for model training, deployment, monitoring, and MLOps. It processes 18M+ predictions per day with 94% accuracy across industries including healthcare, finance, and retail.';
+      else if(q.includes('security')||q.includes('siem')||q.includes('shield'))
+        reply='**ShieldOps SIEM** provides real-time threat detection processing 2.4B security events daily with sub-second alert latency. Covers SOC 2, ISO 27001, PCI-DSS and RBI compliance reporting. Currently in Beta.';
+      else if(q.includes('cloud')||q.includes('devops')||q.includes('aws')||q.includes('azure'))
+        reply='We provide multi-cloud architecture on **AWS and Azure**, CI/CD pipelines, **Kubernetes** orchestration, Docker containerisation, Terraform IaC, and 24/7 infrastructure monitoring with 99.9% uptime SLA.';
+      else if(q.includes('hi')||q.includes('hello')||q.includes('hey'))
+        reply="Hi there! 👋 I'm **Rsoni**, SafeCodex's AI assistant. Ask me anything about our software services, products, pricing, timelines, or how to get in touch!";
+      else
+        reply=`Great question! For detailed information about "${text}", please reach out to our team directly:\n\n📧 **hello@safecodex.io**\n📞 **+91 7702721477**\n\nWe'll get back to you within one business day.`;
+
+      // Simulate typing
+      bubble.innerHTML='';
+      for(let i=0;i<reply.length;i++){
+        await new Promise(r=>setTimeout(r,10));
+        bubble.innerHTML=mdToHtml(reply.slice(0,i+1))+'<span style="display:inline-block;width:2px;height:12px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>';
+        if(msgs) msgs.scrollTop=msgs.scrollHeight;
+      }
+      bubble.innerHTML=mdToHtml(reply);
+      history.push({role:'assistant',content:reply});
     }
+
     if(msgs) msgs.scrollTop=msgs.scrollHeight;
     isTyping=false;
     if(sendB) sendB.disabled=false;
     input?.focus();
   }
+})();
+
+// ═══════════════════════════════════════════════
+// ADVANCED INTERACTIONS JS — SafeCodex
+// ═══════════════════════════════════════════════
+
+// ── 1. PAGE LOADER ──────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('sc-loader');
+    if (loader) loader.classList.add('hidden');
+  }, 1000);
+});
+
+// ── 2. CUSTOM CURSOR ────────────────────────────────────────────────────────
+(()=>{
+  const cur = document.getElementById('sc-cursor');
+  const ring = document.getElementById('sc-ring');
+  if(!cur||!ring) return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e=>{
+    mx=e.clientX; my=e.clientY;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+  },{passive:true});
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  (function animRing(){
+    rx=lerp(rx,mx,.12); ry=lerp(ry,my,.12);
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  const hoverEls = document.querySelectorAll('a,button,.svc-card,.product-card,.case-card,.testi-card,.tls-item,.glass-card');
+  hoverEls.forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+})();
+
+// ── 3. SCROLL PROGRESS ──────────────────────────────────────────────────────
+(()=>{
+  const bar = document.getElementById('sc-progress');
+  if(!bar) return;
+  window.addEventListener('scroll',()=>{
+    const pct = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    bar.style.width = Math.min(pct,100)+'%';
+  },{passive:true});
+})();
+
+// ── 4. REVEAL ON SCROLL (all variants) ──────────────────────────────────────
+(()=>{
+  const selectors = '.reveal,.reveal-left,.reveal-right,.reveal-scale';
+  const els = [...document.querySelectorAll(selectors)].filter(el=>!el.closest('.hero'));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'), i*60);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.08});
+  els.forEach(el=>obs.observe(el));
+})();
+
+// ── 5. STAGGERED GRID CHILDREN ──────────────────────────────────────────────
+(()=>{
+  const grids = document.querySelectorAll('.services-grid,.products-grid,.testi-grid,.tech-logo-strip'); // hero excluded
+  // Never touch hero children
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      [...e.target.children].forEach((child,i)=>{
+        child.style.opacity='0';
+        child.style.transform='translateY(20px)';
+        setTimeout(()=>{
+          child.style.transition=`opacity .55s cubic-bezier(.23,1,.32,1) ${i*80}ms,transform .55s cubic-bezier(.23,1,.32,1) ${i*80}ms`;
+          child.style.opacity='1';
+          child.style.transform='none';
+        },100);
+      });
+      obs.unobserve(e.target);
+    });
+  },{threshold:.08});
+  grids.forEach(g=>obs.observe(g));
+})();
+
+// ── 6. COUNTER ANIMATION ────────────────────────────────────────────────────
+(()=>{
+  function countUp(el){
+    const raw=el.dataset.count;
+    if(!raw) return;
+    const target=parseFloat(raw);
+    const suffix=el.dataset.suffix||'';
+    const isFloat=raw.includes('.');
+    const dur=1800;
+    let start=null;
+    const ease=t=>1-Math.pow(1-t,4);
+    const tick=ts=>{
+      if(!start) start=ts;
+      const p=Math.min((ts-start)/dur,1);
+      const v=ease(p)*target;
+      el.textContent=(isFloat?v.toFixed(1):Math.round(v))+suffix;
+      el.classList.add('counting');
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      obs.unobserve(e.target);
+    });
+  },{threshold:.3});
+  ['#heroStats','.stats-band-inner','.hero-stats'].forEach(sel=>{
+    const el=document.querySelector(sel);
+    if(el) obs.observe(el);
+  });
+})();
+
+// ── 8./ ── 8. TYPEWRITER HERO BADGE ────────────────────────────────────────────────
+(()=>{
+  const el=document.querySelector('.hero-badge span');
+  if(!el) return;
+  const phrases=['Trusted by 120+ Enterprises','ISO 27001 · SOC 2 Certified','Serving 28+ Countries','500+ Projects Delivered'];
+  let pi=0,ci=0,del=false;
+  el.textContent='';
+  const tick=()=>{
+    const p=phrases[pi%phrases.length];
+    if(!del){el.textContent=p.slice(0,++ci); if(ci===p.length){del=true;setTimeout(tick,2200);return;} setTimeout(tick,52);}
+    else{el.textContent=p.slice(0,--ci); if(ci===0){del=false;pi++;setTimeout(tick,300);return;} setTimeout(tick,28);}
+  };
+  setTimeout(tick,1200);
+})();
+
+// ── 9. 3D CARD TILT ─────────────────────────────────────────────────────────
+document.querySelectorAll('.svc-card,.product-card,.case-card,.glass-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px) scale(1.015)`;
+    card.style.transition='none';
+    // Spotlight
+    const spot=card.querySelector('.svc-spotlight');
+    if(spot){spot.style.setProperty('--mx',(e.clientX-r.left)+'px');spot.style.setProperty('--my',(e.clientY-r.top)+'px');}
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transition='transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s';
+    card.style.transform='';
+    card.style.boxShadow='';
+  });
+});
+
+// ── 10. MAGNETIC BUTTONS ────────────────────────────────────────────────────
+document.querySelectorAll('.btn-primary,.btn-secondary,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.3;
+    const y=(e.clientY-r.top-r.height/2)*.3;
+    btn.style.transform=`translate(${x}px,${y}px) scale(1.04)`;
+    btn.style.transition='none';
+  });
+  btn.addEventListener('mouseleave',()=>{
+    btn.style.transition='transform .4s cubic-bezier(.23,1,.32,1),background .25s,box-shadow .25s';
+    btn.style.transform='';
+  });
+});
+
+// ── 11. HERO PARTICLE CANVAS ────────────────────────────────────────────────
+(()=>{
+  const hero=document.querySelector('.hero');
+  if(!hero||hero.querySelector('canvas')) return;
+  const c=document.createElement('canvas');
+  c.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.45';
+  hero.prepend(c);
+  const ctx=c.getContext('2d');
+  let W,H;
+  const resize=()=>{W=c.width=hero.offsetWidth;H=c.height=hero.offsetHeight;};
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  const COLS=['rgba(0,102,255,','rgba(0,194,255,','rgba(0,230,118,'];
+  class P{
+    constructor(){this.reset();}
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.6+.3;this.a=Math.random()*.4+.05;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.c=COLS[Math.floor(Math.random()*COLS.length)];}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.c+this.a+')';ctx.fill();}
+    update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+  }
+  const dots=Array.from({length:90},()=>new P());
+  (function loop(){ctx.clearRect(0,0,W,H);dots.forEach(d=>{d.update();d.draw();});requestAnimationFrame(loop);})();
+})();
+
+// ── 12. HERO CURSOR ORB ─────────────────────────────────────────────────────
+(()=>{
+  const hero=document.querySelector('.hero');
+  const glow=document.querySelector('.hero-glow-1');
+  if(!hero||!glow) return;
+  let tx=0,ty=0,cx=0,cy=0;
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    tx=e.clientX-r.left-350; ty=e.clientY-r.top-350;
+  },{passive:true});
+  (function frame(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;glow.style.left=cx+'px';glow.style.top=cy+'px';requestAnimationFrame(frame);})();
+})();
+
+// ── 13. PROCESS STEPS STAGGER ───────────────────────────────────────────────
+(()=>{
+  const steps=document.querySelectorAll('.proc-step');
+  if(!steps.length) return;
+  steps.forEach((s,i)=>{s.style.opacity='0';s.style.transform='translateX(-20px)';});
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const idx=[...steps].indexOf(e.target);
+      setTimeout(()=>{
+        e.target.style.transition='opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)';
+        e.target.style.opacity='1'; e.target.style.transform='';
+        const num=e.target.querySelector('.proc-num');
+        if(num){num.style.transform='scale(0)';num.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1) .15s';requestAnimationFrame(()=>num.style.transform='scale(1)');}
+      },idx*90);
+      obs.unobserve(e.target);
+    });
+  },{threshold:.2});
+  steps.forEach(s=>obs.observe(s));
+})();
+
+// ── 14. ACTIVE NAV HIGHLIGHT ────────────────────────────────────────────────
+(()=>{
+  const sections=document.querySelectorAll('section[id]');
+  const links=document.querySelectorAll('.nav-links a[href^="#"]');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
+    });
+  },{threshold:.4,rootMargin:'-10% 0px -50% 0px'});
+  sections.forEach(s=>obs.observe(s));
+})();
+
+// ── 15. SMOOTH SCROLL ───────────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t) return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// ── 16. CASE CARD HOVER SHIMMER + OPEN ON CLICK ─────────────────────────────
+document.querySelectorAll('.case-card[data-case]').forEach(card=>{
+  card.style.cursor='pointer';
+});
+
+// ── 17. TESTIMONIAL CARDS STAGGER ───────────────────────────────────────────
+(()=>{
+  const grid=document.querySelector('.testi-grid');
+  if(!grid) return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      [...e.target.querySelectorAll('.testi-card')].forEach((card,i)=>{
+        card.style.opacity='0'; card.style.transform='translateY(28px)';
+        setTimeout(()=>{
+          card.style.transition=`opacity .6s cubic-bezier(.23,1,.32,1) ${i*120}ms,transform .6s cubic-bezier(.23,1,.32,1) ${i*120}ms`;
+          card.style.opacity='1'; card.style.transform='';
+        },150);
+      });
+      obs.unobserve(e.target);
+    });
+  },{threshold:.1});
+  obs.observe(grid);
+})();
+
+// ── 18. TECH PILL CATEGORY STAGGER ──────────────────────────────────────────
+(()=>{
+  document.querySelectorAll('.tech-logo-strip').forEach(strip=>{
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        [...e.target.querySelectorAll('.tls-item')].forEach((item,i)=>{
+          item.style.opacity='0'; item.style.transform='scale(.85)';
+          setTimeout(()=>{
+            item.style.transition=`opacity .45s cubic-bezier(.23,1,.32,1) ${i*55}ms,transform .45s cubic-bezier(.34,1.56,.64,1) ${i*55}ms`;
+            item.style.opacity='1'; item.style.transform='';
+          },100);
+        });
+        obs.unobserve(e.target);
+      });
+    },{threshold:.1});
+    obs.observe(strip);
+  });
+})();
+
+// ── 19. CONTACT FORM FIELD VALIDATION LIVE ──────────────────────────────────
+(()=>{
+  document.querySelectorAll('.fg input,.fg textarea').forEach(field=>{
+    field.addEventListener('blur',()=>{
+      if(field.value.trim().length>0){
+        field.style.borderColor='#16A34A';
+      }
+    });
+    field.addEventListener('focus',()=>{field.style.borderColor='';});
+  });
+})();
+
+// ── 20. STATS BAND COUNTER TRIGGER ──────────────────────────────────────────
+(()=>{
+  const band=document.querySelector('.stats-band-inner');
+  if(!band) return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      [...e.target.querySelectorAll('.stat-item')].forEach((item,i)=>{
+        item.style.opacity='0'; item.style.transform='translateY(24px)';
+        setTimeout(()=>{
+          item.style.transition=`opacity .6s cubic-bezier(.23,1,.32,1) ${i*120}ms,transform .6s cubic-bezier(.23,1,.32,1) ${i*120}ms`;
+          item.style.opacity='1'; item.style.transform='';
+        },100);
+      });
+      obs.unobserve(e.target);
+    });
+  },{threshold:.3});
+  obs.observe(band);
 })();
 
 // ── CASE STUDY MODAL ────────────────────────────────────────────────────────
