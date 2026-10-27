@@ -365,7 +365,7 @@ Reference their specific service area. Mention that a technical team member will
             replyEl.innerHTML=`<span style="white-space:pre-wrap">${t}</span><span style="display:inline-block;width:2px;height:13px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>`;
           }
         });
-        replyEl.innerHTML=`<span style="white-space:pre-wrap">${text}</span><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.35)">— SafeCodex Technologies · <a href="mailto:hello@safecodex.io" style="color:#3385FF;text-decoration:none">hello@safecodex.io</a></div>`;
+        replyEl.innerHTML=`<span style="white-space:pre-wrap">${text}</span><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.35)">— SafeCodex Technologies · <a href="mailto:contact@safecodeg.com" style="color:#3385FF;text-decoration:none">contact@safecodeg.com</a></div>`;
       }catch(err){
         replyEl.textContent=`Hi ${data.first}, thank you for reaching out. We've received your enquiry about ${data.service} and a member of our technical team will get back to you within one business day. — SafeCodex Team`;
       }
@@ -411,7 +411,7 @@ Company facts:
 - Uptime SLA: 99.9%
 - Team: 200+ engineers and consultants
 - Founded: 2018 | HQ: LB Nagar, Hyderabad, Telangana, India
-- Phone: 040 7777 0007 | WhatsApp: +91 40 7777 0007 | Email: hello@safecodex.io
+- Phone: 040 7777 0007 | WhatsApp: +91 40 7777 0007 | Email: contact@safecodeg.com
 - Delivery: Agile sprints, typical project 8–24 weeks
 - Keep replies under 100 words unless the question genuinely needs more.
 - Sign as "Soni" only on first reply.`;
@@ -496,12 +496,12 @@ Company facts:
         bubble.innerHTML=mdToHtml(fullText);
         history.push({role:'assistant',content:fullText});
       } else {
-        const fallback=`Hi! I'm Soni. SafeCodex builds enterprise software — custom apps, cloud infrastructure, AI/ML systems, cybersecurity, and ERP integrations. For detailed enquiries please email **hello@safecodex.io** or call **040 7777 0007**.`;
+        const fallback=`Hi! I'm Soni. SafeCodex builds enterprise software — custom apps, cloud infrastructure, AI/ML systems, cybersecurity, and ERP integrations. For detailed enquiries please email **contact@safecodeg.com** or call **040 7777 0007**.`;
         bubble.innerHTML=mdToHtml(fallback);
         history.push({role:'assistant',content:fallback});
       }
     }catch(err){
-      bubble.innerHTML=mdToHtml('Sorry, I hit a snag. Please email **hello@safecodex.io** or call **040 7777 0007** and our team will help directly.');
+      bubble.innerHTML=mdToHtml('Sorry, I hit a snag. Please email **contact@safecodeg.com** or call **040 7777 0007** and our team will help directly.');
     }
     if(msgs) msgs.scrollTop=msgs.scrollHeight;
     isTyping=false;
