@@ -5,26 +5,6 @@
 
 'use strict';
 
-// ── CUSTOM CURSOR ────────────────────────────────────────────────────────────
-(()=>{
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursor-ring');
-  if(!cursor || !ring) return;
-  cursor.style.cssText='position:fixed;width:8px;height:8px;background:#0066FF;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s';
-  ring.style.cssText='position:fixed;width:30px;height:30px;border:1px solid rgba(0,102,255,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .14s ease-out';
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{
-    mx=e.clientX; my=e.clientY;
-    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
-  });
-  const animRing=()=>{ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); };
-  animRing();
-  document.querySelectorAll('a,button,.svc-card,.product-card,.case-card,.testi-card,.tech-item').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ cursor.style.width='44px'; cursor.style.height='44px'; cursor.style.background='rgba(0,102,255,.15)'; ring.style.opacity='0'; });
-    el.addEventListener('mouseleave',()=>{ cursor.style.width='8px'; cursor.style.height='8px'; cursor.style.background='#0066FF'; ring.style.opacity='1'; });
-  });
-})();
-
 // ── SCROLL REVEAL ────────────────────────────────────────────────────────────
 const revealObs = new IntersectionObserver((entries)=>{
   entries.forEach((e,i)=>{
@@ -36,13 +16,6 @@ const revealObs = new IntersectionObserver((entries)=>{
 },{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
-// ── SCROLL PROGRESS BAR ──────────────────────────────────────────────────────
-const progBar = document.getElementById('scroll-progress');
-window.addEventListener('scroll',()=>{
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  if(progBar) progBar.style.width = (window.scrollY/total*100)+'%';
-},{passive:true});
-
 // ── NAV SCROLL ───────────────────────────────────────────────────────────────
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar')?.classList.toggle('scrolled', window.scrollY>60);
@@ -51,18 +24,22 @@ window.addEventListener('scroll',()=>{
 // ── MOBILE NAV ───────────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
-hamburger?.addEventListener('click',()=>{
-  navLinks?.classList.toggle('open');
-});
-navLinks?.querySelectorAll('a,button').forEach(a=>a.addEventListener('click',()=>navLinks?.classList.remove('open')));
+function setNavOpen(on){
+  navLinks?.classList.toggle('open',on);
+  hamburger?.setAttribute('aria-expanded',on?'true':'false');
+}
+hamburger?.addEventListener('click',()=>setNavOpen(!navLinks?.classList.contains('open')));
+navLinks?.querySelectorAll('a,button').forEach(a=>a.addEventListener('click',()=>setNavOpen(false)));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') setNavOpen(false); });
 const navStyle = document.createElement('style');
-navStyle.textContent=`#navLinks.open{display:flex!important;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,13,31,.97);padding:2rem 5vw;border-bottom:1px solid rgba(255,255,255,.07);gap:1.25rem;z-index:499;backdrop-filter:blur(20px)}#navLinks.open a{color:rgba(255,255,255,.8)!important;font-size:1rem}#navLinks.open button{align-self:flex-start}`;
+navStyle.textContent=`#navLinks.open{display:flex!important;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,13,31,.97);padding:2rem 5vw;border-bottom:1px solid rgba(255,255,255,.07);gap:1.25rem;z-index:499;backdrop-filter:blur(20px)}#navLinks.open a{display:block;color:rgba(255,255,255,.8)!important;font-size:1rem}#navLinks.open button{align-self:flex-start}`;
 document.head.appendChild(navStyle);
 
 // ── SMOOTH SCROLL ────────────────────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
-    const target=document.querySelector(a.getAttribute('href'));
+    const href=a.getAttribute('href');
+    const target=href.length>1&&document.querySelector(href);
     if(!target) return;
     e.preventDefault();
     target.scrollIntoView({behavior:'smooth',block:'start'});
@@ -93,22 +70,7 @@ const countObs=new IntersectionObserver(entries=>{
 },{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 
-// ── HERO TITLE STAGGER ───────────────────────────────────────────────────────
-(()=>{
-  const title = document.querySelector('h1.hero-title');
-  if(!title) return;
-  // Split on <br> keeping inner HTML (blue/dim spans) intact
-  const lines = title.innerHTML.split(/<br\s*\/?>/i);
-  title.innerHTML = lines.map((line, i) =>
-    `<span style="display:block;opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.23,1,.32,1) ${200 + i*130}ms,transform .65s cubic-bezier(.23,1,.32,1) ${200 + i*130}ms">${line}</span>`
-  ).join('');
-  // Trigger after a short paint delay
-  setTimeout(()=>{
-    document.querySelectorAll('h1.hero-title > span').forEach(s=>{
-      s.style.opacity='1'; s.style.transform='none';
-    });
-  }, 80);
-})();
+
 
 // ── TYPEWRITER on hero badge ──────────────────────────────────────────────────
 (()=>{
@@ -125,21 +87,6 @@ document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
   setTimeout(tick,1000);
 })();
 
-// ── 3D CARD TILT ─────────────────────────────────────────────────────────────
-document.querySelectorAll('.svc-card,.product-card,.case-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-6px) scale(1.01)`;
-    card.style.transition='none';
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transition='transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s,border-color .3s';
-    card.style.transform='';
-  });
-});
-
 // ── MAGNETIC BUTTONS ─────────────────────────────────────────────────────────
 document.querySelectorAll('.btn-primary,.btn-secondary,.nav-cta,.submit-btn').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
@@ -153,21 +100,6 @@ document.querySelectorAll('.btn-primary,.btn-secondary,.nav-cta,.submit-btn').fo
     btn.style.transition='transform .4s cubic-bezier(.23,1,.32,1),background .25s,box-shadow .25s';
     btn.style.transform='';
   });
-});
-
-// ── PROCESS STEP HOVER ───────────────────────────────────────────────────────
-document.querySelectorAll('.proc-step').forEach((step,i)=>{
-  step.style.opacity='0';
-  step.style.transform='translateX(-20px)';
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        setTimeout(()=>{ step.style.transition='opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)'; step.style.opacity='1'; step.style.transform=''; },i*100);
-        obs.unobserve(step);
-      }
-    });
-  },{threshold:.2});
-  obs.observe(step);
 });
 
 // ── TECH GRID STAGGER ────────────────────────────────────────────────────────
@@ -188,20 +120,6 @@ const techObs=new IntersectionObserver(entries=>{
 },{threshold:.15});
 const techGrid=document.querySelector('.tech-grid');
 if(techGrid) techObs.observe(techGrid);
-
-// ── TESTIMONIALS STAGGER ─────────────────────────────────────────────────────
-const testiObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    e.target.querySelectorAll('.testi-card').forEach((card,i)=>{
-      card.style.opacity='0'; card.style.transform='translateY(28px)';
-      setTimeout(()=>{ card.style.transition=`opacity .6s cubic-bezier(.23,1,.32,1) ${i*110}ms,transform .6s cubic-bezier(.23,1,.32,1) ${i*110}ms`; card.style.opacity='1'; card.style.transform=''; },150);
-    });
-    testiObs.unobserve(e.target);
-  });
-},{threshold:.15});
-const testiGrid=document.querySelector('.testi-grid');
-if(testiGrid) testiObs.observe(testiGrid);
 
 // ── PARTICLE CANVAS ──────────────────────────────────────────────────────────
 (()=>{
@@ -226,37 +144,6 @@ if(testiGrid) testiObs.observe(testiGrid);
   const loop=()=>{ ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); };
   loop();
 })();
-
-// ── HERO CURSOR ORB ──────────────────────────────────────────────────────────
-(()=>{
-  const hero=document.querySelector('.hero');
-  const glow=document.querySelector('.hero-glow-1');
-  if(!hero||!glow) return;
-  hero.addEventListener('mousemove',e=>{
-    const r=hero.getBoundingClientRect();
-    const x=((e.clientX-r.left)/r.width)*100;
-    const y=((e.clientY-r.top)/r.height)*100;
-    glow.style.background=`radial-gradient(circle, rgba(0,102,255,.25) 0%, transparent 65%)`;
-    glow.style.left=(e.clientX-r.left-350)+'px';
-    glow.style.top=(e.clientY-r.top-350)+'px';
-    glow.style.transition='left .8s cubic-bezier(.23,1,.32,1),top .8s cubic-bezier(.23,1,.32,1)';
-  });
-})();
-
-// ── ACTIVE NAV HIGHLIGHT ─────────────────────────────────────────────────────
-const sections=document.querySelectorAll('section[id]');
-const navSectionObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting && e.intersectionRatio>.3){
-      document.querySelectorAll('.nav-links a').forEach(a=>{
-        const isActive=a.getAttribute('href')==='#'+e.target.id;
-        a.style.color=isActive?'#fff':'';
-        a.style.fontWeight=isActive?'600':'500';
-      });
-    }
-  });
-},{threshold:.3});
-sections.forEach(s=>navSectionObs.observe(s));
 
 // ── @keyframes spin for form button ─────────────────────────────────────────
 const spinStyle=document.createElement('style');
@@ -294,7 +181,7 @@ document.head.appendChild(spinStyle);
   function validateOnBlur(id){
     if(id==='f-email') return validateField(id,'err-email',s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s));
     const errId='err-'+id.replace('f-','');
-    return validateField(id,errId,s=>s.length>0);
+    return validateField(id,errId,s=>s.length>(id==='f-msg'?5:0));
   }
   function validateAll(){
     const a=validateField('f-first','err-first',s=>s.length>0);
@@ -328,21 +215,26 @@ document.head.appendChild(spinStyle);
       company:document.getElementById('f-company')?.value.trim()||'',
       service:document.getElementById('f-service').value,
       message:document.getElementById('f-msg').value.trim(),
-      submittedAt:new Date().toISOString()
+      website:document.getElementById('f-website')?.value||''
     };
     setLoading(true);
-    // Save to localStorage
+    // Send to the server; only show success once the email has gone out
     try{
-      const saved=JSON.parse(localStorage.getItem('sc_enquiries')||'[]');
-      saved.push(data);
-      localStorage.setItem('sc_enquiries',JSON.stringify(saved));
-    }catch(_){}
+      const resp=await fetch('contact.php',{method:'POST',body:new URLSearchParams(data)});
+      const result=await resp.json().catch(()=>({}));
+      if(!resp.ok||!result.ok) throw new Error(result.error||'');
+    }catch(err){
+      setLoading(false);
+      showStatus(err.message||'Could not send your enquiry. Please email contact@safecodeg.com directly.');
+      return;
+    }
 
     form.style.display='none';
     const succ=document.getElementById('successState');
     if(succ) succ.style.display='block';
+    const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const sumEl=document.getElementById('submissionSummary');
-    if(sumEl) sumEl.innerHTML=`<strong>Your enquiry:</strong><br>${data.first} ${data.last} · ${data.email}${data.company?' · '+data.company:''}<br>${data.service}<br><em style="color:var(--muted)">"${data.message.slice(0,120)}${data.message.length>120?'…':''}"</em>`;
+    if(sumEl) sumEl.innerHTML=`<strong>Your enquiry:</strong><br>${esc(data.first)} ${esc(data.last)} · ${esc(data.email)}${data.company?' · '+esc(data.company):''}<br>${esc(data.service)}<br><em style="color:var(--muted)">"${esc(data.message.slice(0,120))}${data.message.length>120?'…':''}"</em>`;
     setLoading(false);
 
     const replyEl=document.getElementById('aiReply');
@@ -400,8 +292,9 @@ function resetForm(){
   let open=false, history=[], isTyping=false, sampleCap=null;
   try{ if(typeof claude!=='undefined') sampleCap=await claude.use('sample'); }catch(_){}
 
-  const SONI_AV=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-  const SYSTEM=`You are Soni, the professional AI assistant for SafeCodex Technologies — an enterprise software company based in Hyderabad, India. You are helpful, concise, and professional.
+  const SONI_AV=`<svg viewBox="0 0 40 40" width="26" height="26" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="av1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#1e3a6e"/><stop offset="100%" stop-color="#0a1628"/></radialGradient><radialGradient id="av2" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#FFD4A8"/><stop offset="100%" stop-color="#F5A97A"/></radialGradient><radialGradient id="av3" cx="50%" cy="0%" r="80%"><stop offset="0%" stop-color="#3D1F6B"/><stop offset="100%" stop-color="#1A0A30"/></radialGradient><linearGradient id="av4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#00C2FF"/></linearGradient></defs><circle cx="20" cy="20" r="20" fill="url(#av1)"/><path d="M6 40 C6 32 12 29 20 29 C28 29 34 32 34 40Z" fill="url(#av4)"/><rect x="17" y="26" width="6" height="5" rx="3" fill="url(#av2)"/><ellipse cx="20" cy="17" rx="11" ry="12" fill="url(#av3)"/><ellipse cx="20" cy="19" rx="8.5" ry="9" fill="url(#av2)"/><path d="M9 16 C9 6 13 3 20 3 C27 3 31 6 31 16 C30 10 27 8 20 8 C13 8 10 10 9 16Z" fill="url(#av3)"/><path d="M9.5 16 C8 20 8 25 9.5 28 C10 26 11 22 11.5 19Z" fill="url(#av3)"/><path d="M30.5 16 C32 20 32 25 30.5 28 C30 26 29 22 28.5 19Z" fill="url(#av3)"/><path d="M13.5 15.5 C15 14.5 17.5 14.5 19 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M21 15.5 C22.5 14.5 25 14.5 26.5 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="15.8" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="15.8" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="15.8" cy="18.6" r=".8" fill="#0d0618"/><circle cx="16.6" cy="17.7" r=".7" fill="white"/><ellipse cx="24.2" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="24.2" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="24.2" cy="18.6" r=".8" fill="#0d0618"/><circle cx="25" cy="17.7" r=".7" fill="white"/><path d="M16.5 24 C18 22.8 22 22.8 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18 25.5 22 25.5 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18.5 24.5 21.5 24.5 23.5 24" stroke="#C4402A" stroke-width=".5" fill="none"/><ellipse cx="12" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><ellipse cx="28" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><circle cx="10.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="10.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/><circle cx="29.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="29.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/></svg>`;
+
+  const SYSTEM=`You are Rsoni, the professional AI assistant for SafeCodex Technologies — an enterprise software company based in Hyderabad, India. You are helpful, concise, and professional.
 
 Company facts:
 - Services: Custom Software Development, Cloud & DevOps (AWS/Azure/K8s), AI/ML & Data Engineering, Cybersecurity (VAPT/SOC2/ISO27001), ERP & System Integration, Mobile Apps (React Native/Flutter)
@@ -411,16 +304,16 @@ Company facts:
 - Uptime SLA: 99.9%
 - Team: 200+ engineers and consultants
 - Founded: 2018 | HQ: LB Nagar, Hyderabad, Telangana, India
-- Phone: 040 7777 0007 | WhatsApp: +91 40 7777 0007 | Email: contact@safecodeg.com
+- Phone: +91 7702721477 | WhatsApp: +91 7702721477 | Email: contact@safecodeg.com
 - Delivery: Agile sprints, typical project 8–24 weeks
 - Keep replies under 100 words unless the question genuinely needs more.
-- Sign as "Soni" only on first reply.`;
+- Sign as "Rsoni" only on first reply.`;
 
   function togglePanel(){
     open=!open;
     panel.classList.toggle('open',open);
     if(open && msgs.children.length===0){
-      appendBot("Hi! I'm **Soni**, SafeCodex's AI assistant. I can tell you about our software services, products, delivery process, or help you get in touch with our team. What would you like to know?");
+      appendBot("Hi! I'm **Rsoni**, SafeCodex's AI assistant. I can tell you about our software services, products, delivery process, or help you get in touch with our team. What would you like to know?");
     }
     if(open) setTimeout(()=>input?.focus(),320);
   }
@@ -474,19 +367,23 @@ Company facts:
     history.push({role:'user',content:text});
     document.getElementById('sony-suggestions')?.style.setProperty('display','none');
     showTyping();
-    await new Promise(r=>setTimeout(r,500));
+    await new Promise(r=>setTimeout(r,400));
     removeTyping();
     const bubble=streamRow();
     let fullText='';
+
+    // Build messages array — system prompt prepended to first user message
+    const apiMessages = history.map((m,i)=>{
+      if(m.role==='user' && i===0){
+        return {role:'user', content: SYSTEM + '\n\n---\nUser question: ' + m.content};
+      }
+      return {role: m.role, content: m.content};
+    });
+
     try{
+      // Try Claude artifact capability first
       if(sampleCap){
-        const apiMsgs=[];
-        let sysAdded=false;
-        history.forEach(m=>{
-          if(m.role==='user'&&!sysAdded){ apiMsgs.push({role:'user',content:SYSTEM+'\n\n---\n'+m.content}); sysAdded=true; }
-          else apiMsgs.push(m);
-        });
-        await sampleCap(apiMsgs,{
+        await sampleCap(apiMessages,{
           onText:({text:t})=>{
             fullText=t;
             bubble.innerHTML=mdToHtml(t)+'<span style="display:inline-block;width:2px;height:12px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>';
@@ -494,15 +391,54 @@ Company facts:
           }
         });
         bubble.innerHTML=mdToHtml(fullText);
-        history.push({role:'assistant',content:fullText});
       } else {
-        const fallback=`Hi! I'm Soni. SafeCodex builds enterprise software — custom apps, cloud infrastructure, AI/ML systems, cybersecurity, and ERP integrations. For detailed enquiries please email **contact@safecodeg.com** or call **040 7777 0007**.`;
-        bubble.innerHTML=mdToHtml(fallback);
-        history.push({role:'assistant',content:fallback});
+        // No server-side model proxy: answer from the built-in replies below
+        throw new Error('offline');
       }
+      history.push({role:'assistant', content:fullText});
+
     }catch(err){
-      bubble.innerHTML=mdToHtml('Sorry, I hit a snag. Please email **contact@safecodeg.com** or call **040 7777 0007** and our team will help directly.');
+      // Smart fallback — answer common questions locally
+      const q = text.toLowerCase();
+      let reply='';
+      if(q.includes('service')||q.includes('what do you do')||q.includes('offer'))
+        reply='We offer **Custom Software Development**, **Cloud & DevOps** (AWS/Azure/K8s), **AI/ML & Data Engineering**, **Cybersecurity** (VAPT/SOC2/ISO27001), **ERP & System Integration**, and **Mobile App Development** (React Native/Flutter).';
+      else if(q.includes('product'))
+        reply='SafeCodex has three products: **CodeVault ERP** (manufacturing & logistics, 320+ companies), **NexusAI Platform** (AI/MLOps, 18M+ predictions/day), and **ShieldOps SIEM** (real-time security monitoring, 2.4B events/day).';
+      else if(q.includes('price')||q.includes('cost')||q.includes('how much'))
+        reply='Project costs depend on scope and complexity. Custom software projects typically start from ₹8–15 lakhs. Please reach out at **contact@safecodeg.com** or call **+91 7702721477** for a free estimate.';
+      else if(q.includes('contact')||q.includes('reach')||q.includes('email')||q.includes('phone'))
+        reply='📧 **contact@safecodeg.com**\n📞 **+91 7702721477**\n📍 LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana\n💬 WhatsApp: +91 7702721477';
+      else if(q.includes('how long')||q.includes('timeline')||q.includes('time'))
+        reply='Typical timelines: Discovery & Architecture (2–3 weeks), Development sprints (8–20 weeks), QA & Testing (2–3 weeks), Deployment (1 week). Total: **12–26 weeks** depending on complexity.';
+      else if(q.includes('case study')||q.includes('client')||q.includes('example'))
+        reply='Key projects include:\n- **CodeVault ERP** for Bharat Heavy Industrials — 60% efficiency gain\n- **ShieldOps SIEM** for IndusInd Bank — 84% fewer security incidents\n- **NexusAI** for Apollo Hospitals — 91% diagnostic accuracy';
+      else if(q.includes('location')||q.includes('where')||q.includes('hyderabad'))
+        reply='SafeCodex is headquartered at **LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana, India**. We serve clients across 28+ countries.';
+      else if(q.includes('erp')||q.includes('codevault'))
+        reply='**CodeVault ERP** is our full-stack enterprise resource planning platform covering procurement, production, inventory, payroll, and reporting. Currently live in 320+ companies across manufacturing, logistics, and services with 99.9% uptime SLA.';
+      else if(/\bai\b/.test(q)||q.includes('machine learning')||q.includes('nexus'))
+        reply='**NexusAI Platform** is our unified AI operations platform for model training, deployment, monitoring, and MLOps. It processes 18M+ predictions per day with 94% accuracy across industries including healthcare, finance, and retail.';
+      else if(q.includes('security')||q.includes('siem')||q.includes('shield'))
+        reply='**ShieldOps SIEM** provides real-time threat detection processing 2.4B security events daily with sub-second alert latency. Covers SOC 2, ISO 27001, PCI-DSS and RBI compliance reporting. Currently in Beta.';
+      else if(q.includes('cloud')||q.includes('devops')||q.includes('aws')||q.includes('azure'))
+        reply='We provide multi-cloud architecture on **AWS and Azure**, CI/CD pipelines, **Kubernetes** orchestration, Docker containerisation, Terraform IaC, and 24/7 infrastructure monitoring with 99.9% uptime SLA.';
+      else if(/\b(hi|hello|hey)\b/.test(q))
+        reply="Hi there! 👋 I'm **Rsoni**, SafeCodex's AI assistant. Ask me anything about our software services, products, pricing, timelines, or how to get in touch!";
+      else
+        reply=`Great question! For detailed information about "${esc(text)}", please reach out to our team directly:\n\n📧 **contact@safecodeg.com**\n📞 **+91 7702721477**\n\nWe'll get back to you within one business day.`;
+
+      // Simulate typing
+      bubble.innerHTML='';
+      for(let i=0;i<reply.length;i++){
+        await new Promise(r=>setTimeout(r,10));
+        bubble.innerHTML=mdToHtml(reply.slice(0,i+1))+'<span style="display:inline-block;width:2px;height:12px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>';
+        if(msgs) msgs.scrollTop=msgs.scrollHeight;
+      }
+      bubble.innerHTML=mdToHtml(reply);
+      history.push({role:'assistant',content:reply});
     }
+
     if(msgs) msgs.scrollTop=msgs.scrollHeight;
     isTyping=false;
     if(sendB) sendB.disabled=false;
@@ -510,184 +446,174 @@ Company facts:
   }
 })();
 
-// ── CASE STUDY MODAL ────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════
+// ADVANCED INTERACTIONS JS — SafeCodex
+// ═══════════════════════════════════════════════
+
+// ── 1. PAGE LOADER ──────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('sc-loader');
+    if (loader) loader.classList.add('hidden');
+  }, 1000);
+});
+
+// ── 2. CUSTOM CURSOR ────────────────────────────────────────────────────────
 (()=>{
-  const CASES = [
-    {
-      title: 'CodeVault ERP for Bharat Heavy Industrials',
-      tags: ['Manufacturing','ERP & Integration','Cloud Native'],
-      tagClasses: ['modal-tag-blue','modal-tag-cyan','modal-tag-green'],
-      duration: '14 weeks · 2024',
-      subtitle: 'Replacing a 15-year-old legacy ERP with a cloud-native platform across 8 manufacturing plants and 12,400 users — delivering 60% operational efficiency gains within 6 months of go-live.',
-      metrics: [
-        {val:'60%',cls:'',label:'Efficiency gain'},
-        {val:'₹4.2Cr',cls:'blue',label:'Annual savings'},
-        {val:'3 days',cls:'green',label:'Procurement cycle (was 18)'},
-        {val:'99.7%',cls:'',label:'System uptime SLA'},
-      ],
-      challenge: 'Bharat Heavy Industrials operated on a monolithic SAP R/2 system from 2007 — slow, expensive to maintain, and unable to support real-time inventory visibility across 8 geographically distributed plants. Manual procurement approvals averaged 18 days, causing production delays worth ₹1.8Cr quarterly.',
-      solution: 'SafeCodex designed and built CodeVault ERP — a cloud-native, microservices-based platform on AWS, integrated with the existing HRMS and finance systems via REST APIs. We ran a parallel deployment for 6 weeks to ensure zero-downtime migration.',
-      features: [
-        'Real-time inventory tracking across 8 plants with sub-second sync',
-        'Automated purchase order approval workflows reducing cycle time from 18 days to 3',
-        'Integrated supplier portal with 240+ approved vendors',
-        'Mobile app for plant managers with offline-first capability',
-        'Power BI dashboards connected via live data warehouse',
-        'Role-based access for 12,400+ users with SSO via Azure AD',
-      ],
-      outcome: 'Within 6 months of go-live, procurement cycle time dropped 83%, inventory write-offs fell 45%, and the finance team closed monthly books 11 days faster. Annual operational savings reached ₹4.2Cr — a full ROI in under 18 months.',
-      quote: '"SafeCodex didn\'t just replace our old system — they fundamentally modernised how we run operations. The implementation was flawless and the results exceeded every KPI we set."',
-      quoteAuthor: 'Rajesh Kumar, CTO — Bharat Heavy Industrials Ltd.',
-      tech: ['AWS EKS','Node.js','React','PostgreSQL','Redis','Kafka','Azure AD','Power BI','Terraform'],
-    },
-    {
-      title: 'ShieldOps SIEM for IndusInd Bank',
-      tags: ['Fintech','Cybersecurity','Real-time Analytics'],
-      tagClasses: ['modal-tag-blue','modal-tag-cyan','modal-tag-green'],
-      duration: '8 weeks · 2024',
-      subtitle: 'Deploying an enterprise Security Information and Event Management platform that processes 2.4 billion security events daily and reduced mean time to detect from 4 hours to under 0.3 seconds.',
-      metrics: [
-        {val:'84%',cls:'green',label:'Fewer security incidents'},
-        {val:'&lt;0.3s',cls:'blue',label:'Mean time to detect'},
-        {val:'2.4B',cls:'',label:'Events processed / day'},
-        {val:'100%',cls:'green',label:'SOC 2 audit pass rate'},
-      ],
-      challenge: 'IndusInd Bank\'s security team manually reviewed alerts from 14 disparate tools, with a mean detection time of 4 hours. A 2023 near-miss phishing incident exposed the gap — the bank needed a unified, real-time SIEM with automated response before their RBI compliance audit.',
-      solution: 'SafeCodex deployed ShieldOps SIEM — built on an Apache Kafka streaming backbone with Elasticsearch for indexing, custom ML anomaly detection models, and automated SOAR playbooks. Integration covered 14 existing security tools including Palo Alto firewalls and CrowdStrike EDR.',
-      features: [
-        'Real-time ingestion of 2.4B events/day from 14 security tool integrations',
-        'ML-based anomaly detection with tuned false-positive rates below 0.2%',
-        'Automated SOAR playbooks blocking threats in under 1 second',
-        'Unified threat dashboard with drill-down from org level to endpoint',
-        'RBI, PCI-DSS, and ISO 27001 compliance reporting automated',
-        '24/7 SOC integration with PagerDuty escalation chains',
-      ],
-      outcome: 'In the first 90 days post-deployment, critical security incidents dropped 84%. The bank passed its RBI cybersecurity audit with zero major findings — a first in 3 years. The SOC team now handles 4x the event volume with the same headcount.',
-      quote: '"ShieldOps cut our detection time from hours to milliseconds. The SafeCodex team understood our regulatory environment and delivered something our internal team simply could not have built."',
-      quoteAuthor: 'Vikram Nair, CISO — IndusInd Bank',
-      tech: ['Apache Kafka','Elasticsearch','Python','TensorFlow','Docker','AWS','Palo Alto APIs','CrowdStrike','PagerDuty'],
-    },
-    {
-      title: 'NexusAI Patient Risk Platform for Apollo Hospitals',
-      tags: ['Healthcare','AI / ML','Predictive Analytics'],
-      tagClasses: ['modal-tag-blue','modal-tag-cyan','modal-tag-green'],
-      duration: '20 weeks · 2023–24',
-      subtitle: 'Building an AI-powered early warning system that predicts patient deterioration risk with 91% accuracy across 14 Apollo hospitals — enabling earlier interventions and measurably improving patient outcomes.',
-      metrics: [
-        {val:'91%',cls:'green',label:'Prediction accuracy'},
-        {val:'14',cls:'blue',label:'Hospitals live'},
-        {val:'38%',cls:'green',label:'ICU transfer reduction'},
-        {val:'4.2M',cls:'',label:'Patient records processed'},
-      ],
-      challenge: 'Apollo\'s clinical teams lacked a data-driven early warning system. Nurses relied on periodic manual observations, often catching patient deterioration too late. With 14 hospitals and over 8,000 beds, scaling manual risk assessment was not viable.',
-      solution: 'SafeCodex built a patient risk scoring engine on the NexusAI Platform, trained on 4.2M anonymised patient records. The model ingests real-time vitals from bedside monitors via HL7 FHIR APIs and generates continuous risk scores visible on nursing station dashboards.',
-      features: [
-        'Continuous risk scoring using vitals, lab results, and nursing notes via NLP',
-        'HL7 FHIR integration with bedside monitors and EMR systems',
-        'Explainable AI dashboard showing which factors drove each risk score',
-        'Automated alert routing to charge nurses based on threshold rules',
-        'HIPAA-compliant data architecture with end-to-end encryption',
-        'MLOps pipeline for monthly model retraining on new patient data',
-      ],
-      outcome: '91% prediction accuracy at 4-hour intervention windows. ICU transfer rate for flagged patients dropped 38% as earlier intervention became standard protocol. Apollo\'s Chief Medical Officer cited the platform as a cornerstone of their 2025 clinical quality strategy.',
-      quote: '"The AI doesn\'t replace clinical judgement — it gives our nurses a second set of eyes on every patient, all the time. The outcomes speak for themselves."',
-      quoteAuthor: 'Ananya Prasad, Head of Clinical Innovation — Apollo Hospitals',
-      tech: ['Python','TensorFlow','HL7 FHIR','Azure ML','PostgreSQL','React','Node.js','Kubernetes','MLflow'],
-    },
-  ];
-
-  const modal   = document.getElementById('caseModal');
-  const backdrop= document.getElementById('modalBackdrop');
-  const closeBtn= document.getElementById('modalClose');
-  const body    = document.getElementById('modalBody');
-  if(!modal) return;
-
-  function openCase(idx){
-    const c = CASES[idx];
-    if(!c) return;
-
-    const metricsHtml = c.metrics.map(m=>`
-      <div class="modal-metric">
-        <div class="modal-metric-val ${m.cls}">${m.val}</div>
-        <div class="modal-metric-label">${m.label}</div>
-      </div>`).join('');
-
-    const tagsHtml = c.tags.map((t,i)=>`<span class="modal-tag ${c.tagClasses[i]}">${t}</span>`).join('');
-    const featuresHtml = c.features.map(f=>`<li>${f}</li>`).join('');
-    const techHtml = c.tech.map(t=>`<span class="modal-tech-pill">${t}</span>`).join('');
-
-    body.innerHTML = `
-      <div class="modal-hero">
-        <div class="modal-hero-meta">
-          ${tagsHtml}
-          <span style="font-size:.7rem;color:rgba(255,255,255,.3);margin-left:auto;font-family:'Space Grotesk',sans-serif">${c.duration}</span>
-        </div>
-        <h2>${c.title}</h2>
-        <p class="modal-hero-sub">${c.subtitle}</p>
-      </div>
-
-      <div class="modal-metrics">${metricsHtml}</div>
-
-      <div class="modal-section">
-        <div class="modal-section-title">The Challenge</div>
-        <p>${c.challenge}</p>
-      </div>
-
-      <div class="modal-section">
-        <div class="modal-section-title">Our Solution</div>
-        <p>${c.solution}</p>
-      </div>
-
-      <div class="modal-section">
-        <div class="modal-section-title">Key Deliverables</div>
-        <ul class="modal-list">${featuresHtml}</ul>
-      </div>
-
-      <div class="modal-quote">
-        <p>${c.quote}</p>
-        <div class="modal-quote-author">— ${c.quoteAuthor}</div>
-      </div>
-
-      <div class="modal-section">
-        <div class="modal-section-title">Outcome</div>
-        <p>${c.outcome}</p>
-      </div>
-
-      <div class="modal-section">
-        <div class="modal-section-title">Technology Stack</div>
-        <div class="modal-tech-pills">${techHtml}</div>
-      </div>
-
-      <div class="modal-cta">
-        <button class="btn-primary" onclick="document.getElementById('caseModal').classList.remove('open');document.body.style.overflow='';document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
-          Start a similar project
-        </button>
-        <span style="font-size:.8rem;color:rgba(255,255,255,.3)">Free discovery call · No commitment</span>
-      </div>`;
-
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // Reset scroll position
-    const panel = document.getElementById('modalPanel');
-    if(panel) panel.scrollTop = 0;
-  }
-
-  function closeModal(){
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // Open on card click
-  document.querySelectorAll('.case-card[data-case]').forEach(card=>{
-    card.addEventListener('click', ()=> openCase(parseInt(card.dataset.case)));
-    card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openCase(parseInt(card.dataset.case)); } });
+  const cur = document.getElementById('sc-cursor');
+  const ring = document.getElementById('sc-ring');
+  if(!cur||!ring) return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e=>{
+    mx=e.clientX; my=e.clientY;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+  },{passive:true});
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  (function animRing(){
+    rx=lerp(rx,mx,.12); ry=lerp(ry,my,.12);
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  const hoverEls = document.querySelectorAll('a,button,.svc-card,.product-card,.case-card,.testi-card,.tls-item,.glass-card');
+  hoverEls.forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
   });
+})();
 
-  // Close triggers
-  backdrop?.addEventListener('click', closeModal);
-  closeBtn?.addEventListener('click', closeModal);
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+// ── 3. SCROLL PROGRESS ──────────────────────────────────────────────────────
+(()=>{
+  const bar = document.getElementById('sc-progress');
+  if(!bar) return;
+  window.addEventListener('scroll',()=>{
+    const pct = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    bar.style.width = Math.min(pct,100)+'%';
+  },{passive:true});
+})();
+
+// ── 4. REVEAL ON SCROLL (all variants) ──────────────────────────────────────
+(()=>{
+  const selectors = '.reveal,.reveal-left,.reveal-right,.reveal-scale';
+  const els = [...document.querySelectorAll(selectors)].filter(el=>!el.closest('.hero'));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'), i*60);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.08});
+  els.forEach(el=>obs.observe(el));
+})();
+
+// ── 5. STAGGERED GRID CHILDREN ──────────────────────────────────────────────
+(()=>{
+  const grids = document.querySelectorAll('.services-grid,.products-grid,.testi-grid,.tech-logo-strip'); // hero excluded
+  // Never touch hero children
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      [...e.target.children].forEach((child,i)=>{
+        child.style.opacity='0';
+        child.style.transform='translateY(20px)';
+        setTimeout(()=>{
+          child.style.transition=`opacity .55s cubic-bezier(.23,1,.32,1) ${i*80}ms,transform .55s cubic-bezier(.23,1,.32,1) ${i*80}ms`;
+          child.style.opacity='1';
+          child.style.transform='none';
+        },100);
+      });
+      obs.unobserve(e.target);
+    });
+  },{threshold:.08});
+  grids.forEach(g=>obs.observe(g));
+})();
+
+// ── 9. 3D CARD TILT ─────────────────────────────────────────────────────────
+document.querySelectorAll('.svc-card,.product-card,.case-card,.glass-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px) scale(1.015)`;
+    card.style.transition='none';
+    // Spotlight
+    const spot=card.querySelector('.svc-spotlight');
+    if(spot){spot.style.setProperty('--mx',(e.clientX-r.left)+'px');spot.style.setProperty('--my',(e.clientY-r.top)+'px');}
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transition='transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s';
+    card.style.transform='';
+    card.style.boxShadow='';
+  });
+});
+
+// ── 11. HERO PARTICLE CANVAS ────────────────────────────────────────────────
+(()=>{
+  const hero=document.querySelector('.hero');
+  if(!hero||hero.querySelector('canvas')) return;
+  const c=document.createElement('canvas');
+  c.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.45';
+  hero.prepend(c);
+  const ctx=c.getContext('2d');
+  let W,H;
+  const resize=()=>{W=c.width=hero.offsetWidth;H=c.height=hero.offsetHeight;};
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  const COLS=['rgba(0,102,255,','rgba(0,194,255,','rgba(0,230,118,'];
+  class P{
+    constructor(){this.reset();}
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.6+.3;this.a=Math.random()*.4+.05;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.c=COLS[Math.floor(Math.random()*COLS.length)];}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.c+this.a+')';ctx.fill();}
+    update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+  }
+  const dots=Array.from({length:90},()=>new P());
+  (function loop(){ctx.clearRect(0,0,W,H);dots.forEach(d=>{d.update();d.draw();});requestAnimationFrame(loop);})();
+})();
+
+// ── 13. PROCESS STEPS STAGGER ───────────────────────────────────────────────
+(()=>{
+  const steps=document.querySelectorAll('.proc-step');
+  if(!steps.length) return;
+  steps.forEach((s,i)=>{s.style.opacity='0';s.style.transform='translateX(-20px)';});
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const idx=[...steps].indexOf(e.target);
+      setTimeout(()=>{
+        e.target.style.transition='opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)';
+        e.target.style.opacity='1'; e.target.style.transform='';
+        const num=e.target.querySelector('.proc-num');
+        if(num){num.style.transform='scale(0)';num.style.transition='transform .5s cubic-bezier(.34,1.56,.64,1) .15s';requestAnimationFrame(()=>num.style.transform='scale(1)');}
+      },idx*90);
+      obs.unobserve(e.target);
+    });
+  },{threshold:.2});
+  steps.forEach(s=>obs.observe(s));
+})();
+
+// ── 16. CASE CARD HOVER SHIMMER + OPEN ON CLICK ─────────────────────────────
+document.querySelectorAll('.case-card[data-case]').forEach(card=>{
+  card.style.cursor='pointer';
+});
+
+// ── 18. TECH PILL CATEGORY STAGGER ──────────────────────────────────────────
+(()=>{
+  document.querySelectorAll('.tech-logo-strip').forEach(strip=>{
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        [...e.target.querySelectorAll('.tls-item')].forEach((item,i)=>{
+          item.style.opacity='0'; item.style.transform='scale(.85)';
+          setTimeout(()=>{
+            item.style.transition=`opacity .45s cubic-bezier(.23,1,.32,1) ${i*55}ms,transform .45s cubic-bezier(.34,1.56,.64,1) ${i*55}ms`;
+            item.style.opacity='1'; item.style.transform='';
+          },100);
+        });
+        obs.unobserve(e.target);
+      });
+    },{threshold:.1});
+    obs.observe(strip);
+  });
 })();
 
 /* ════════════════════════════════════════════════════════
@@ -707,89 +633,6 @@ const childObs = new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal-children').forEach(el=>childObs.observe(el));
 
 // (duplicate hero title animation removed)
-
-// ── 3. NUMBER COUNTER WITH EASING ────────────────────────────────────────────
-function runCounter(el){
-  const raw = el.dataset.count;
-  if(!raw) return;
-  const target = parseFloat(raw);
-  const suffix = el.dataset.suffix || '';
-  const isFloat = raw.includes('.');
-  const dur = 1600;
-  let start = null;
-  const ease = t => 1 - Math.pow(1-t, 4);
-  const tick = ts => {
-    if(!start) start = ts;
-    const p = Math.min((ts-start)/dur, 1);
-    const val = ease(p) * target;
-    el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
-    if(p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-}
-const numObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    e.target.querySelectorAll('[data-count]').forEach(runCounter);
-    numObs.unobserve(e.target);
-  });
-},{threshold:.3});
-['#heroStats','.stats-band-inner'].forEach(sel=>{
-  const el = document.querySelector(sel);
-  if(el) numObs.observe(el);
-});
-
-// ── 4. TYPEWRITER BADGE ───────────────────────────────────────────────────────
-(()=>{
-  const el = document.querySelector('.hero-badge span');
-  if(!el) return;
-  const lines = [
-    'Trusted by 120+ Enterprises Worldwide',
-    'ISO 27001 · SOC 2 · CMMI Level 3 Certified',
-    'Serving 28 Countries · Est. 2018',
-    '98% Client Retention · 500+ Projects',
-  ];
-  let li=0, ci=0, del=false;
-  el.textContent='';
-  const tick = ()=>{
-    const phrase = lines[li % lines.length];
-    if(!del){ el.textContent = phrase.slice(0, ++ci); if(ci===phrase.length){del=true;setTimeout(tick,2400);return;} setTimeout(tick,50); }
-    else { el.textContent = phrase.slice(0, --ci); if(ci===0){del=false;li++;setTimeout(tick,300);return;} setTimeout(tick,28); }
-  };
-  setTimeout(tick,900);
-})();
-
-// ── 5. 3D CARD TILT (svc + product + case) ────────────────────────────────────
-document.querySelectorAll('.svc-card,.product-card,.case-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px) scale(1.015)`;
-    card.style.transition='transform 0s';
-    card.style.boxShadow=`${-x*18}px ${-y*18}px 50px rgba(0,102,255,.18)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transition='transform .55s cubic-bezier(.23,1,.32,1), box-shadow .55s, border-color .3s';
-    card.style.transform='';
-    card.style.boxShadow='';
-  });
-});
-
-// ── 6. MAGNETIC CTA BUTTONS ──────────────────────────────────────────────────
-document.querySelectorAll('.btn-primary,.btn-secondary,.nav-cta').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)*.3;
-    const y=(e.clientY-r.top-r.height/2)*.3;
-    btn.style.transform=`translate(${x}px,${y}px) scale(1.04)`;
-    btn.style.transition='none';
-  });
-  btn.addEventListener('mouseleave',()=>{
-    btn.style.transition='transform .4s cubic-bezier(.23,1,.32,1),background .25s,box-shadow .25s';
-    btn.style.transform='';
-  });
-});
 
 // ── 7. CURSOR ORB FOLLOWS MOUSE IN HERO ──────────────────────────────────────
 (()=>{
@@ -824,31 +667,6 @@ document.querySelectorAll('.svc-card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{ card.style.background=''; });
 });
 
-// ── 9. PROCESS STEP TIMELINE DRAW ON SCROLL ──────────────────────────────────
-(()=>{
-  const timeline = document.querySelector('.process-timeline');
-  if(!timeline) return;
-  const line = document.querySelector('.process-timeline::before');
-  // Animate each step sequentially as user scrolls past them
-  const steps = document.querySelectorAll('.proc-step');
-  const stepObs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      const el = e.target;
-      const num = el.querySelector('.proc-num');
-      const body = el.querySelector('.proc-body');
-      el.style.opacity='0'; el.style.transform='translateX(-16px)';
-      requestAnimationFrame(()=>{
-        el.style.transition='opacity .55s cubic-bezier(.23,1,.32,1), transform .55s cubic-bezier(.23,1,.32,1)';
-        el.style.opacity='1'; el.style.transform='';
-      });
-      if(num){ num.style.transform='scale(0)'; num.style.transition='transform .4s cubic-bezier(.34,1.56,.64,1) .15s'; requestAnimationFrame(()=>num.style.transform='scale(1)'); }
-      stepObs.unobserve(el);
-    });
-  },{threshold:.25});
-  steps.forEach(s=>stepObs.observe(s));
-})();
-
 // ── 10. STATS BAND: NUMBER POP ───────────────────────────────────────────────
 (()=>{
   const band = document.querySelector('.stats-band-inner');
@@ -863,7 +681,6 @@ document.querySelectorAll('.svc-card').forEach(card=>{
           item.style.opacity='1'; item.style.transform='';
         },i*120);
       });
-      e.target.querySelectorAll('[data-count]').forEach(runCounter);
       statsObs.unobserve(e.target);
     });
   },{threshold:.3});
@@ -916,16 +733,6 @@ document.querySelectorAll('.svc-card').forEach(card=>{
   loop();
 })();
 
-// ── 13. SCROLL PROGRESS LINE ──────────────────────────────────────────────────
-(()=>{
-  let bar = document.getElementById('scroll-progress');
-  if(!bar){ bar=document.createElement('div'); bar.id='scroll-progress'; bar.style.cssText='position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#0066FF,#00C2FF);z-index:9999;width:0%;pointer-events:none;transition:width .1s'; document.body.prepend(bar); }
-  window.addEventListener('scroll',()=>{
-    const total=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(window.scrollY/total*100)+'%';
-  },{passive:true});
-})();
-
 // ── 14. CASE CARD MODAL ───────────────────────────────────────────────────────
 (()=>{
   const CASES=[
@@ -973,11 +780,14 @@ document.querySelectorAll('.svc-card').forEach(card=>{
   // Build modal DOM once
   const modal = document.createElement('div');
   modal.id='caseModal2';
+  modal.setAttribute('role','dialog');
+  modal.setAttribute('aria-modal','true');
+  modal.setAttribute('aria-label','Case study');
   modal.style.cssText='position:fixed;inset:0;z-index:8500;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.23,1,.32,1)';
   modal.innerHTML=`
     <div id="cm2Bg" style="position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(12px)"></div>
     <div id="cm2Panel" style="position:relative;z-index:1;background:#050D1F;border:1px solid rgba(0,102,255,.2);border-radius:24px;width:100%;max-width:780px;max-height:90vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,102,255,.3) transparent;transform:scale(.94) translateY(20px);transition:transform .4s cubic-bezier(.23,1,.32,1)">
-      <button onclick="closeCaseModal()" style="position:sticky;top:1rem;float:right;margin:1rem 1rem 0 0;width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10" onmouseover="this.style.background='rgba(0,102,255,.2)';this.style.borderColor='rgba(0,102,255,.4)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.06)';this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.7)'">✕</button>
+      <button onclick="closeCaseModal()" aria-label="Close case study" style="position:sticky;top:1rem;float:right;margin:1rem 1rem 0 0;width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50%;color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10" onmouseover="this.style.background='rgba(0,102,255,.2)';this.style.borderColor='rgba(0,102,255,.4)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.06)';this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.7)'">✕</button>
       <div id="cm2Body" style="padding:2.25rem;clear:both"></div>
     </div>`;
   document.body.appendChild(modal);
