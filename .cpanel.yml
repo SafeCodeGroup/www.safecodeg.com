@@ -6,9 +6,12 @@
 deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html
-    - /bin/mkdir -p $DEPLOYPATH/css $DEPLOYPATH/js
-    # Keep a one-time backup of any .htaccess that was there before the first deploy
-    - if [ -f $DEPLOYPATH/.htaccess ] && [ ! -f $DEPLOYPATH/.htaccess.pre-git ]; then /bin/cp -p $DEPLOYPATH/.htaccess $DEPLOYPATH/.htaccess.pre-git; fi
+    - export BACKUPDIR=$HOME/htaccess-backups
+    - /bin/mkdir -p $DEPLOYPATH/css $DEPLOYPATH/js $BACKUPDIR
+    # One-time backup of the .htaccess that was there before the first deploy,
+    # kept outside public_html (an older deploy left it in public_html; move it)
+    - if [ -f $DEPLOYPATH/.htaccess.pre-git ]; then /bin/mv -f $DEPLOYPATH/.htaccess.pre-git $BACKUPDIR/public_html.htaccess.pre-git; fi
+    - if [ -f $DEPLOYPATH/.htaccess ] && [ ! -f $BACKUPDIR/public_html.htaccess.pre-git ]; then /bin/cp -p $DEPLOYPATH/.htaccess $BACKUPDIR/public_html.htaccess.pre-git; fi
     - /bin/cp -f index.html contact.php .htaccess $DEPLOYPATH/
     - /bin/cp -f css/style.css $DEPLOYPATH/css/
     - /bin/cp -f js/main.js $DEPLOYPATH/js/

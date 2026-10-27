@@ -127,7 +127,17 @@ $$('[data-jump]').forEach(a => a.addEventListener('click', () => applyFilter(a.d
     setLoading(true);
     // Only show success once the server confirms the email has gone out
     try {
-      const resp = await fetch('contact.php', { method: 'POST', body: new URLSearchParams(data) });
+      const body = new URLSearchParams(data);
+      let resp = await fetch('contact.php', { method: 'POST', body });
+      // HostGator's bot check answers 409 with a script that sets a cookie and
+      // reloads; set that cookie and retry once, as a browser would after reload
+      if (resp.status === 409) {
+        const m = (await resp.text()).match(/document\.cookie\s*=\s*["']([^"';]+)/);
+        if (m) {
+          document.cookie = `${m[1]}; path=/; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`;
+          resp = await fetch('contact.php', { method: 'POST', body });
+        }
+      }
       const result = await resp.json().catch(() => ({}));
       if (!resp.ok || !result.ok) throw new Error(result.error || '');
     } catch (err) {
