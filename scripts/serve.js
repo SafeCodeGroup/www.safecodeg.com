@@ -52,7 +52,16 @@ function createServer() {
 
 if (require.main === module) {
   const port = Number(process.env.PORT) || 8080;
-  createServer().listen(port, '127.0.0.1', () => {
+  const server = createServer();
+  server.on('error', err => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`Port ${port} is already in use by another program.`);
+      console.error(`Stop it, or pick another port:  PORT=3000 npm start`);
+      process.exit(1);
+    }
+    throw err;
+  });
+  server.listen(port, '127.0.0.1', () => {
     console.log(`Safe Code Group site: http://127.0.0.1:${port}  (Ctrl+C to stop)`);
   });
 }
