@@ -1,0 +1,14 @@
+# cPanel Git Version Control deployment (HostGator).
+# "Deploy HEAD Commit" copies only the files the website needs into public_html.
+# If deployment fails because $HOME is not set, replace $HOME with
+# /home/<your-cpanel-username>.
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH/css $DEPLOYPATH/js
+    # Keep a one-time backup of any .htaccess that was there before the first deploy
+    - if [ -f $DEPLOYPATH/.htaccess ] && [ ! -f $DEPLOYPATH/.htaccess.pre-git ]; then /bin/cp -p $DEPLOYPATH/.htaccess $DEPLOYPATH/.htaccess.pre-git; fi
+    - /bin/cp -f index.html contact.php .htaccess $DEPLOYPATH/
+    - /bin/cp -f css/style.css $DEPLOYPATH/css/
+    - /bin/cp -f js/main.js $DEPLOYPATH/js/

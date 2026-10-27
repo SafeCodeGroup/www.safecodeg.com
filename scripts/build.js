@@ -8,7 +8,7 @@ const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
-const FILES = ['index.html', 'contact.php', 'css', 'js'];
+const FILES = ['index.html', 'contact.php', '.htaccess', 'css', 'js'];
 
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST);
