@@ -45,7 +45,14 @@ async function run(base) {
       };
       w.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
       w.fetch = async (url, opts) => {
-        calls.push({ url: String(url), body: String(opts.body) });
+        calls.push({ url: String(url), body: String(opts.body), cookie: w.document.cookie });
+        if (fetchMode === 'challenge') {
+          // HostGator's bot check: 409 + cookie script, then OK once the cookie is set
+          if (!w.document.cookie.includes('humans_21909=1')) {
+            return { ok: false, status: 409, text: async () => '<script>document.cookie = "humans_21909=1"; document.location.reload(true)</script>', json: async () => { throw new Error('not json'); } };
+          }
+          return { ok: true, status: 200, json: async () => ({ ok: true }) };
+        }
         return fetchMode === 'ok'
           ? { ok: true, json: async () => ({ ok: true }) }
           : { ok: false, status: 501, json: async () => { throw new Error('not json'); } };
@@ -101,6 +108,17 @@ async function run(base) {
   check('visitor input is not rendered as HTML', !successText.querySelector('i'));
   d.getElementById('sendAnother').click();
   check('"Send another" resets the form', !form.hidden && d.getElementById('f-first').value === '');
+
+  // HostGator bot check (409 + cookie script) is passed automatically
+  set('f-first', 'Asha'); set('f-last', 'K'); set('f-email', 'asha@example.com');
+  set('f-service', 'Other'); set('f-msg', 'Testing the bot check.');
+  const before = calls.length;
+  fetchMode = 'challenge'; submit(); await wait(50);
+  const tries = calls.slice(before);
+  check('bot check: retries once with cookie, then succeeds',
+    tries.length === 2 && !tries[0].cookie.includes('humans_') && tries[1].cookie.includes('humans_21909=1') && !d.getElementById('successState').hidden,
+    `${tries.length} calls`);
+  d.getElementById('sendAnother').click();
 
   // Product finder
   d.getElementById('finderBtn').click();

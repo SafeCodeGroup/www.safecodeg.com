@@ -105,10 +105,16 @@ web as a safety net.
    `production` → **Update**.
 2. **Pull or Deploy** tab → **Update from Remote** → **Deploy HEAD Commit**.
 
-On the first deploy, any existing `public_html/.htaccess` is saved once as
-`public_html/.htaccess.pre-git`. If that old file contained lines between
-`# php -- BEGIN cPanel-generated handler` and `# php -- END cPanel-generated handler`, copy those
-lines into `.htaccess` in this repository and deploy again, so the PHP version setting is kept.
+On the first deploy, any existing `public_html/.htaccess` is saved once, outside the web root,
+as `~/htaccess-backups/public_html.htaccess.pre-git`.
+
+Other folders in `public_html` are other sites' document roots, and `.htaccess` applies to them
+too. So its redirects, headers and caching are limited to `safecodeg.com` hosts; only the
+dotfile protection (404 for `.git`, backups and other dotfiles, except `/.well-known/`) applies
+to every site, as the server's previous `.htaccess` did.
+
+The host's bot protection answers the first `contact.php` request from a new visitor with a 409
+cookie check; `js/main.js` sets that cookie and retries once, so the form still works.
 
 cPanel only deploys when `.cpanel.yml` is in the repository root (it is) and the server's
 clone has no local changes, so never edit files inside `repositories/www.safecodeg.com` on the
