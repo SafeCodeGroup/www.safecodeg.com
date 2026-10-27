@@ -40,6 +40,8 @@ h2.sec-title.white{color:#fff}
 .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:#fff;padding:.8rem 1.875rem;border-radius:var(--r8);font-size:.875rem;font-weight:600;border:none;transition:all .25s;font-family:'Space Grotesk',sans-serif;letter-spacing:.01em;box-shadow:0 4px 20px rgba(0,102,255,.35)}
 .btn-primary:hover{background:#0052CC;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,102,255,.45)}
 .btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--ink);padding:.8rem 1.75rem;border-radius:var(--r8);font-size:.875rem;font-weight:600;border:1.5px solid var(--mid);transition:all .25s;font-family:'Space Grotesk',sans-serif}
+.hero .btn-secondary{color:#fff!important;border-color:rgba(255,255,255,.45)!important;background:rgba(255,255,255,.05)!important;}
+.hero .btn-secondary:hover{border-color:#fff!important;background:rgba(255,255,255,.15)!important;color:#fff!important;transform:translateY(-2px)}
 .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-size:.875rem;font-weight:600;opacity:.7;transition:opacity .2s;font-family:'Space Grotesk',sans-serif}
 .btn-ghost:hover{opacity:1}
@@ -68,12 +70,12 @@ nav.scrolled{background:rgba(5,13,31,.95);backdrop-filter:blur(20px);-webkit-bac
 /* ── HERO ────────────────────────────────────────────── */
 .hero{min-height:100svh;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;padding:8rem 5vw 5rem}
 .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,102,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,.06) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow-1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,102,255,.2) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;animation:glow1 8s ease-in-out infinite}
-.hero-glow-2{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,194,255,.12) 0%,transparent 65%);bottom:-100px;left:-100px;pointer-events:none;animation:glow2 10s ease-in-out infinite}
+.hero-glow-1{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,102,255,.2) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;animation:glow1 8s ease-in-out infinite;z-index:0}
+.hero-glow-2{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,194,255,.12) 0%,transparent 65%);bottom:-100px;left:-100px;pointer-events:none;animation:glow2 10s ease-in-out infinite;z-index:0}
 @keyframes glow1{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.08) translate(20px,-20px)}}
 @keyframes glow2{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.06) translate(-15px,15px)}}
-.hero-content{position:relative;z-index:1;max-width:780px}
-.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,102,255,.15);border:1px solid rgba(0,102,255,.3);border-radius:var(--r999);padding:.4rem 1rem;margin-bottom:2rem}
+.hero-content{position:relative;z-index:2;max-width:780px;isolation:isolate}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,102,255,.15);border:1px solid rgba(0,102,255,.3);border-radius:var(--r999);padding:.4rem 1rem;margin-bottom:2rem;isolation:isolate;position:relative;z-index:2;will-change:auto}
 .hero-badge-dot{width:7px;height:7px;background:#00E676;border-radius:50%;box-shadow:0 0 8px rgba(0,230,118,.6);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .hero-badge span{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.08em;font-family:'Space Grotesk',sans-serif}
@@ -88,7 +90,7 @@ h1.hero-title .dim{color:rgba(255,255,255,.35);font-weight:400}
 .hstat-label{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.2rem;font-weight:500}
 
 /* Floating code card */
-.hero-code-card{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:380px;background:rgba(10,22,40,.85);border:1px solid rgba(0,102,255,.25);border-radius:16px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 24px 80px rgba(0,0,0,.5);animation:floatCard 6s ease-in-out infinite}
+.hero-code-card{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:380px;background:rgba(10,22,40,.85);border:1px solid rgba(0,102,255,.25);border-radius:16px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 24px 80px rgba(0,0,0,.5);animation:floatCard 6s ease-in-out infinite;z-index:1}
 @keyframes floatCard{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-12px)}}
 .code-top{display:flex;align-items:center;gap:.5rem;padding:.875rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03)}
 .code-dot{width:10px;height:10px;border-radius:50%}
@@ -285,14 +287,14 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 .fbadge{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.3rem .7rem;border-radius:var(--r999);font-family:'Space Grotesk',sans-serif;letter-spacing:.04em}
 
 /* ── SONI CHAT ───────────────────────────────────────── */
-#sony-btn{position:fixed;bottom:28px;right:28px;z-index:9000;width:58px;height:58px;border-radius:50%;background:linear-gradient(145deg,#0078FF,#0066FF,#0052CC);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,102,255,.6),0 0 0 3px rgba(0,102,255,.2);display:flex;align-items:center;justify-content:center;transition:transform .25s,box-shadow .25s;overflow:hidden}
+#sony-btn{position:fixed;bottom:28px;right:28px;z-index:9100;width:62px;height:62px;border-radius:50%;background:#1a2744;border:3px solid #0066FF;cursor:pointer;box-shadow:0 4px 20px rgba(0,102,255,.6),0 0 0 3px rgba(0,102,255,.2);transition:transform .25s,box-shadow .25s;overflow:hidden;padding:0}
 #sony-btn:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(0,102,255,.8),0 0 0 4px rgba(0,102,255,.3)}
 .sony-pulse{position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(0,102,255,.3);animation:sPulse 2.5s ease-out infinite}
 @keyframes sPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
-#sony-panel{position:fixed;bottom:100px;right:28px;z-index:9000;width:360px;max-height:560px;background:#0A1628;border:1px solid rgba(0,102,255,.25);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.7);transform:scale(.92) translateY(16px);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.23,1,.32,1),opacity .3s}
+#sony-panel{position:fixed;bottom:100px;right:28px;z-index:9100;width:360px;max-height:560px;background:#0A1628;border:1px solid rgba(0,102,255,.25);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.7);transform:scale(.92) translateY(16px);opacity:0;pointer-events:none;transition:transform .3s cubic-bezier(.23,1,.32,1),opacity .3s}
 #sony-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
 #sony-header{background:linear-gradient(135deg,#050D1F,#0A1628);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
-#sony-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0066FF,#00C2FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem;font-weight:800;color:#fff;font-family:'Space Grotesk',sans-serif}
+#sony-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(0,194,255,.5);background:transparent;display:block;padding:0}
 #sony-name{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:800;color:#fff}
 #sony-status{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:1px;display:flex;align-items:center;gap:4px}
 #sony-status::before{content:'';width:6px;height:6px;background:#00E676;border-radius:50%;display:inline-block;box-shadow:0 0 5px rgba(0,230,118,.6)}
@@ -355,7 +357,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   #sony-panel{width:calc(100vw - 24px);right:12px}
 }
 @media(pointer:fine){body,a,button{cursor:none}}
-@media(pointer:coarse){#cursor,#cursor-ring{display:none!important}}
+@media(pointer:coarse){#sc-cursor,#sc-ring{display:none!important}}
 
 /* ── IMPROVED CASE CARDS ──────────────────────────────── */
 .cases-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:1.5rem;grid-template-rows:auto auto}
@@ -544,14 +546,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 }
 .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
 
-/* ── Hero badge pulse ring ───────────────────────────────── */
-.hero-badge {
-  animation:badgeEntrance .8s cubic-bezier(.34,1.56,.64,1) .4s both;
-}
-@keyframes badgeEntrance {
-  from{opacity:0;transform:translateY(12px) scale(.9)}
-  to{opacity:1;transform:none}
-}
+
 
 /* hero stats animated via .hero-stats heroFadeUp above */
 
@@ -580,7 +575,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   50%{box-shadow:0 6px 28px rgba(37,211,102,.9),0 0 0 6px rgba(37,211,102,.15)}
 }
 
-/* ── Soni button: glow pulse ─────────────────────────────── */
+/* ── Rsoni button: glow pulse ────────────────────────────── */
 #sony-btn {
   animation:soniPulseBtn 3s ease-in-out 1.5s infinite;
 }
@@ -608,18 +603,7 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
   }
 }
 
-/* ── Hero entrance: CSS-driven, no JS dependency ─────────────────────────── */
-.hero-badge        { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .1s both; }
-.hero-title        { animation: heroFadeUp .7s  cubic-bezier(.23,1,.32,1) .0s both; }
-.hero-desc         { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .35s both; }
-.hero-actions      { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .5s both; }
-.hero-stats        { animation: heroFadeUp .65s cubic-bezier(.23,1,.32,1) .65s both; }
-.hero-code-card    { animation: floatCard 6s ease-in-out infinite, heroSlideIn .8s cubic-bezier(.23,1,.32,1) .4s both; }
-@keyframes heroFadeUp  { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
-@keyframes heroSlideIn { from{opacity:0;transform:translateY(-50%) translateX(32px)} to{opacity:1;transform:translateY(-50%) translateX(0)} }
 
-/* Hero title inner spans (.blue, .dim) must always be visible */
-.hero-title .blue, .hero-title .dim { opacity:1 !important; transform:none !important; display:inline; }
 
 /* ── Products Glassmorphism ──────────────────────────── */
 .products{padding:8rem 5vw;background:#030712;position:relative;overflow:hidden}
@@ -663,3 +647,218 @@ footer{background:#020810;color:#fff;padding:5.5rem 5vw 2.5rem}
 .glass-tags{display:flex;gap:.4rem;flex-wrap:wrap}
 .glass-tag{font-size:.7rem;font-weight:600;padding:.28rem .75rem;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);letter-spacing:.04em;font-family:'Space Grotesk',sans-serif;transition:all .25s}
 .glass-card:hover .glass-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+
+
+
+/* ── Products Glassmorphism ──────────────────────────── */
+.products{padding:8rem 5vw;background:#030712;position:relative;overflow:hidden}
+
+/* Aurora background blobs */
+.prod-aurora{position:absolute;inset:0;pointer-events:none;z-index:0}
+.prod-blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 10s ease-in-out infinite}
+.prod-blob-1{width:600px;height:600px;background:rgba(0,102,255,.18);top:-150px;left:-100px;animation-delay:0s}
+.prod-blob-2{width:500px;height:500px;background:rgba(108,99,255,.14);bottom:-100px;right:-80px;animation-delay:3s}
+.prod-blob-3{width:400px;height:400px;background:rgba(0,194,255,.1);top:40%;left:45%;transform:translate(-50%,-50%);animation-delay:6s}
+@keyframes blobFloat{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(1.08) translate(20px,-20px)}66%{transform:scale(.95) translate(-15px,15px)}}
+.prod-blob-3{animation-name:blobFloat3}
+@keyframes blobFloat3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+
+/* Glass cards */
+.glass-card{background:rgba(255,255,255,.04)!important;backdrop-filter:blur(32px)!important;-webkit-backdrop-filter:blur(32px)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px!important;padding:2rem!important;position:relative!important;overflow:hidden!important;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,background .3s!important;box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08)!important}
+.glass-card:hover{transform:translateY(-8px) scale(1.01)!important;background:rgba(255,255,255,.07)!important;box-shadow:0 24px 64px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.12)!important}
+
+/* Shimmer sweep on hover */
+.glass-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.05),transparent);transition:left .7s ease;pointer-events:none;z-index:1}
+.glass-card:hover .glass-shine{left:160%}
+
+/* Coloured top accent bar */
+.glass-top-bar{position:absolute;top:0;left:0;right:0;height:2px;z-index:2}
+
+/* Icon */
+.glass-icon{width:48px;height:48px;border-radius:14px;border:1px solid;display:flex;align-items:center;justify-content:center;margin-bottom:0;backdrop-filter:blur(8px);transition:transform .3s}
+.glass-card:hover .glass-icon{transform:scale(1.08)}
+
+/* Text */
+.glass-title{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:.625rem}
+.glass-desc{font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem}
+
+/* Metrics strip */
+.glass-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;padding:1.125rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px}
+.glass-metric{text-align:center}
+.glass-metric-val{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.glass-metric-label{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;font-weight:500}
+
+/* Tags */
+.glass-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.glass-tag{font-size:.7rem;font-weight:600;padding:.28rem .75rem;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);letter-spacing:.04em;font-family:'Space Grotesk',sans-serif;transition:all .25s}
+.glass-card:hover .glass-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+
+
+
+
+/* ── Tech Stack ──────────────────────────────────────── */
+.tech{padding:7rem 5vw;background:#fff;border-top:1px solid var(--mid)}
+.tech-header{text-align:center;margin-bottom:4rem}
+.tech-cat-divider{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem}
+.tech-cat-divider::before,.tech-cat-divider::after{content:'';flex:1;height:1px;background:var(--mid)}
+.tech-cat-divider span{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.tech-category{margin-bottom:2.75rem}
+.tech-category:last-child{margin-bottom:0}
+.tech-logo-strip{display:flex;flex-wrap:wrap;gap:.625rem}
+.tls-item{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.125rem;background:#fff;border:1.5px solid var(--mid);border-radius:100px;transition:all .25s cubic-bezier(.23,1,.32,1);cursor:default;height:44px}
+.tls-item:hover{border-color:var(--blue);background:var(--blue-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,102,255,.1)}
+.tls-item svg{flex-shrink:0;display:block}
+.tls-item span{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.tls-item:hover span{color:var(--blue)}
+.tls-item span:empty{display:none}
+@media(max-width:640px){.tls-item{padding:.45rem .875rem;height:38px}.tls-item span{font-size:.75rem}}
+
+
+/* ═══════════════════════════════════════════════
+   ADVANCED INTERACTIONS CSS — SafeCodex
+═══════════════════════════════════════════════ */
+
+/* ── Custom cursor ─────────────────────────── */
+@media(pointer:fine){body,a,button{cursor:none}}
+#sc-cursor{position:fixed;width:10px;height:10px;background:#0066FF;border-radius:50%;pointer-events:none;z-index:9050;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:normal}
+#sc-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(0,102,255,.5);border-radius:50%;pointer-events:none;z-index:9049;transform:translate(-50%,-50%);transition:width .25s,height .25s,opacity .25s;opacity:0.7}
+body.cursor-hover #sc-cursor{width:48px;height:48px;background:rgba(0,102,255,.15);border:1.5px solid #0066FF}
+body.cursor-hover #sc-ring{opacity:0}
+
+/* ── Scroll progress bar ───────────────────── */
+#sc-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#0066FF,#00C2FF);z-index:9999;width:0%;pointer-events:none;transition:width .08s linear;box-shadow:0 0 8px rgba(0,102,255,.6)}
+
+/* ── Page loader ────────────────────────────── */
+#sc-loader{position:fixed;inset:0;background:#050D1F;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .6s,visibility .6s}
+#sc-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.sc-loader-logo{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.04em}
+.sc-loader-logo span{color:#00C2FF}
+.sc-loader-bar{width:180px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.sc-loader-fill{height:100%;background:linear-gradient(90deg,#0066FF,#00C2FF);border-radius:2px;animation:loaderFill .9s cubic-bezier(.23,1,.32,1) forwards}
+@keyframes loaderFill{from{width:0}to{width:100%}}
+
+/* ── Hero section animations ───────────────── */
+
+
+
+
+
+
+@keyframes cardSlideIn{from{opacity:0;transform:translateY(-50%) translateX(40px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+
+/* ── Reveal system ──────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+.reveal-right.visible{opacity:1;transform:none}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s cubic-bezier(.23,1,.32,1),transform .6s cubic-bezier(.23,1,.32,1)}
+.reveal-scale.visible{opacity:1;transform:none}
+
+/* ── Service cards ──────────────────────────── */
+.svc-card{position:relative;overflow:hidden;will-change:transform}
+.svc-card .svc-spotlight{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(0,102,255,.07),transparent 70%)}
+.svc-card:hover .svc-spotlight{opacity:1}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#0066FF,#00C2FF);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.svc-card:hover::after{transform:scaleX(1)}
+
+/* ── Product cards hover glow ───────────────── */
+.product-card{transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s,background .3s!important}
+.product-card:hover{box-shadow:0 0 0 1px rgba(0,102,255,.4),0 24px 60px rgba(0,102,255,.2)!important}
+
+/* ── Stats band counter glow ───────────────── */
+.stat-item-val{text-shadow:0 0 30px rgba(255,255,255,.2)}
+.stat-item:hover .stat-item-val{text-shadow:0 0 40px rgba(255,255,255,.5);transition:text-shadow .3s}
+
+/* ── Process steps ──────────────────────────── */
+.proc-step{transition:padding .3s cubic-bezier(.23,1,.32,1)}
+.proc-step:hover{padding-left:1rem}
+.proc-duration{position:relative;overflow:hidden}
+.proc-duration::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:#0066FF;transition:width .4s cubic-bezier(.23,1,.32,1)}
+.proc-step:hover .proc-duration::after{width:100%}
+
+/* ── Testimonial cards ──────────────────────── */
+.testi-card{position:relative;overflow:hidden}
+.testi-card::before{content:'"';position:absolute;top:-10px;right:12px;font-size:5rem;color:rgba(0,102,255,.06);font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;pointer-events:none;transition:color .3s,transform .3s}
+.testi-card:hover::before{color:rgba(0,102,255,.12);transform:scale(1.1)}
+
+/* ── CTA band animated bg ───────────────────── */
+.cta-band{background:var(--navy);position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(0,102,255,.25),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:ctaPulse 4s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)}}
+
+/* ── Contact form fields ────────────────────── */
+.fg input:focus,.fg textarea:focus,.fg select:focus{transform:translateY(-2px)}
+.fg label{transition:color .2s}
+.fg:focus-within label{color:var(--blue)}
+
+/* ── Magnetic button effect ─────────────────── */
+.btn-primary,.btn-secondary,.nav-cta{will-change:transform}
+
+/* ── Footer links ───────────────────────────── */
+.footer-col a{position:relative;display:inline-block}
+.footer-col a::after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:1px;background:rgba(255,255,255,.5);transition:width .25s cubic-bezier(.23,1,.32,1)}
+.footer-col a:hover::after{width:100%}
+
+/* ── Smooth anchor transitions ──────────────── */
+html{scroll-behavior:smooth}
+
+/* ── Section label animated line ────────────── */
+.section-label::before{animation:lineGrow .6s cubic-bezier(.23,1,.32,1) both}
+@keyframes lineGrow{from{width:0}to{width:20px}}
+
+/* ── Trusted band hover pause ───────────────── */
+.trusted:hover .trusted-track{animation-play-state:paused}
+
+/* ── Glass card shimmer ─────────────────────── */
+.glass-card{position:relative;overflow:hidden}
+.glass-card::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.06),transparent);transition:left .7s ease;pointer-events:none;z-index:1}
+.glass-card:hover::before{left:160%}
+
+/* ── Tech pills bounce ──────────────────────── */
+.tls-item:nth-child(odd):hover{animation:pillBounce .4s cubic-bezier(.34,1.56,.64,1)}
+.tls-item:nth-child(even):hover{animation:pillBounce .4s cubic-bezier(.34,1.56,.64,1) .05s}
+@keyframes pillBounce{0%{transform:translateY(0)}40%{transform:translateY(-6px)}70%{transform:translateY(-2px)}100%{transform:translateY(-2px) scale(1.01)}}
+
+/* ── Nav scrolled indicator ─────────────────── */
+nav.scrolled .nav-links a.active{color:#fff;font-weight:600}
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;background:#0066FF;border-radius:2px;transition:width .25s cubic-bezier(.23,1,.32,1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+
+/* ── Floating WhatsApp pulse ────────────────── */
+#wa-btn{animation:waPulse 3s ease-in-out infinite}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 4px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,0)}}
+
+/* ── Number counter spin-up ─────────────────── */
+.counting{display:inline-block;animation:countSpin .1s ease-out}
+@keyframes countSpin{from{transform:translateY(4px);opacity:0}to{transform:none;opacity:1}}
+
+/* ── Prefers reduced motion ─────────────────── */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+
+
+
+
+
+
+h1.hero-title span{opacity:1!important;transform:none!important;display:inline!important;animation:none!important}
+
+
+/* ── Hero — always visible, no animation interference ── */
+.hero-content,
+.hero-badge,
+.hero-title,
+.hero-desc,
+.hero-actions,
+.hero-stats,
+.hero-stats > div,
+.hstat-val,
+.hstat-label{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important}
+.hero-badge-dot{animation:pulse 2s ease-in-out infinite!important}
+h1.hero-title .blue{color:#00C2FF!important;opacity:1!important}
+h1.hero-title .dim{color:rgba(255,255,255,.35)!important;font-weight:400!important;opacity:1!important}
+h1.hero-title span{opacity:1!important;display:inline!important}
