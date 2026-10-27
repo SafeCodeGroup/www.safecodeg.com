@@ -76,7 +76,7 @@ document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 (()=>{
   const el=document.querySelector('.hero-badge span');
   if(!el) return;
-  const phrases=['Trusted by 120+ Enterprises Worldwide','ISO 27001 & SOC 2 Certified','Based in Hyderabad, India','Serving 28+ Countries'];
+  const phrases=['Trusted by 120+ Enterprises Worldwide','ISO 27001 & SOC 2 Certified','Offices in the USA & India','Serving 28+ Countries'];
   let pi=0,ci=0,deleting=false;
   el.textContent='';
   const tick=()=>{
@@ -238,7 +238,7 @@ document.head.appendChild(spinStyle);
     setLoading(false);
 
     const replyEl=document.getElementById('aiReply');
-    const PROMPT=`You are the professional client success team at SafeCodex Technologies, an enterprise software company based in Hyderabad, India. We build custom software, cloud solutions, AI/ML systems, cybersecurity, and ERP integrations.
+    const PROMPT=`You are the professional client success team at Safe Code Group LLC (SafeCodex), an enterprise software company with offices in Wyoming, USA and Hyderabad, India. We build custom software, cloud solutions, AI/ML systems, cybersecurity, and ERP integrations.
 
 Write a warm, professional acknowledgement reply (2–3 short paragraphs, plain text, no subject line). The enquiry:
 - Name: ${data.first} ${data.last}
@@ -257,12 +257,12 @@ Reference their specific service area. Mention that a technical team member will
             replyEl.innerHTML=`<span style="white-space:pre-wrap">${t}</span><span style="display:inline-block;width:2px;height:13px;background:#0066FF;margin-left:2px;animation:tdot .6s ease-in-out infinite;vertical-align:text-bottom"></span>`;
           }
         });
-        replyEl.innerHTML=`<span style="white-space:pre-wrap">${text}</span><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.35)">— SafeCodex Technologies · <a href="mailto:contact@safecodeg.com" style="color:#3385FF;text-decoration:none">contact@safecodeg.com</a></div>`;
+        replyEl.innerHTML=`<span style="white-space:pre-wrap">${text}</span><div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.35)">— Safe Code Group · <a href="mailto:contact@safecodeg.com" style="color:#3385FF;text-decoration:none">contact@safecodeg.com</a></div>`;
       }catch(err){
         replyEl.textContent=`Hi ${data.first}, thank you for reaching out. We've received your enquiry about ${data.service} and a member of our technical team will get back to you within one business day. — SafeCodex Team`;
       }
     } else if(replyEl){
-      replyEl.textContent=`Hi ${data.first}, thank you for your enquiry about ${data.service||'our services'}. Our technical team will review your requirements and respond within one business day with an initial assessment. — SafeCodex Technologies`;
+      replyEl.textContent=`Hi ${data.first}, thank you for your enquiry about ${data.service||'our services'}. Our technical team will review your requirements and respond within one business day with an initial assessment. — Safe Code Group`;
     }
   });
 })();
@@ -294,7 +294,7 @@ function resetForm(){
 
   const SONI_AV=`<svg viewBox="0 0 40 40" width="26" height="26" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="av1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#1e3a6e"/><stop offset="100%" stop-color="#0a1628"/></radialGradient><radialGradient id="av2" cx="50%" cy="35%" r="55%"><stop offset="0%" stop-color="#FFD4A8"/><stop offset="100%" stop-color="#F5A97A"/></radialGradient><radialGradient id="av3" cx="50%" cy="0%" r="80%"><stop offset="0%" stop-color="#3D1F6B"/><stop offset="100%" stop-color="#1A0A30"/></radialGradient><linearGradient id="av4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0066FF"/><stop offset="100%" stop-color="#00C2FF"/></linearGradient></defs><circle cx="20" cy="20" r="20" fill="url(#av1)"/><path d="M6 40 C6 32 12 29 20 29 C28 29 34 32 34 40Z" fill="url(#av4)"/><rect x="17" y="26" width="6" height="5" rx="3" fill="url(#av2)"/><ellipse cx="20" cy="17" rx="11" ry="12" fill="url(#av3)"/><ellipse cx="20" cy="19" rx="8.5" ry="9" fill="url(#av2)"/><path d="M9 16 C9 6 13 3 20 3 C27 3 31 6 31 16 C30 10 27 8 20 8 C13 8 10 10 9 16Z" fill="url(#av3)"/><path d="M9.5 16 C8 20 8 25 9.5 28 C10 26 11 22 11.5 19Z" fill="url(#av3)"/><path d="M30.5 16 C32 20 32 25 30.5 28 C30 26 29 22 28.5 19Z" fill="url(#av3)"/><path d="M13.5 15.5 C15 14.5 17.5 14.5 19 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M21 15.5 C22.5 14.5 25 14.5 26.5 15.5" stroke="#2a0f4a" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="15.8" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="15.8" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="15.8" cy="18.6" r=".8" fill="#0d0618"/><circle cx="16.6" cy="17.7" r=".7" fill="white"/><ellipse cx="24.2" cy="18.5" rx="2.6" ry="2.1" fill="#1a0830"/><circle cx="24.2" cy="18.6" r="1.5" fill="#4a2080"/><circle cx="24.2" cy="18.6" r=".8" fill="#0d0618"/><circle cx="25" cy="17.7" r=".7" fill="white"/><path d="M16.5 24 C18 22.8 22 22.8 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18 25.5 22 25.5 23.5 24" fill="#E8725A"/><path d="M16.5 24 C18.5 24.5 21.5 24.5 23.5 24" stroke="#C4402A" stroke-width=".5" fill="none"/><ellipse cx="12" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><ellipse cx="28" cy="22" rx="2.5" ry="1.3" fill="rgba(255,130,110,.2)"/><circle cx="10.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="10.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/><circle cx="29.5" cy="20" r="1.4" fill="#FFD700"/><ellipse cx="29.5" cy="23" rx=".9" ry="1.5" fill="#FFD700"/></svg>`;
 
-  const SYSTEM=`You are Rsoni, the professional AI assistant for SafeCodex Technologies — an enterprise software company based in Hyderabad, India. You are helpful, concise, and professional.
+  const SYSTEM=`You are Rsoni, the professional AI assistant for Safe Code Group LLC (SafeCodex) — an enterprise software company with offices in Wyoming, USA and Hyderabad, India. You are helpful, concise, and professional.
 
 Company facts:
 - Services: Custom Software Development, Cloud & DevOps (AWS/Azure/K8s), AI/ML & Data Engineering, Cybersecurity (VAPT/SOC2/ISO27001), ERP & System Integration, Mobile Apps (React Native/Flutter)
@@ -303,7 +303,8 @@ Company facts:
 - Certifications: ISO 27001, SOC 2, CMMI Level 3
 - Uptime SLA: 99.9%
 - Team: 200+ engineers and consultants
-- Founded: 2018 | HQ: LB Nagar, Hyderabad, Telangana, India
+- Founded: 2022 | HQ: Rock Springs, Wyoming, USA | India office: LB Nagar, Hyderabad, Telangana
+- LinkedIn: https://www.linkedin.com/company/safecodegroup
 - Phone: +91 7702721477 | WhatsApp: +91 7702721477 | Email: contact@safecodeg.com
 - Delivery: Agile sprints, typical project 8–24 weeks
 - Keep replies under 100 words unless the question genuinely needs more.
@@ -408,13 +409,13 @@ Company facts:
       else if(q.includes('price')||q.includes('cost')||q.includes('how much'))
         reply='Project costs depend on scope and complexity. Custom software projects typically start from ₹8–15 lakhs. Please reach out at **contact@safecodeg.com** or call **+91 7702721477** for a free estimate.';
       else if(q.includes('contact')||q.includes('reach')||q.includes('email')||q.includes('phone'))
-        reply='📧 **contact@safecodeg.com**\n📞 **+91 7702721477**\n📍 LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana\n💬 WhatsApp: +91 7702721477';
+        reply='📧 **contact@safecodeg.com**\n📞 **+91 7702721477**\n📍 USA: Rock Springs, Wyoming 82901\n📍 India: LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana\n💬 WhatsApp: +91 7702721477';
       else if(q.includes('how long')||q.includes('timeline')||q.includes('time'))
         reply='Typical timelines: Discovery & Architecture (2–3 weeks), Development sprints (8–20 weeks), QA & Testing (2–3 weeks), Deployment (1 week). Total: **12–26 weeks** depending on complexity.';
       else if(q.includes('case study')||q.includes('client')||q.includes('example'))
         reply='Key projects include:\n- **CodeVault ERP** for Bharat Heavy Industrials — 60% efficiency gain\n- **ShieldOps SIEM** for IndusInd Bank — 84% fewer security incidents\n- **NexusAI** for Apollo Hospitals — 91% diagnostic accuracy';
       else if(q.includes('location')||q.includes('where')||q.includes('hyderabad'))
-        reply='SafeCodex is headquartered at **LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana, India**. We serve clients across 28+ countries.';
+        reply='Safe Code Group LLC is headquartered in **Rock Springs, Wyoming, USA**, with an India office at **LGF 23, Sahara Complex, LB Nagar, Hyderabad, Telangana**. We serve clients across 28+ countries.';
       else if(q.includes('erp')||q.includes('codevault'))
         reply='**CodeVault ERP** is our full-stack enterprise resource planning platform covering procurement, production, inventory, payroll, and reporting. Currently live in 320+ companies across manufacturing, logistics, and services with 99.9% uptime SLA.';
       else if(/\bai\b/.test(q)||q.includes('machine learning')||q.includes('nexus'))
