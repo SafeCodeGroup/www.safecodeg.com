@@ -1,10 +1,12 @@
 <?php
-// Contact form handler: emails website enquiries to the SafeCode inbox.
+// Contact form handler: emails website enquiries to the Safe Code Group inboxes.
+// "Product support" goes to support@ (copied to contact@); everything else to contact@.
 // Uses PHP mail(), which on HostGator sends through the account's own mail
 // server (mail.safecodeg.com) — no mailbox password is stored here.
 
-const TO_ADDRESS   = 'contact@safecodeg.com';
-const FROM_ADDRESS = 'contact@safecodeg.com';
+const TO_ADDRESS      = 'contact@safecodeg.com';
+const SUPPORT_ADDRESS = 'support@safecodeg.com';
+const FROM_ADDRESS    = 'contact@safecodeg.com';
 
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
@@ -43,26 +45,34 @@ if ($first === '' || $last === '' || $service === '' || mb_strlen($message) <= 5
   respond(400, ['ok' => false, 'error' => 'Please fill in all required fields correctly.']);
 }
 
-$subject = 'Website enquiry: ' . $service . ' — ' . $first . ' ' . $last;
+$isSupport = ($service === 'Product support');
+$to = $isSupport ? SUPPORT_ADDRESS : TO_ADDRESS;
+
+$subject = ($isSupport ? 'Support request: ' : 'Website enquiry: ') . $service . ' — ' . $first . ' ' . $last;
 $body = "New enquiry from the safecodeg.com contact form\n\n"
       . "Name:    $first $last\n"
       . "Email:   $email\n"
       . "Company: " . ($company !== '' ? $company : '-') . "\n"
-      . "Service: $service\n"
+      . "Topic:   $service\n"
       . "Sent:    " . gmdate('Y-m-d H:i') . " UTC\n\n"
       . "Message:\n$message\n";
 
 $headers = [
-  'From: SafeCode Website <' . FROM_ADDRESS . '>',
+  'From: Safe Code Group Website <' . FROM_ADDRESS . '>',
   'Reply-To: ' . $email,
   'Content-Type: text/plain; charset=UTF-8',
+  'MIME-Version: 1.0',
   'X-Mailer: safecodeg.com contact form',
 ];
 
-$sent = mail(TO_ADDRESS, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body,
+if ($isSupport) {
+  $headers[] = 'Cc: ' . TO_ADDRESS;
+}
+
+$sent = mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body,
              implode("\r\n", $headers), '-f' . FROM_ADDRESS);
 
 if (!$sent) {
-  respond(500, ['ok' => false, 'error' => 'Could not send your enquiry. Please email ' . TO_ADDRESS . ' directly.']);
+  respond(500, ['ok' => false, 'error' => 'Could not send your enquiry. Please email ' . $to . ' directly.']);
 }
 respond(200, ['ok' => true]);
