@@ -88,8 +88,16 @@ This repository is **private**, so cPanel needs credentials to clone it. Choose 
   `https://github.com/SafeCodeGroup/www.safecodeg.com.git`. The repository holds no secrets
   (no passwords or keys), but it is a decision for the repository owner.
 
-Set **Repository Path** to `repositories/www.safecodeg.com` (outside `public_html`) and
-**Repository Name** to `www.safecodeg.com`, then **Create**.
+Set **Repository Path** to `/home2/safecode/repositories/www.safecodeg.com` and **Repository
+Name** to `www.safecodeg.com`, then **Create**. Never use `public_html` itself as the repository
+path: that creates an empty repository inside the website folder ("No checked-out branch is
+available") instead of cloning from GitHub.
+
+If a repository was already created at `/home2/safecode/public_html`: cPanel → Git™ Version
+Control → **Remove** it (this only removes it from the list), then cPanel → File Manager →
+`public_html` → Settings → **Show Hidden Files** → delete the `.git` folder there. Deleting that
+`.git` folder does not touch the website files. `.htaccess` also blocks any `.git` path from the
+web as a safety net.
 
 ### 3. Deploy the `production` branch
 
@@ -104,8 +112,8 @@ lines into `.htaccess` in this repository and deploy again, so the PHP version s
 
 cPanel only deploys when `.cpanel.yml` is in the repository root (it is) and the server's
 clone has no local changes, so never edit files inside `repositories/www.safecodeg.com` on the
-server. If deployment fails because `$HOME` is not set, edit `.cpanel.yml` and replace `$HOME` with
-`/home/<your-cpanel-username>`.
+server. If deployment fails because `$HOME` is not set, edit `.cpanel.yml` and replace
+`$HOME/public_html` with `/home2/safecode/public_html` (this account's home is `/home2/safecode`).
 
 ### 4. Check the live site
 

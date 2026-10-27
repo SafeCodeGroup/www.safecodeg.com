@@ -10,6 +10,9 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Never serve git metadata if a repository ever ends up in the web root
+  RewriteRule (^|/)\.git(/|$) - [R=404,L]
+
   # safecodeg.com -> https://www.safecodeg.com
   RewriteCond %{REQUEST_URI} !^/\.well-known/
   RewriteCond %{HTTP_HOST} ^safecodeg\.com$ [NC]

@@ -1,7 +1,7 @@
 # cPanel Git Version Control deployment (HostGator).
 # "Deploy HEAD Commit" copies only the files the website needs into public_html.
-# If deployment fails because $HOME is not set, replace $HOME with
-# /home/<your-cpanel-username>.
+# If deployment fails because $HOME is not set, replace $HOME/public_html with
+# /home2/safecode/public_html (this account's home directory).
 ---
 deployment:
   tasks:
