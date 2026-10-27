@@ -1,0 +1,21 @@
+{
+  "name": "safecodeg-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Safe Code Group public website (www.safecodeg.com)",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "build": "node scripts/build.js",
+    "lint": "html-validate index.html && csstree-validator css/style.css && node --check js/main.js",
+    "test": "npm run lint && node tests/smoke.test.js"
+  },
+  "devDependencies": {
+    "csstree-validator": "^4.0.1",
+    "html-validate": "^11.17.0",
+    "jsdom": "^30.1.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

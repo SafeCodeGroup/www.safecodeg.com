@@ -14,22 +14,28 @@ research — plus services, how we work, offices and a contact form.
 | `js/main.js` | Interactivity (navigation, product filters, contact form, product finder) |
 | `contact.php` | Contact form handler: emails enquiries to `contact@safecodeg.com`; "Product support" goes to `support@safecodeg.com` (copied to contact@) |
 
-No build step and no dependencies: it is plain HTML, CSS and JavaScript, plus one PHP file for
-the contact form.
+The site itself is plain HTML, CSS and JavaScript plus one PHP file, with no runtime
+dependencies. npm is only used for local development: preview, tests and packaging.
 
-## Preview locally
+## Development (npm)
+
+Requires Node.js 20 or newer.
 
 ```bash
-python3 -m http.server 8080      # then open http://localhost:8080
+npm install        # installs the dev tools (validators, test runner)
+npm start          # preview at http://127.0.0.1:8080 (PORT=3000 npm start to change)
+npm test           # HTML/CSS/JS validation + behaviour test of the page
+npm run build      # copies the files to upload into dist/
 ```
 
-That server cannot run PHP, so the contact form shows its error message locally. To test
-sending, use `php -S localhost:8080` (needs PHP), or test on the live host.
+The preview server cannot run PHP, so the contact form shows its error message locally; test
+sending on the live host.
 
 ## Publish
 
-The domain's DNS and web hosting are at HostGator (`safecodeg.com` → HostGator server). Upload the
-four paths above to the site's web root (for example with cPanel File Manager or FTP).
+The domain's DNS and web hosting are at HostGator (`safecodeg.com` → HostGator server). Run
+`npm run build` and upload the contents of `dist/` (`index.html`, `contact.php`, `css/`, `js/`)
+to the site's web root (for example with cPanel File Manager or FTP).
 `contact.php` sends with PHP `mail()` through the account's mail server, so no mailbox password
 is stored in the repo. After publishing, send one test enquiry and confirm it arrives in the
 `contact@safecodeg.com` inbox (check spam too).
